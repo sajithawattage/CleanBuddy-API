@@ -1,0 +1,1160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CleanerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="255" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="255" />
+          <Property Name="AddressLine3" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="PostalCode" Type="int" />
+        </EntityType>
+        <EntityType Name="ApproveGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ApproveGroupUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="ContractorID" />
+          </Key>
+          <Property Name="ContractorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="EmailID" Type="varchar" MaxLength="255" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="255" />
+          <Property Name="ContactNo" Type="int" />
+          <Property Name="ABN" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentOption" Type="int" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="Note" Type="text" />
+        </EntityType>
+        <EntityType Name="ContractorEmployee">
+          <Key>
+            <PropertyRef Name="EmployeeJobID" />
+          </Key>
+          <Property Name="EmployeeJobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractorID" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="JoinDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="255" />
+          <Property Name="EmployeeContactNo" Type="int" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="PurchasedFrom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PurchaseDate" Type="datetime" Nullable="false" />
+          <Property Name="WarrantyExpire" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="JobStartDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+          <Property Name="EquipmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestHeader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestID" Type="int" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+          <Property Name="RequestDateTime" Type="datetime" />
+          <Property Name="ApproveGroupID" Type="int" />
+          <Property Name="ApproveStatus" Type="varchar" MaxLength="2" />
+          <Property Name="ApprovedDateTime" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkTypeID" Type="int" Nullable="false" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="ContractorID" Type="int" Nullable="false" />
+          <Property Name="SiteName" Type="varchar" MaxLength="1" />
+          <Property Name="WorkType" Type="int" />
+          <Property Name="Notes" Type="varchar" MaxLength="1" />
+          <Property Name="Budget" Type="int" />
+          <Property Name="Allocation" Type="int" />
+          <Property Name="WorkDays" Type="int" />
+        </EntityType>
+        <EntityType Name="SiteSubContractor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SubContractorID" Type="int" />
+          <Property Name="ReportingOfficer" Type="varchar" MaxLength="1" />
+          <Property Name="SiteID" Type="int" />
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubContractor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractorID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="1" />
+          <Property Name="AddressID" Type="int" />
+          <Property Name="ABN" Type="varchar" MaxLength="1" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="1" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="1" />
+          <Property Name="UserRoleID" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="WorkType">
+          <Key>
+            <PropertyRef Name="WorkTypeID" />
+          </Key>
+          <Property Name="WorkTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkTypeName" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_Address_Contractor">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Site">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Site" Type="Self.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApproveGroup_ApproveGroupUser">
+          <End Role="ApproveGroup" Type="Self.ApproveGroup" Multiplicity="1" />
+          <End Role="ApproveGroupUser" Type="Self.ApproveGroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApproveGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="ApproveGroupUser">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApproveGroup_RequestHeader">
+          <End Role="ApproveGroup" Type="Self.ApproveGroup" Multiplicity="1" />
+          <End Role="RequestHeader" Type="Self.RequestHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApproveGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="RequestHeader">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_ContractorEmployee">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="0..1" />
+          <End Role="ContractorEmployee" Type="Self.ContractorEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ContractorID" />
+            </Principal>
+            <Dependent Role="ContractorEmployee">
+              <PropertyRef Name="ContractorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_Site">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="1" />
+          <End Role="Site" Type="Self.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ContractorID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="ContractorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_SubContractor">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="1" />
+          <End Role="SubContractor" Type="Self.SubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ContractorID" />
+            </Principal>
+            <Dependent Role="SubContractor">
+              <PropertyRef Name="ContractorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ContractorEmployee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="ContractorEmployee" Type="Self.ContractorEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ContractorEmployee">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_EquipmentCategory">
+          <End Role="EquipmentCategory" Type="Self.EquipmentCategory" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_JobEquipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="JobEquipment" Type="Self.JobEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobEquipment">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_JobEquipment">
+          <End Role="Job" Type="Self.Job" Multiplicity="1" />
+          <End Role="JobEquipment" Type="Self.JobEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobEquipment">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHeader_Job">
+          <End Role="RequestHeader" Type="Self.RequestHeader" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RequestHeader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_Job">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_SiteSubContractor">
+          <End Role="Site" Type="Self.Site" Multiplicity="0..1" />
+          <End Role="SiteSubContractor" Type="Self.SiteSubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SiteSubContractor">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_ApproveGroupUser">
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="ApproveGroupUser" Type="Self.ApproveGroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ApproveGroupUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkType_Site">
+          <End Role="WorkType" Type="Self.WorkType" Multiplicity="1" />
+          <End Role="Site" Type="Self.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkType">
+              <PropertyRef Name="WorkTypeID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="WorkTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CleanerModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApproveGroup" EntityType="Self.ApproveGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApproveGroupUser" EntityType="Self.ApproveGroupUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractorEmployee" EntityType="Self.ContractorEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentCategory" EntityType="Self.EquipmentCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobEquipment" EntityType="Self.JobEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestHeader" EntityType="Self.RequestHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteSubContractor" EntityType="Self.SiteSubContractor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubContractor" EntityType="Self.SubContractor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkType" EntityType="Self.WorkType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Address_Contractor" Association="Self.FK_Address_Contractor">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Site" Association="Self.FK_Address_Site">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Site" EntitySet="Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApproveGroup_ApproveGroupUser" Association="Self.FK_ApproveGroup_ApproveGroupUser">
+            <End Role="ApproveGroup" EntitySet="ApproveGroup" />
+            <End Role="ApproveGroupUser" EntitySet="ApproveGroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApproveGroup_RequestHeader" Association="Self.FK_ApproveGroup_RequestHeader">
+            <End Role="ApproveGroup" EntitySet="ApproveGroup" />
+            <End Role="RequestHeader" EntitySet="RequestHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_ContractorEmployee" Association="Self.FK_Contractor_ContractorEmployee">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="ContractorEmployee" EntitySet="ContractorEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_Site" Association="Self.FK_Contractor_Site">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="Site" EntitySet="Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_SubContractor" Association="Self.FK_Contractor_SubContractor">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="SubContractor" EntitySet="SubContractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ContractorEmployee" Association="Self.FK_Employee_ContractorEmployee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ContractorEmployee" EntitySet="ContractorEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_EquipmentCategory" Association="Self.FK_Equipment_EquipmentCategory">
+            <End Role="EquipmentCategory" EntitySet="EquipmentCategory" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_JobEquipment" Association="Self.FK_Equipment_JobEquipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="JobEquipment" EntitySet="JobEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_JobEquipment" Association="Self.FK_Job_JobEquipment">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="JobEquipment" EntitySet="JobEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHeader_Job" Association="Self.FK_RequestHeader_Job">
+            <End Role="RequestHeader" EntitySet="RequestHeader" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_Job" Association="Self.FK_Site_Job">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_SiteSubContractor" Association="Self.FK_Site_SiteSubContractor">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="SiteSubContractor" EntitySet="SiteSubContractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_ApproveGroupUser" Association="Self.FK_UserLogin_ApproveGroupUser">
+            <End Role="UserLogin" EntitySet="UserLogin" />
+            <End Role="ApproveGroupUser" EntitySet="ApproveGroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkType_Site" Association="Self.FK_WorkType_Site">
+            <End Role="WorkType" EntitySet="WorkType" />
+            <End Role="Site" EntitySet="Site" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CleanerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CleanerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="CleanerModel.Address" />
+          <EntitySet Name="ApproveGroups" EntityType="CleanerModel.ApproveGroup" />
+          <EntitySet Name="ApproveGroupUsers" EntityType="CleanerModel.ApproveGroupUser" />
+          <EntitySet Name="Contractors" EntityType="CleanerModel.Contractor" />
+          <EntitySet Name="ContractorEmployees" EntityType="CleanerModel.ContractorEmployee" />
+          <EntitySet Name="Employees" EntityType="CleanerModel.Employee" />
+          <EntitySet Name="Equipments" EntityType="CleanerModel.Equipment" />
+          <EntitySet Name="EquipmentCategories" EntityType="CleanerModel.EquipmentCategory" />
+          <EntitySet Name="Jobs" EntityType="CleanerModel.Job" />
+          <EntitySet Name="JobEquipments" EntityType="CleanerModel.JobEquipment" />
+          <EntitySet Name="RequestHeaders" EntityType="CleanerModel.RequestHeader" />
+          <EntitySet Name="Sites" EntityType="CleanerModel.Site" />
+          <EntitySet Name="SiteSubContractors" EntityType="CleanerModel.SiteSubContractor" />
+          <EntitySet Name="SubContractors" EntityType="CleanerModel.SubContractor" />
+          <EntitySet Name="sysdiagrams" EntityType="CleanerModel.sysdiagram" />
+          <EntitySet Name="UserLogins" EntityType="CleanerModel.UserLogin" />
+          <EntitySet Name="WorkTypes" EntityType="CleanerModel.WorkType" />
+          <AssociationSet Name="FK_Address_Contractor" Association="CleanerModel.FK_Address_Contractor">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Site" Association="CleanerModel.FK_Address_Site">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Site" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApproveGroup_ApproveGroupUser" Association="CleanerModel.FK_ApproveGroup_ApproveGroupUser">
+            <End Role="ApproveGroup" EntitySet="ApproveGroups" />
+            <End Role="ApproveGroupUser" EntitySet="ApproveGroupUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApproveGroup_RequestHeader" Association="CleanerModel.FK_ApproveGroup_RequestHeader">
+            <End Role="ApproveGroup" EntitySet="ApproveGroups" />
+            <End Role="RequestHeader" EntitySet="RequestHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_ApproveGroupUser" Association="CleanerModel.FK_UserLogin_ApproveGroupUser">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="ApproveGroupUser" EntitySet="ApproveGroupUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_ContractorEmployee" Association="CleanerModel.FK_Contractor_ContractorEmployee">
+            <End Role="Contractor" EntitySet="Contractors" />
+            <End Role="ContractorEmployee" EntitySet="ContractorEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_Site" Association="CleanerModel.FK_Contractor_Site">
+            <End Role="Contractor" EntitySet="Contractors" />
+            <End Role="Site" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_SubContractor" Association="CleanerModel.FK_Contractor_SubContractor">
+            <End Role="Contractor" EntitySet="Contractors" />
+            <End Role="SubContractor" EntitySet="SubContractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ContractorEmployee" Association="CleanerModel.FK_Employee_ContractorEmployee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ContractorEmployee" EntitySet="ContractorEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_EquipmentCategory" Association="CleanerModel.FK_Equipment_EquipmentCategory">
+            <End Role="EquipmentCategory" EntitySet="EquipmentCategories" />
+            <End Role="Equipment" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_JobEquipment" Association="CleanerModel.FK_Equipment_JobEquipment">
+            <End Role="Equipment" EntitySet="Equipments" />
+            <End Role="JobEquipment" EntitySet="JobEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_JobEquipment" Association="CleanerModel.FK_Job_JobEquipment">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="JobEquipment" EntitySet="JobEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHeader_Job" Association="CleanerModel.FK_RequestHeader_Job">
+            <End Role="RequestHeader" EntitySet="RequestHeaders" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_Job" Association="CleanerModel.FK_Site_Job">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_SiteSubContractor" Association="CleanerModel.FK_Site_SiteSubContractor">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="SiteSubContractor" EntitySet="SiteSubContractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkType_Site" Association="CleanerModel.FK_WorkType_Site">
+            <End Role="WorkType" EntitySet="WorkTypes" />
+            <End Role="Site" EntitySet="Sites" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressLine1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="Int32" />
+          <NavigationProperty Name="Contractors" Relationship="CleanerModel.FK_Address_Contractor" FromRole="Address" ToRole="Contractor" />
+          <NavigationProperty Name="Sites" Relationship="CleanerModel.FK_Address_Site" FromRole="Address" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="ApproveGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ApproveGroupUsers" Relationship="CleanerModel.FK_ApproveGroup_ApproveGroupUser" FromRole="ApproveGroup" ToRole="ApproveGroupUser" />
+          <NavigationProperty Name="RequestHeaders" Relationship="CleanerModel.FK_ApproveGroup_RequestHeader" FromRole="ApproveGroup" ToRole="RequestHeader" />
+        </EntityType>
+        <EntityType Name="ApproveGroupUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApproveGroup" Relationship="CleanerModel.FK_ApproveGroup_ApproveGroupUser" FromRole="ApproveGroupUser" ToRole="ApproveGroup" />
+          <NavigationProperty Name="UserLogin" Relationship="CleanerModel.FK_UserLogin_ApproveGroupUser" FromRole="ApproveGroupUser" ToRole="UserLogin" />
+        </EntityType>
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="ContractorID" />
+          </Key>
+          <Property Name="ContractorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="Int32" />
+          <Property Name="ABN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentOption" Type="Int32" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Address" Relationship="CleanerModel.FK_Address_Contractor" FromRole="Contractor" ToRole="Address" />
+          <NavigationProperty Name="ContractorEmployees" Relationship="CleanerModel.FK_Contractor_ContractorEmployee" FromRole="Contractor" ToRole="ContractorEmployee" />
+          <NavigationProperty Name="Sites" Relationship="CleanerModel.FK_Contractor_Site" FromRole="Contractor" ToRole="Site" />
+          <NavigationProperty Name="SubContractors" Relationship="CleanerModel.FK_Contractor_SubContractor" FromRole="Contractor" ToRole="SubContractor" />
+        </EntityType>
+        <EntityType Name="ContractorEmployee">
+          <Key>
+            <PropertyRef Name="EmployeeJobID" />
+          </Key>
+          <Property Name="EmployeeJobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractorID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="JoinDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Contractor" Relationship="CleanerModel.FK_Contractor_ContractorEmployee" FromRole="ContractorEmployee" ToRole="Contractor" />
+          <NavigationProperty Name="Employee" Relationship="CleanerModel.FK_Employee_ContractorEmployee" FromRole="ContractorEmployee" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeContactNo" Type="Int32" />
+          <NavigationProperty Name="ContractorEmployees" Relationship="CleanerModel.FK_Employee_ContractorEmployee" FromRole="Employee" ToRole="ContractorEmployee" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="PurchasedFrom" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WarrantyExpire" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EquipmentCategory" Relationship="CleanerModel.FK_Equipment_EquipmentCategory" FromRole="Equipment" ToRole="EquipmentCategory" />
+          <NavigationProperty Name="JobEquipments" Relationship="CleanerModel.FK_Equipment_JobEquipment" FromRole="Equipment" ToRole="JobEquipment" />
+        </EntityType>
+        <EntityType Name="EquipmentCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipments" Relationship="CleanerModel.FK_Equipment_EquipmentCategory" FromRole="EquipmentCategory" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <Property Name="JobStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="JobEquipments" Relationship="CleanerModel.FK_Job_JobEquipment" FromRole="Job" ToRole="JobEquipment" />
+          <NavigationProperty Name="RequestHeader" Relationship="CleanerModel.FK_RequestHeader_Job" FromRole="Job" ToRole="RequestHeader" />
+          <NavigationProperty Name="Site" Relationship="CleanerModel.FK_Site_Job" FromRole="Job" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="JobEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="CleanerModel.FK_Equipment_JobEquipment" FromRole="JobEquipment" ToRole="Equipment" />
+          <NavigationProperty Name="Job" Relationship="CleanerModel.FK_Job_JobEquipment" FromRole="JobEquipment" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="RequestHeader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestID" Type="Int32" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <Property Name="RequestDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ApproveGroupID" Type="Int32" />
+          <Property Name="ApproveStatus" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ApprovedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ApproveGroup" Relationship="CleanerModel.FK_ApproveGroup_RequestHeader" FromRole="RequestHeader" ToRole="ApproveGroup" />
+          <NavigationProperty Name="Job" Relationship="CleanerModel.FK_RequestHeader_Job" FromRole="RequestHeader" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkTypeID" Type="Int32" Nullable="false" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="ContractorID" Type="Int32" Nullable="false" />
+          <Property Name="SiteName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WorkType" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Budget" Type="Int32" />
+          <Property Name="Allocation" Type="Int32" />
+          <Property Name="WorkDays" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="CleanerModel.FK_Address_Site" FromRole="Site" ToRole="Address" />
+          <NavigationProperty Name="Contractor" Relationship="CleanerModel.FK_Contractor_Site" FromRole="Site" ToRole="Contractor" />
+          <NavigationProperty Name="Jobs" Relationship="CleanerModel.FK_Site_Job" FromRole="Site" ToRole="Job" />
+          <NavigationProperty Name="SiteSubContractors" Relationship="CleanerModel.FK_Site_SiteSubContractor" FromRole="Site" ToRole="SiteSubContractor" />
+          <NavigationProperty Name="WorkType1" Relationship="CleanerModel.FK_WorkType_Site" FromRole="Site" ToRole="WorkType" />
+        </EntityType>
+        <EntityType Name="SiteSubContractor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SubContractorID" Type="Int32" />
+          <Property Name="ReportingOfficer" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SiteID" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Site" Relationship="CleanerModel.FK_Site_SiteSubContractor" FromRole="SiteSubContractor" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="SubContractor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractorID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AddressID" Type="Int32" />
+          <Property Name="ABN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Contractor" Relationship="CleanerModel.FK_Contractor_SubContractor" FromRole="SubContractor" ToRole="Contractor" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="UserRoleID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="ApproveGroupUsers" Relationship="CleanerModel.FK_UserLogin_ApproveGroupUser" FromRole="UserLogin" ToRole="ApproveGroupUser" />
+        </EntityType>
+        <EntityType Name="WorkType">
+          <Key>
+            <PropertyRef Name="WorkTypeID" />
+          </Key>
+          <Property Name="WorkTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkTypeName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sites" Relationship="CleanerModel.FK_WorkType_Site" FromRole="WorkType" ToRole="Site" />
+        </EntityType>
+        <Association Name="FK_Address_Contractor">
+          <End Type="CleanerModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="CleanerModel.Contractor" Role="Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Site">
+          <End Type="CleanerModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="CleanerModel.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApproveGroup_ApproveGroupUser">
+          <End Type="CleanerModel.ApproveGroup" Role="ApproveGroup" Multiplicity="1" />
+          <End Type="CleanerModel.ApproveGroupUser" Role="ApproveGroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApproveGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="ApproveGroupUser">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApproveGroup_RequestHeader">
+          <End Type="CleanerModel.ApproveGroup" Role="ApproveGroup" Multiplicity="1" />
+          <End Type="CleanerModel.RequestHeader" Role="RequestHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApproveGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="RequestHeader">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_ApproveGroupUser">
+          <End Type="CleanerModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="CleanerModel.ApproveGroupUser" Role="ApproveGroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ApproveGroupUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_ContractorEmployee">
+          <End Type="CleanerModel.Contractor" Role="Contractor" Multiplicity="0..1" />
+          <End Type="CleanerModel.ContractorEmployee" Role="ContractorEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ContractorID" />
+            </Principal>
+            <Dependent Role="ContractorEmployee">
+              <PropertyRef Name="ContractorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_Site">
+          <End Type="CleanerModel.Contractor" Role="Contractor" Multiplicity="1" />
+          <End Type="CleanerModel.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ContractorID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="ContractorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_SubContractor">
+          <End Type="CleanerModel.Contractor" Role="Contractor" Multiplicity="1" />
+          <End Type="CleanerModel.SubContractor" Role="SubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="ContractorID" />
+            </Principal>
+            <Dependent Role="SubContractor">
+              <PropertyRef Name="ContractorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ContractorEmployee">
+          <End Type="CleanerModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="CleanerModel.ContractorEmployee" Role="ContractorEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ContractorEmployee">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_EquipmentCategory">
+          <End Type="CleanerModel.EquipmentCategory" Role="EquipmentCategory" Multiplicity="1" />
+          <End Type="CleanerModel.Equipment" Role="Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_JobEquipment">
+          <End Type="CleanerModel.Equipment" Role="Equipment" Multiplicity="1" />
+          <End Type="CleanerModel.JobEquipment" Role="JobEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobEquipment">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_JobEquipment">
+          <End Type="CleanerModel.Job" Role="Job" Multiplicity="1" />
+          <End Type="CleanerModel.JobEquipment" Role="JobEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="JobEquipment">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHeader_Job">
+          <End Type="CleanerModel.RequestHeader" Role="RequestHeader" Multiplicity="1" />
+          <End Type="CleanerModel.Job" Role="Job" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RequestHeader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_Job">
+          <End Type="CleanerModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="CleanerModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_SiteSubContractor">
+          <End Type="CleanerModel.Site" Role="Site" Multiplicity="0..1" />
+          <End Type="CleanerModel.SiteSubContractor" Role="SiteSubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SiteSubContractor">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkType_Site">
+          <End Type="CleanerModel.WorkType" Role="WorkType" Multiplicity="1" />
+          <End Type="CleanerModel.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkType">
+              <PropertyRef Name="WorkTypeID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="WorkTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CleanerModelStoreContainer" CdmEntityContainer="CleanerEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="CleanerModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApproveGroups">
+            <EntityTypeMapping TypeName="CleanerModel.ApproveGroup">
+              <MappingFragment StoreEntitySet="ApproveGroup">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApproveGroupUsers">
+            <EntityTypeMapping TypeName="CleanerModel.ApproveGroupUser">
+              <MappingFragment StoreEntitySet="ApproveGroupUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contractors">
+            <EntityTypeMapping TypeName="CleanerModel.Contractor">
+              <MappingFragment StoreEntitySet="Contractor">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="PaymentOption" ColumnName="PaymentOption" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractorEmployees">
+            <EntityTypeMapping TypeName="CleanerModel.ContractorEmployee">
+              <MappingFragment StoreEntitySet="ContractorEmployee">
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="EmployeeJobID" ColumnName="EmployeeJobID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CleanerModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeContactNo" ColumnName="EmployeeContactNo" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipments">
+            <EntityTypeMapping TypeName="CleanerModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="WarrantyExpire" ColumnName="WarrantyExpire" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="PurchasedFrom" ColumnName="PurchasedFrom" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentCategories">
+            <EntityTypeMapping TypeName="CleanerModel.EquipmentCategory">
+              <MappingFragment StoreEntitySet="EquipmentCategory">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="CleanerModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="JobStartDate" ColumnName="JobStartDate" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobEquipments">
+            <EntityTypeMapping TypeName="CleanerModel.JobEquipment">
+              <MappingFragment StoreEntitySet="JobEquipment">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestHeaders">
+            <EntityTypeMapping TypeName="CleanerModel.RequestHeader">
+              <MappingFragment StoreEntitySet="RequestHeader">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ApprovedDateTime" ColumnName="ApprovedDateTime" />
+                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+                <ScalarProperty Name="ApproveGroupID" ColumnName="ApproveGroupID" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="CleanerModel.Site">
+              <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="WorkDays" ColumnName="WorkDays" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="WorkType" ColumnName="WorkType" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteSubContractors">
+            <EntityTypeMapping TypeName="CleanerModel.SiteSubContractor">
+              <MappingFragment StoreEntitySet="SiteSubContractor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="ReportingOfficer" ColumnName="ReportingOfficer" />
+                <ScalarProperty Name="SubContractorID" ColumnName="SubContractorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubContractors">
+            <EntityTypeMapping TypeName="CleanerModel.SubContractor">
+              <MappingFragment StoreEntitySet="SubContractor">
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CleanerModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="CleanerModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkTypes">
+            <EntityTypeMapping TypeName="CleanerModel.WorkType">
+              <MappingFragment StoreEntitySet="WorkType">
+                <ScalarProperty Name="WorkTypeName" ColumnName="WorkTypeName" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

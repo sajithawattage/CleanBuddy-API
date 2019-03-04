@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f359bed312f34ae1964af81c66698a8d" Name="Diagram1">
+        <EntityTypeShape EntityType="CleanerModel.Address" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="CleanerModel.ApproveGroup" Width="1.5" PointX="6" PointY="11.375" />
+        <EntityTypeShape EntityType="CleanerModel.ApproveGroupUser" Width="1.5" PointX="11.25" PointY="11.375" />
+        <EntityTypeShape EntityType="CleanerModel.Contractor" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="CleanerModel.ContractorEmployee" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="CleanerModel.Employee" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="CleanerModel.Equipment" Width="1.5" PointX="10.5" PointY="1" />
+        <EntityTypeShape EntityType="CleanerModel.EquipmentCategory" Width="1.5" PointX="8.25" PointY="1.625" />
+        <EntityTypeShape EntityType="CleanerModel.Job" Width="1.5" PointX="10.5" PointY="5.375" />
+        <EntityTypeShape EntityType="CleanerModel.JobEquipment" Width="1.5" PointX="12.75" PointY="5.375" />
+        <EntityTypeShape EntityType="CleanerModel.RequestHeader" Width="1.5" PointX="8.25" PointY="10.875" />
+        <EntityTypeShape EntityType="CleanerModel.Site" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="CleanerModel.SiteSubContractor" Width="1.5" PointX="10.5" PointY="8.125" />
+        <EntityTypeShape EntityType="CleanerModel.SubContractor" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="CleanerModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="CleanerModel.UserLogin" Width="1.5" PointX="9" PointY="15.375" />
+        <EntityTypeShape EntityType="CleanerModel.WorkType" Width="1.5" PointX="6" PointY="1.625" />
+        <AssociationConnector Association="CleanerModel.FK_Address_Contractor" />
+        <AssociationConnector Association="CleanerModel.FK_Address_Site" />
+        <AssociationConnector Association="CleanerModel.FK_ApproveGroup_ApproveGroupUser" />
+        <AssociationConnector Association="CleanerModel.FK_ApproveGroup_RequestHeader" />
+        <AssociationConnector Association="CleanerModel.FK_UserLogin_ApproveGroupUser" />
+        <AssociationConnector Association="CleanerModel.FK_Contractor_ContractorEmployee" />
+        <AssociationConnector Association="CleanerModel.FK_Contractor_Site" />
+        <AssociationConnector Association="CleanerModel.FK_Contractor_SubContractor" />
+        <AssociationConnector Association="CleanerModel.FK_Employee_ContractorEmployee" />
+        <AssociationConnector Association="CleanerModel.FK_Equipment_EquipmentCategory" />
+        <AssociationConnector Association="CleanerModel.FK_Equipment_JobEquipment" />
+        <AssociationConnector Association="CleanerModel.FK_Job_JobEquipment" />
+        <AssociationConnector Association="CleanerModel.FK_RequestHeader_Job" />
+        <AssociationConnector Association="CleanerModel.FK_Site_Job" />
+        <AssociationConnector Association="CleanerModel.FK_Site_SiteSubContractor" />
+        <AssociationConnector Association="CleanerModel.FK_WorkType_Site" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
