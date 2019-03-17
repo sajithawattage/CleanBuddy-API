@@ -9,7 +9,7 @@ namespace Cleaner.API.Controllers
     public class EquipmentController : BaseController
     {
         IEquipmentService _equipementService;
-        
+            
         public EquipmentController(IEquipmentService equipmentService)
         {
             _equipementService = equipmentService;
