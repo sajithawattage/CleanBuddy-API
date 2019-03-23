@@ -50,7 +50,7 @@ namespace Cleaner.API.Handlers
             ResponseMetadata responseMetadata = new ResponseMetadata {
                 Version = "1.0",
                 StatusCode = statusCode,
-                Data = responseContent,
+                Data = responseContent ?? null,
                 Timestamp = new DateTime(
                     DateTime.Now.Year, 
                     DateTime.Now.Month, 
@@ -60,7 +60,7 @@ namespace Cleaner.API.Handlers
                     DateTime.Now.Second, 
                     DateTime.Now.Millisecond),
                 ErrorMessage = errorMessage,
-                Size = responseContent.ToString().Length
+                Size = responseContent != null ? responseContent.ToString().Length : 0
             };
             
             var result = request.CreateResponse(response.StatusCode, responseMetadata);
