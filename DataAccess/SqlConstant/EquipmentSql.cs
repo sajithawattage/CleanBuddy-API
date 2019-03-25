@@ -13,6 +13,5 @@ namespace Cleaner.DataAccess.SqlConstant
         public const string Insert  = "dbo.sp_EquipmentInsert";
         public const string Update  = "dbo.sp_EquipmentUpdate";
         public const string Delete  = "DELETE FROM Equipment WHERE Id=@id";
-
     }
 }

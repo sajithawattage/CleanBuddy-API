@@ -42,19 +42,17 @@
   <ItemGroup>
     <Compile Include="AddressService.cs" />
     <Compile Include="Base.cs" />
+    <Compile Include="EquipmentCategoryService.cs" />
     <Compile Include="EquipmentService.cs" />
     <Compile Include="Helper\StringCipher.cs" />
     <Compile Include="IAddressService.cs" />
+    <Compile Include="IEquipmentCategoryService.cs" />
     <Compile Include="IEquipmentService.cs" />
     <Compile Include="IUserLoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserLoginService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cleaner.Data\Cleaner.Data %28NOT USING%29.csproj">
-      <Project>{F38E74F9-2640-4253-B826-D01E2F56E0A4}</Project>
-      <Name>Cleaner.Data %28NOT USING%29</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cleaner.Model\Cleaner.Model.csproj">
       <Project>{c0181246-aa70-4f49-bd51-34fcc652e875}</Project>
       <Name>Cleaner.Model</Name>
