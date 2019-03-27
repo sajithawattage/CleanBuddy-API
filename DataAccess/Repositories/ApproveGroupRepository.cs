@@ -22,17 +22,26 @@ namespace Cleaner.DataAccess.Repositories
 
         public int Add(ApproveGroup entity)
         {
-            return -1;
+            DynamicParameters param = new DynamicParameters();
+            
+            param.Add("@GroupName", entity.GroupName, DbType.String, ParameterDirection.Input);
+            param.Add("@Description", entity.Description, DbType.String, ParameterDirection.Input);
+            
+            return SqlMapper.Execute(_connectionFactory.GetConnection, ApproveGroupSql.Insert, param: param,
+                commandType: CommandType.StoredProcedure);
         }
 
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            return SqlMapper.Execute(_connectionFactory.GetConnection, ApproveGroupSql.Delete,
+                 new { id = id }, commandType: CommandType.Text);
         }
 
         public ApproveGroup Get(int id)
         {
-            throw new NotImplementedException();
+            var address = SqlMapper.QueryFirst<ApproveGroup>(_connectionFactory.GetConnection, ApproveGroupSql.GetById,
+                new { AddressID = id }, commandType: CommandType.Text);
+            return address;
         }
 
         public IEnumerable<ApproveGroup> GetAll()
@@ -43,7 +52,14 @@ namespace Cleaner.DataAccess.Repositories
 
         public int Update(ApproveGroup entity)
         {
-            throw new NotImplementedException();
+            DynamicParameters param = new DynamicParameters();
+
+            param.Add("@GroupID", entity.GroupID, DbType.Int32, ParameterDirection.Input);
+            param.Add("@GroupName", entity.GroupName, DbType.String, ParameterDirection.Input);
+            param.Add("@Description", entity.Description, DbType.String, ParameterDirection.Input);
+
+            return SqlMapper.Execute(_connectionFactory.GetConnection, ApproveGroupSql.Update, param: param,
+                commandType: CommandType.StoredProcedure);
         }
     }
 }

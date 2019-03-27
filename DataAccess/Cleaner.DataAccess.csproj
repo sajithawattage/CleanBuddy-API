@@ -60,6 +60,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\ApproveGroupRepository.cs" />
+    <Compile Include="Repositories\ApproveGroupUserRepository.cs" />
+    <Compile Include="Repositories\ContractorRepository.cs" />
     <Compile Include="Repositories\EquipmentCategoryRepository.cs" />
     <Compile Include="Repositories\EquipmentRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="Repositories\UserLoginRepository.cs" />
     <Compile Include="SqlConstant\AddressSql.cs" />
     <Compile Include="SqlConstant\ApproveGroupSql.cs" />
+    <Compile Include="SqlConstant\ApproveGroupUserSql.cs" />
+    <Compile Include="SqlConstant\ContractorSql.cs" />
     <Compile Include="SqlConstant\EquipmentCategorySql.cs" />
     <Compile Include="SqlConstant\EquipmentSql.cs" />
     <Compile Include="SqlConstant\UserSql.cs" />

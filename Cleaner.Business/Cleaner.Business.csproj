@@ -41,11 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressService.cs" />
+    <Compile Include="ApproveGroupService.cs" />
+    <Compile Include="ApproveGroupUserService.cs" />
     <Compile Include="Base.cs" />
+    <Compile Include="ContractorService.cs" />
     <Compile Include="EquipmentCategoryService.cs" />
     <Compile Include="EquipmentService.cs" />
     <Compile Include="Helper\StringCipher.cs" />
     <Compile Include="IAddressService.cs" />
+    <Compile Include="IApproveGroupService.cs" />
+    <Compile Include="IApproveGroupUserService.cs" />
+    <Compile Include="IContractorService.cs" />
     <Compile Include="IEquipmentCategoryService.cs" />
     <Compile Include="IEquipmentService.cs" />
     <Compile Include="IUserLoginService.cs" />

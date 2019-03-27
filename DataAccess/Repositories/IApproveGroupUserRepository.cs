@@ -6,6 +6,6 @@ namespace Cleaner.DataAccess.Repositories
 {
     public interface IApproveGroupUserRepository : IGenericRepository<ApproveGroupUser>
     {
-        Task<IEnumerable<ApproveGroupUser>> GetAllActiveEmployeeList();
+       
     }
 }

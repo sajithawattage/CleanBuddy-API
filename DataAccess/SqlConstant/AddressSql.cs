@@ -12,6 +12,6 @@ namespace Cleaner.DataAccess.SqlConstant
         public const string GetById = "SELECT * FROM Address WHERE AddressID=@id";
         public const string Insert = "sp_AddressInsert";
         public const string Update = "sp_AddressUpdate";
-        public const string Delete = "DELETE FROM AddressSql WHERE Id=@id";
+        public const string Delete = "DELETE FROM Address WHERE Id=@id";
     }
 }
