@@ -45,6 +45,7 @@
     <Compile Include="ApproveGroupUserService.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="ContractorService.cs" />
+    <Compile Include="EmployeeService.cs" />
     <Compile Include="EquipmentCategoryService.cs" />
     <Compile Include="EquipmentService.cs" />
     <Compile Include="Helper\StringCipher.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="IApproveGroupService.cs" />
     <Compile Include="IApproveGroupUserService.cs" />
     <Compile Include="IContractorService.cs" />
+    <Compile Include="IEmployeeService.cs" />
     <Compile Include="IEquipmentCategoryService.cs" />
     <Compile Include="IEquipmentService.cs" />
     <Compile Include="IJobEquipmentService.cs" />

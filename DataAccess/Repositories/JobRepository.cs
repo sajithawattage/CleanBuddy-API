@@ -8,11 +8,11 @@ using System.Data;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class JobRespository : IJobRepository
+    public class JobRepository : IJobRepository
     {
         IConnectionFactory _connectionFactory;
 
-        public JobRespository(IConnectionFactory connectionFactory)
+        public JobRepository(IConnectionFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }

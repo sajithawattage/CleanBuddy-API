@@ -1,57 +1,61 @@
 ﻿using Cleaner.Business;
 using Cleaner.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
-    public class ContractorController : BaseController
+    public class EmployeeController : BaseController
     {
-        IContractorService _contractorService;
+        IEmployeeService _employeeService;
 
-        public ContractorController(IContractorService contractorService)
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _contractorService = contractorService;
+            _employeeService = employeeService;
         }
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetContractorList()
+        public IHttpActionResult GetEmployeeList()
         {
-            var list = _contractorService.GetContractorList();
+            var list = _employeeService.GetEmployeeList();
             return Ok(list);
         }
         
         [HttpGet]
         [Route("items/{id:int}")]
-        public IHttpActionResult GetContractorById(int id)
+        public IHttpActionResult GetEmployeeById(int id)
         {
-            var equipment = _contractorService.GetContractorById(id);
+            var equipment = _employeeService.GetEmployeeById(id);
             return Ok(equipment);
         }
         
         [HttpPost]
         [Route("items")]
-        public IHttpActionResult SaveContractor([FromBody] Contractor contractor)
+        public IHttpActionResult SaveEmployee([FromBody] Employee employee)
         {
             try
             {
-                _contractorService.SaveContractor(contractor);
+                _employeeService.SaveEmployee(employee);
                 return Ok();
             }
             catch (System.Exception e)
             {
                 return InternalServerError(e);
             }
-
         }
 
         [HttpPut]
         [Route("items")]
-        public IHttpActionResult UpdateContractor([FromBody] Contractor contractor)
+        public IHttpActionResult UpdateEmployee([FromBody] Employee employee)
         {
             try
             {
-                _contractorService.UpdateContractor(contractor);
+                _employeeService.UpdateEmployee(employee);
                 return Ok();
             }
             catch (System.Exception e)
@@ -62,14 +66,15 @@ namespace Cleaner.API.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public IHttpActionResult DeleteContractor(int id)
+        public IHttpActionResult RemoveEquipments(int id)
         {
-            var result = _contractorService.DeleteContractor(id);
+            var result = _employeeService.DeleteEmployee(id);
             if (result)
             {
                 return Ok();
             }
             return InternalServerError();
         }
+
     }
 }

@@ -84,7 +84,8 @@
     <Compile Include="Repositories\IUserLoginRepository.cs" />
     <Compile Include="Repositories\IWorkTypeRepository.cs" />
     <Compile Include="Repositories\JobEquipmentRepository.cs" />
-    <Compile Include="Repositories\JobRespository.cs" />
+    <Compile Include="Repositories\JobRepository.cs" />
+    <Compile Include="Repositories\RequestHeaderRepository.cs" />
     <Compile Include="Repositories\UserLoginRepository.cs" />
     <Compile Include="SqlConstant\AddressSql.cs" />
     <Compile Include="SqlConstant\ApproveGroupSql.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="SqlConstant\EquipmentSql.cs" />
     <Compile Include="SqlConstant\JobEquipmentSql.cs" />
     <Compile Include="SqlConstant\JobSql.cs" />
+    <Compile Include="SqlConstant\RequestHeaderSql.cs" />
     <Compile Include="SqlConstant\UserSql.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />

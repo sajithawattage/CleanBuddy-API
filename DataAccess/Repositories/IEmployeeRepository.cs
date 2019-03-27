@@ -6,7 +6,6 @@ namespace Cleaner.DataAccess.Repositories
 {
     public interface IEmployeeRepository : IGenericRepository<Employee>
     {
-        Task<IEnumerable<Employee>> GetAllActiveEmployeeList();
-        Task<IEnumerable<Employee>> GetAllEmployeeList();
+
     }
 }

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Cleaner.Model;
 using Cleaner.DataAccess.SqlConstant;
@@ -11,7 +10,7 @@ using System.Data;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class EquipmentCategoryRepository :IEquipmentCategoryRepository
+    public class EquipmentCategoryRepository : IEquipmentCategoryRepository
     {
         IConnectionFactory _connectionFactory;
 
