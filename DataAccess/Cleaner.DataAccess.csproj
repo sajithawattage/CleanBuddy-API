@@ -62,6 +62,7 @@
     <Compile Include="Repositories\ApproveGroupRepository.cs" />
     <Compile Include="Repositories\ApproveGroupUserRepository.cs" />
     <Compile Include="Repositories\ContractorRepository.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\EquipmentCategoryRepository.cs" />
     <Compile Include="Repositories\EquipmentRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
@@ -82,13 +83,19 @@
     <Compile Include="Repositories\ISubContractorRepository.cs" />
     <Compile Include="Repositories\IUserLoginRepository.cs" />
     <Compile Include="Repositories\IWorkTypeRepository.cs" />
+    <Compile Include="Repositories\JobEquipmentRepository.cs" />
+    <Compile Include="Repositories\JobRespository.cs" />
     <Compile Include="Repositories\UserLoginRepository.cs" />
     <Compile Include="SqlConstant\AddressSql.cs" />
     <Compile Include="SqlConstant\ApproveGroupSql.cs" />
     <Compile Include="SqlConstant\ApproveGroupUserSql.cs" />
+    <Compile Include="SqlConstant\ContractorEmployeeSql.cs" />
     <Compile Include="SqlConstant\ContractorSql.cs" />
+    <Compile Include="SqlConstant\EmployeeSql.cs" />
     <Compile Include="SqlConstant\EquipmentCategorySql.cs" />
     <Compile Include="SqlConstant\EquipmentSql.cs" />
+    <Compile Include="SqlConstant\JobEquipmentSql.cs" />
+    <Compile Include="SqlConstant\JobSql.cs" />
     <Compile Include="SqlConstant\UserSql.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />

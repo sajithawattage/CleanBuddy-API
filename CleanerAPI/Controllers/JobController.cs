@@ -4,40 +4,40 @@ using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
-    public class ContractorController : BaseController
+    public class JobController : BaseController
     {
-        IContractorService _contractorService;
+        IJobService _jobService;
 
-        public ContractorController(IContractorService contractorService)
+        public JobController(IJobService jobService)
         {
-            _contractorService = contractorService;
+            _jobService = jobService;
         }
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetContractorList()
+        public IHttpActionResult GetJobList()
         {
-            var list = _contractorService.GetContractorList();
+            var list = _jobService.GetJobList();
             return Ok(list);
         }
 
 
         [HttpGet]
         [Route("items/{id:int}")]
-        public IHttpActionResult GetContractorById(int id)
+        public IHttpActionResult GetJobEquipmentById(int id)
         {
-            var equipment = _contractorService.GetContractorById(id);
+            var equipment = _jobService.GetJobById(id);
             return Ok(equipment);
         }
 
 
         [HttpPost]
         [Route("items")]
-        public IHttpActionResult SaveEquipment([FromBody] Contractor contractor)
+        public IHttpActionResult SaveEquipment([FromBody] Job job)
         {
             try
             {
-                _contractorService.SaveContractor(contractor);
+                _jobService.SaveJob(job);
                 return Ok();
             }
             catch (System.Exception e)
@@ -49,11 +49,11 @@ namespace Cleaner.API.Controllers
 
         [HttpPut]
         [Route("items")]
-        public IHttpActionResult UpdateEquipment([FromBody] Contractor contractor)
+        public IHttpActionResult UpdateEquipment([FromBody] Job job)
         {
             try
             {
-                _contractorService.UpdateContractor(contractor);
+                _jobService.UpdateJob(job);
                 return Ok();
             }
             catch (System.Exception e)
@@ -66,7 +66,7 @@ namespace Cleaner.API.Controllers
         [Route("{id}")]
         public IHttpActionResult RemoveEquipments(int id)
         {
-            var result = _contractorService.DeleteContractor(id);
+            var result = _jobService.DeleteJob(id);
             if (result)
             {
                 return Ok();
