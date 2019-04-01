@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
-    [RoutePrefix("address")]
+    [RoutePrefix("v1/approvegroupuser")]
     public class ApproveGroupUserController : BaseController
     {
 

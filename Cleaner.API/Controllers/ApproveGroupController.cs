@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
-    [RoutePrefix("approvegroup")]
+    [RoutePrefix("v1/approvegroup")]
     public class ApproveGroupController : BaseController
     {
         IApproveGroupService _approveGroupService;
@@ -21,9 +22,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetApproveGroupList()
+        public async Task<IHttpActionResult> GetApproveGroupList()
         {
-            var list = _approveGroupService.GetApproveGroupList();
+            var list = await _approveGroupService.GetApproveGroupList();
             return Ok(list);
         }
 

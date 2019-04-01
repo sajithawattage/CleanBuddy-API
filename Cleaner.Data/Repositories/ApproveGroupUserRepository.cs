@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cleaner.Model;
-using DataAccess.Infrastructure;
+using Cleaner.DataAccess.Infrastructure;
 using Dapper;
 using System.Data;
 using Cleaner.DataAccess.SqlConstant;
+using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
@@ -41,10 +42,10 @@ namespace Cleaner.DataAccess.Repositories
             return users;
         }
 
-        public IEnumerable<ApproveGroupUser> GetAll()
+        public Task<IEnumerable<ApproveGroupUser>> GetAll()
         {
-            return SqlMapper.Query<ApproveGroupUser>(_connectionFactory.GetConnection, ApproveGroupUserSql.GetAll,
-              commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<ApproveGroupUser>(_connectionFactory.GetConnection, ApproveGroupUserSql.GetAll,
+              commandType: CommandType.Text);
         }
         
         public int Update(ApproveGroupUser entity)

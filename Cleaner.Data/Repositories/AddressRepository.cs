@@ -1,17 +1,15 @@
-﻿using Cleaner.DataAccess.SqlConstant;
-using Cleaner.Model;
-using Dapper;
-using DataAccess.Infrastructure;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
+using Cleaner.DataAccess.SqlConstant;
+using Cleaner.DataAccess.Infrastructure;
+using Cleaner.Model;
+using Dapper;
 using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class AddressRepository : IGenericRepository<Address>, IAddressRepository
+    public class AddressRepository : IAddressRepository
     {
         IConnectionFactory _connectionFactory;
 
@@ -48,10 +46,10 @@ namespace Cleaner.DataAccess.Repositories
             return address;
         }
 
-        public IEnumerable<Address> GetAll()
+        public Task<IEnumerable<Address>> GetAll()
         {
-            return SqlMapper.Query<Address>(_connectionFactory.GetConnection, AddressSql.GetAll,
-                commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<Address>(_connectionFactory.GetConnection, AddressSql.GetAll,
+                commandType: CommandType.Text);
         }
 
         public int Update(Address entity)

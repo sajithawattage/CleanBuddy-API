@@ -1,4 +1,4 @@
-﻿using DataAccess.Infrastructure;
+﻿using Cleaner.DataAccess.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,10 +43,10 @@ namespace Cleaner.DataAccess.Repositories
             return list;
         }
 
-        public IEnumerable<EquipmentCategory> GetAll()
+        public Task<IEnumerable<EquipmentCategory>> GetAll()
         {
-            return SqlMapper.Query<EquipmentCategory>(_connectionFactory.GetConnection, EquipmentCategorySql.GetAll,
-                commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<EquipmentCategory>(_connectionFactory.GetConnection, EquipmentCategorySql.GetAll,
+                commandType: CommandType.Text);
         }
 
         public Task<IEnumerable<EquipmentCategory>> GetAllActiveEquipmentCategoryList()

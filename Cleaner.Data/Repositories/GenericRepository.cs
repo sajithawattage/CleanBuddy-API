@@ -28,7 +28,7 @@ namespace Cleaner.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public Task<IEnumerable<TEntity>> GetAll()
         {
             throw new NotImplementedException();
         }

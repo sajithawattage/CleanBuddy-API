@@ -1,11 +1,11 @@
 ﻿using Cleaner.Business;
 using Cleaner.Model;
+using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace Cleaner.API.Controllers
 {
-    [RoutePrefix("equipment")]
+    [RoutePrefix("v1/equipment")]
     public class EquipmentController : BaseController
     {
         IEquipmentService _equipementService;
@@ -17,13 +17,12 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetEquipmentList()
+        public async Task<IHttpActionResult> GetEquipmentList()
         {
-            var list = _equipementService.GetEquipmentList();
+            var list = await _equipementService.GetEquipmentList();
             return Ok(list);
         }
-
-
+        
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetEquipmentById(int id)
@@ -31,8 +30,7 @@ namespace Cleaner.API.Controllers
             var equipment = _equipementService.GetEquipmentById(id);
             return Ok(equipment);
         }
-
-
+        
         [HttpPost]
         [Route("items")]
         public IHttpActionResult SaveEquipment([FromBody] Equipment eqiupment)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
+using System.Threading.Tasks;
 
 namespace Cleaner.Business
 {
@@ -24,7 +25,7 @@ namespace Cleaner.Business
             return _contractorRepository.Get(id);
         }
 
-        public IEnumerable<Contractor> GetContractorList()
+        public Task<IEnumerable<Contractor>> GetContractorList()
         {
             return _contractorRepository.GetAll();
         }

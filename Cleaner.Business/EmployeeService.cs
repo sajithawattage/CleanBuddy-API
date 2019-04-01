@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
+using System.Threading.Tasks;
 
 namespace Cleaner.Business
 {
@@ -24,7 +25,7 @@ namespace Cleaner.Business
             return _employeeRepo.Get(id);
         }
 
-        public IEnumerable<Employee> GetEmployeeList()
+        public Task<IEnumerable<Employee>> GetEmployeeList()
         {
             return _employeeRepo.GetAll();
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cleaner.Model;
-using DataAccess.Infrastructure;
+using Cleaner.DataAccess.Infrastructure;
 using Dapper;
 using System.Data;
 using Cleaner.DataAccess.SqlConstant;
@@ -45,10 +45,10 @@ namespace Cleaner.DataAccess.Repositories
             return address;
         }
 
-        public IEnumerable<JobEquipment> GetAll()
+        public Task<IEnumerable<JobEquipment>> GetAll()
         {
-            return SqlMapper.Query<JobEquipment>(_connectionFactory.GetConnection, JobEquipmentSql.GetAll,
-               commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<JobEquipment>(_connectionFactory.GetConnection, JobEquipmentSql.GetAll,
+               commandType: CommandType.Text);
         }
 
         

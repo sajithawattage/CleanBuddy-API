@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
+using System.Threading.Tasks;
 
 namespace Cleaner.Business
 {
@@ -23,7 +24,7 @@ namespace Cleaner.Business
             return _addressRepo.Get(id);
         }
 
-        public IEnumerable<Address> GetAddressList()
+        public Task<IEnumerable<Address>> GetAddressList()
         {
             return _addressRepo.GetAll();
         }

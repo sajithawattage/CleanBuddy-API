@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
+using System.Threading.Tasks;
 
 namespace Cleaner.Business
 {
@@ -24,7 +25,7 @@ namespace Cleaner.Business
             return _jobEquipmentRepo.Get(id);
         }
 
-        public IEnumerable<JobEquipment> GetJobEquipmentList()
+        public Task<IEnumerable<JobEquipment>> GetJobEquipmentList()
         {
             return _jobEquipmentRepo.GetAll();
         }

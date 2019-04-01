@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
@@ -27,7 +24,7 @@ namespace Cleaner.Business
             return _jobRepo.Get(id);
         }
 
-        public IEnumerable<Job> GetJobList()
+        public Task<IEnumerable<Job>> GetJobList()
         {
             return _jobRepo.GetAll();
         }

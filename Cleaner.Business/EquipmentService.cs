@@ -1,7 +1,7 @@
-﻿using Cleaner.DataAccess.UnitOfWork;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
+using System.Threading.Tasks;
 
 namespace Cleaner.Business
 {
@@ -19,9 +19,9 @@ namespace Cleaner.Business
             return _equipmentRepositary.Get(id);
         }
 
-        public IEnumerable<Equipment> GetEquipmentList()
+        public async Task<IEnumerable<Equipment>> GetEquipmentList()
         {
-            return _equipmentRepositary.GetAll();
+            return await _equipmentRepositary.GetAll();
         }
 
         public bool DeleteEquipment(int id)

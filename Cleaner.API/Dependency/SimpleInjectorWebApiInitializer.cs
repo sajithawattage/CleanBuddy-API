@@ -1,6 +1,6 @@
 ﻿using Cleaner.Business;
 using Cleaner.DataAccess.Repositories;
-using DataAccess.Infrastructure;
+using Cleaner.DataAccess.Infrastructure;
 using Owin;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;

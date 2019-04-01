@@ -27,7 +27,7 @@ namespace Cleaner.Business
             return _equipmentCategoryRepositary.Get(id);
         }
 
-        public IEnumerable<EquipmentCategory> GetEquipmentCategoryList()
+        public Task<IEnumerable<EquipmentCategory>> GetEquipmentCategoryList()
         {
             return _equipmentCategoryRepositary.GetAll();
         }

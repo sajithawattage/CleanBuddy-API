@@ -1,17 +1,15 @@
 ﻿using Cleaner.DataAccess.SqlConstant;
 using Cleaner.Model;
+using Cleaner.DataAccess.Infrastructure;
 using Dapper;
-using DataAccess.Infrastructure;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class ApproveGroupRepository : IGenericRepository<ApproveGroup>, IApproveGroupRepository
+    public class ApproveGroupRepository : IApproveGroupRepository
     {
         IConnectionFactory _connectionFactory;
 
@@ -44,10 +42,10 @@ namespace Cleaner.DataAccess.Repositories
             return address;
         }
 
-        public IEnumerable<ApproveGroup> GetAll()
+        public Task<IEnumerable<ApproveGroup>> GetAll()
         {
-            return SqlMapper.Query<ApproveGroup>(_connectionFactory.GetConnection, ApproveGroupSql.GetAll,
-               commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<ApproveGroup>(_connectionFactory.GetConnection, ApproveGroupSql.GetAll,
+               commandType: CommandType.Text);
         }
 
         public int Update(ApproveGroup entity)

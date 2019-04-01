@@ -1,9 +1,11 @@
 ﻿using Cleaner.Business;
 using Cleaner.Model;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
+    [RoutePrefix("v1/contractor")]
     public class ContractorController : BaseController
     {
         IContractorService _contractorService;
@@ -15,9 +17,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetContractorList()
+        public async Task<IHttpActionResult> GetContractorList()
         {
-            var list = _contractorService.GetContractorList();
+            var list = await _contractorService.GetContractorList();
             return Ok(list);
         }
         

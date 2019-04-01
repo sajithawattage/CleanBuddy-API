@@ -27,7 +27,7 @@ namespace Cleaner.Business
             return _approveGroupRepo.Get(id);
         }
 
-        public IEnumerable<ApproveGroup> GetApproveGroupList()
+        public Task<IEnumerable<ApproveGroup>> GetApproveGroupList()
         {
             return _approveGroupRepo.GetAll();
         }

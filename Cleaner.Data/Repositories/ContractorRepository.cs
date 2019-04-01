@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cleaner.Model;
-using DataAccess.Infrastructure;
+using Cleaner.DataAccess.Infrastructure;
 using Dapper;
 using System.Data;
 using Cleaner.DataAccess.SqlConstant;
@@ -51,10 +51,10 @@ namespace Cleaner.DataAccess.Repositories
             return contractor ;
         }
 
-        public IEnumerable<Contractor> GetAll()
+        public Task<IEnumerable<Contractor>> GetAll()
         {
-            return SqlMapper.Query<Contractor>(_connectionFactory.GetConnection, ContractorSql.GetAll,
-              commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<Contractor>(_connectionFactory.GetConnection, ContractorSql.GetAll,
+              commandType: CommandType.Text);
         }
 
         public Task<IEnumerable<Contractor>> GetAllActiveContractorList()

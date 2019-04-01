@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
+    [RoutePrefix("v1/employee")]
     public class EmployeeController : BaseController
     {
         IEmployeeService _employeeService;
@@ -20,9 +22,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetEmployeeList()
+        public async Task<IHttpActionResult> GetEmployeeList()
         {
-            var list = _employeeService.GetEmployeeList();
+            var list = await _employeeService.GetEmployeeList();
             return Ok(list);
         }
         

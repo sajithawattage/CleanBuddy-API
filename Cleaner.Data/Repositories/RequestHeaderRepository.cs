@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 using Cleaner.Model;
-using DataAccess.Infrastructure;
+using Cleaner.DataAccess.Infrastructure;
 using Dapper;
-using System.Data;
 using Cleaner.DataAccess.SqlConstant;
 
 namespace Cleaner.DataAccess.Repositories
@@ -36,72 +34,22 @@ namespace Cleaner.DataAccess.Repositories
                 commandType: CommandType.StoredProcedure);
         }
 
-        public int Add(EquipmentCategory entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddRequestHeader(RequestHeader requestHeader)
-        {
-            throw new NotImplementedException();
-        }
-
         public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public EquipmentCategory Get(int id)
+        public RequestHeader Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<EquipmentCategory> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<EquipmentCategory>> GetAllActiveEquipmentCategoryList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<RequestHeader>> GetAllActiveRequestHeaderList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<RequestHeader>> GetAllRequestHeaderList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRequestHeader(RequestHeader requestHeader)
+        public Task<IEnumerable<RequestHeader>> GetAll()
         {
             throw new NotImplementedException();
         }
 
         public int Update(RequestHeader entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Update(EquipmentCategory entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateRequestHeader(RequestHeader requestHeader)
-        {
-            throw new NotImplementedException();
-        }
-
-        RequestHeader IGenericRepository<RequestHeader>.Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<RequestHeader> IGenericRepository<RequestHeader>.GetAll()
         {
             throw new NotImplementedException();
         }

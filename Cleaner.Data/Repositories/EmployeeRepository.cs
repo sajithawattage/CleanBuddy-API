@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cleaner.Model;
-using DataAccess.Infrastructure;
+using Cleaner.DataAccess.Infrastructure;
 using Dapper;
 using System.Data;
 using Cleaner.DataAccess.SqlConstant;
+using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
@@ -41,10 +42,10 @@ namespace Cleaner.DataAccess.Repositories
             return list;
         }
 
-        public IEnumerable<Employee> GetAll()
+        public Task<IEnumerable<Employee>> GetAll()
         {
-            return SqlMapper.Query<Employee>(_connectionFactory.GetConnection, EmployeeSql.GetAll,
-                commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<Employee>(_connectionFactory.GetConnection, EmployeeSql.GetAll,
+                commandType: CommandType.Text);
         }
         
         public int Update(Employee entity)

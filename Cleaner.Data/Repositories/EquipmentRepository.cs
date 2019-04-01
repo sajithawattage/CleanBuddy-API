@@ -1,14 +1,14 @@
 ﻿using Cleaner.DataAccess.SqlConstant;
 using Cleaner.Model;
 using Dapper;
-using DataAccess.Infrastructure;
+using Cleaner.DataAccess.Infrastructure;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class EquipmentRepository : IGenericRepository<Equipment>, IEquipmentRepository
+    public class EquipmentRepository : IEquipmentRepository
     {
         IConnectionFactory _connectionFactory;
 
@@ -17,10 +17,10 @@ namespace Cleaner.DataAccess.Repositories
             _connectionFactory = connectionFactory;
         }
         
-        public IEnumerable<Equipment> GetAll()
+        public Task<IEnumerable<Equipment>> GetAll()
         {
-            return SqlMapper.Query<Equipment>(_connectionFactory.GetConnection, EquipmentSql.GetAll, 
-                commandType: CommandType.Text).ToList();
+            return SqlMapper.QueryAsync<Equipment>(_connectionFactory.GetConnection, EquipmentSql.GetAll, 
+                commandType: CommandType.Text);
         }
 
         public Equipment Get(int id)

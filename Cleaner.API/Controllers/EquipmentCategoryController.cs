@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
-    [RoutePrefix("equipcategory")]
+    [RoutePrefix("v1/equipcategory")]
     public class EquipmentCategoryController : BaseController
     {
         IEquipmentCategoryService _equipementCategoryService;
@@ -21,9 +22,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetEquipmentCategoryList()
+        public async Task<IHttpActionResult> GetEquipmentCategoryList()
         {
-            var list = _equipementCategoryService.GetEquipmentCategoryList();
+            var list = await _equipementCategoryService.GetEquipmentCategoryList();
             return Ok(list);
         }
 

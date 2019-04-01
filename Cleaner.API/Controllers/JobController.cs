@@ -1,9 +1,11 @@
 ﻿using Cleaner.Business;
 using Cleaner.Model;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
+    [RoutePrefix("v1/job")]
     public class JobController : BaseController
     {
         IJobService _jobService;
@@ -15,9 +17,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetJobList()
+        public async Task<IHttpActionResult> GetJobList()
         {
-            var list = _jobService.GetJobList();
+            var list =await _jobService.GetJobList();
             return Ok(list);
         }
 

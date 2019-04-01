@@ -11,6 +11,7 @@ using System.Web.Http.Cors;
 
 namespace Cleaner.API.Controllers
 {
+    [Authorize]
     public class BaseController : ApiController
     {
     }

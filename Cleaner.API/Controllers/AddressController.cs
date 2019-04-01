@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
 {
-    [RoutePrefix("address")]
+    [RoutePrefix("v1/address")]
     public class AddressController : ApiController
     {
         IAddressService _addressService;
@@ -21,9 +22,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetAddressList()
+        public async Task<IHttpActionResult> GetAddressList()
         {
-            var list = _addressService.GetAddressList();
+            var list = await _addressService.GetAddressList();
             return Ok(list);
         }
 
