@@ -25,7 +25,7 @@ namespace Cleaner.API
             
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/token"),
+                TokenEndpointPath = new PathString("/v1/token"),
                 Provider = new AuthenticationProvider(PublicClientId),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 AllowInsecureHttp = true
