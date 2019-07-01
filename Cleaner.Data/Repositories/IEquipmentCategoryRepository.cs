@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public interface IEquipmentCategoryRepository : IGenericRepository<EquipmentCategory>
+    public interface IEquipmentCategoryRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         Task<IEnumerable<EquipmentCategory>> GetAllActiveEquipmentCategoryList();
     }

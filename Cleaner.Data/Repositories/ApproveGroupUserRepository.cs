@@ -6,58 +6,20 @@ using Dapper;
 using System.Data;
 using Cleaner.DataAccess.SqlConstant;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class ApproveGroupUserRepository : IApproveGroupUserRepository
+    public class ApproveGroupUserRepository<TEntity> : Repository<TEntity>, IApproveGroupUserRepository<TEntity> where TEntity : class
     {
-        IConnectionFactory _connectionFactory;
+        private readonly CDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public ApproveGroupUserRepository(IConnectionFactory connectionFactory)
+        public ApproveGroupUserRepository(CDbContext context) : base(context)
         {
-            _connectionFactory = connectionFactory;
-        }
-
-        public int Add(ApproveGroupUser entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@GroupID", entity.GroupID, DbType.Int32, ParameterDirection.Input);
-            param.Add("@UserID", entity.UserID, DbType.Int32, ParameterDirection.Input);
-
-            return SqlMapper.Execute(_connectionFactory.GetConnection, ApproveGroupUserSql.Insert, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
-
-        public int Delete(int id)
-        {
-            return SqlMapper.Execute(_connectionFactory.GetConnection, ApproveGroupUserSql.Delete,
-                 new { id = id }, commandType: CommandType.Text);
-        }
-
-        public ApproveGroupUser Get(int id)
-        {
-            var users = SqlMapper.QueryFirst<ApproveGroupUser>(_connectionFactory.GetConnection, ApproveGroupUserSql.GetById,
-                new { AddressID = id }, commandType: CommandType.Text);
-            return users;
-        }
-
-        public Task<IEnumerable<ApproveGroupUser>> GetAll()
-        {
-            return SqlMapper.QueryAsync<ApproveGroupUser>(_connectionFactory.GetConnection, ApproveGroupUserSql.GetAll,
-              commandType: CommandType.Text);
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
         
-        public int Update(ApproveGroupUser entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@ID", entity.GroupID, DbType.Int32, ParameterDirection.Input);
-            param.Add("@GroupID", entity.GroupID, DbType.Int32, ParameterDirection.Input);
-            param.Add("@UserID", entity.UserID, DbType.Int32, ParameterDirection.Input);
-
-            return SqlMapper.Execute(_connectionFactory.GetConnection, ApproveGroupUserSql.Update, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class RequestHeader
+    public class RequestHeader : BaseModel
     {
-        public int ID { get; set; }
+       
         public int RequestID { get; set; }
         public int GroupID { get; set; }
         public int EmployeeID { get; set; }
@@ -19,4 +19,5 @@ namespace Cleaner.Model
         public DateTime ApprovedDateTime { get; set; }
         public DateTime CreatedDate { get; set; }
     }
+    public class RequestHeaderList : List<RequestHeader> { }
 }

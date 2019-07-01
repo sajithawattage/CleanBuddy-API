@@ -9,7 +9,7 @@ namespace Cleaner.Business
 {
     public interface IContractorService
     {
-        Task<IEnumerable<Contractor>> GetContractorList();
+        IEnumerable<Contractor> GetContractorList();
         Contractor GetContractorById(int id);
         bool SaveContractor(Contractor contractor);
         bool UpdateContractor(Contractor contractor);

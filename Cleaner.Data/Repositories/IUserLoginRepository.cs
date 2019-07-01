@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public interface IUserLoginRepository : IGenericRepository<UserAccount>
+    public interface IUserLoginRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         Task<UserAccount> GetUser(string userName);
     }

@@ -6,58 +6,20 @@ using Dapper;
 using System.Data;
 using Cleaner.DataAccess.SqlConstant;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository<TEntity> : Repository<TEntity>, IEmployeeRepository<TEntity> where TEntity : class
     {
-        IConnectionFactory _connectionFactory;
+        private readonly CDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public EmployeeRepository(IConnectionFactory connectionFactory)
+        public EmployeeRepository(CDbContext context) : base(context)
         {
-            _connectionFactory = connectionFactory;
-        }
-
-        public int Add(Employee entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@EmployeeName", entity.EmployeeName, DbType.String, ParameterDirection.Input);
-            param.Add("@EmployeeContactNo", entity.EmployeeContactNo, DbType.Int32, ParameterDirection.Input);
-
-            return SqlMapper.Execute(_connectionFactory.GetConnection, EmployeeSql.Insert, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
-
-        public int Delete(int id)
-        {
-            return SqlMapper.Execute(_connectionFactory.GetConnection, EmployeeSql.Delete,
-                 new { id = id }, commandType: CommandType.Text);
-        }
-
-        public Employee Get(int id)
-        {
-            var list = SqlMapper.QueryFirst<Employee>(_connectionFactory.GetConnection, EmployeeSql.GetById,
-                new { EmployeeID = id }, commandType: CommandType.Text);
-            return list;
-        }
-
-        public Task<IEnumerable<Employee>> GetAll()
-        {
-            return SqlMapper.QueryAsync<Employee>(_connectionFactory.GetConnection, EmployeeSql.GetAll,
-                commandType: CommandType.Text);
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
         
-        public int Update(Employee entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@EmployeeID", entity.EmployeeID, DbType.Int32, ParameterDirection.Input);
-            param.Add("@EmployeeName", entity.EmployeeName, DbType.String, ParameterDirection.Input);
-            param.Add("@EmployeeContactNo", entity.EmployeeContactNo, DbType.Int32, ParameterDirection.Input);
-
-            return SqlMapper.Execute(_connectionFactory.GetConnection, EmployeeSql.Update, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
     }
 }

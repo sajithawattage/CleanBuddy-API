@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public interface IJobEquipmentRepository : IGenericRepository<JobEquipment>
+    public interface IJobEquipmentRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
     }
 }

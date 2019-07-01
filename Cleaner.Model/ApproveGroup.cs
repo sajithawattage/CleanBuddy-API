@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class ApproveGroup
+    public class ApproveGroup : BaseModel
     {
-        public int GroupID { get; set; }
         public string GroupName { get; set; }
         public string Description { get; set; }
     }
+
+    public class ApproveGroupList : List<BaseModel> { }
 }

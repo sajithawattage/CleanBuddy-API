@@ -1,6 +1,9 @@
-﻿using System.Configuration;
+﻿using Cleaner.Model;
+using System;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Infrastructure
 {
@@ -54,5 +57,13 @@ namespace Cleaner.DataAccess.Infrastructure
             // GC.SuppressFinalize(this);
         }
         #endregion
+    }
+
+    public class CDbContext : DbContext, IDisposable
+    {
+        public CDbContext() : base() { }
+
+        public virtual DbSet<Address> Address { get; set; }
+        public virtual DbSet<ApproveGroup> ApproveGroup { get; set; }
     }
 }

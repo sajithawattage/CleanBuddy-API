@@ -39,11 +39,18 @@
       <HintPath>..\packages\Dapper.Contrib.1.50.7\lib\net451\Dapper.Contrib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -77,6 +84,7 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\IJobEquipmentRepository.cs" />
     <Compile Include="Repositories\IJobRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRequestHeaderRepository.cs" />
     <Compile Include="Repositories\ISiteRepository.cs" />
     <Compile Include="Repositories\ISiteSubContractorRepository.cs" />
@@ -85,6 +93,7 @@
     <Compile Include="Repositories\IWorkTypeRepository.cs" />
     <Compile Include="Repositories\JobEquipmentRepository.cs" />
     <Compile Include="Repositories\JobRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RequestHeaderRepository.cs" />
     <Compile Include="Repositories\UserLoginRepository.cs" />
     <Compile Include="SqlConstant\AddressSql.cs" />
@@ -103,6 +112,7 @@
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class Equipment
+    public class Equipment : BaseModel
     {
-        public int ID { get; set; }
+      
         public string Code { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
@@ -17,4 +17,6 @@ namespace Cleaner.Model
         public DateTime PurchaseDate { get; set; }
         public DateTime WarrantyExpire { get; set; }
     }
+
+    public class EquipmentList : List<Equipment> { }
 }

@@ -1,286 +1,128 @@
 ﻿using System;
+using System.Collections;
+using System.Linq;
+using Cleaner.DataAccess.Infrastructure;
 using Cleaner.DataAccess.Repositories;
 
 namespace Cleaner.DataAccess.UnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        
-        private readonly IAddressRepository _addressRepository;
-        private readonly IApproveGroupRepository _approveGroupRepository;
-        private readonly IApproveGroupUserRepository _approveGroupUserRepository;
-        private readonly IContractorEmployeeRepository _contractorEmployeeRepository;
-        private readonly IContractorRepository _contractorRepository;
-        private readonly IEmployeeRepository _employeeRepository;
-        private readonly IEquipmentCategoryRepository _equipmentCategoryRepository;
-        private readonly IEquipmentRepository _equipmentRepository;
-        private readonly IJobEquipmentRepository _jobEquipmentRepository;
-        private readonly IJobRepository _jobRepository;
-        private readonly IRequestHeaderRepository _requestHeaderRepository;
-        private readonly ISiteRepository _siteRepository;
-        private readonly ISiteSubContractorRepository _siteSubContractorRepository;
-        private readonly ISubContractorRepository _subContractorRepository;
-        private readonly IUserLoginRepository _userLoginRepository;
-        private readonly IWorkTypeRepository _workTypeRepository;
 
-        #region Constructors
-        
-        public UnitOfWork(IEmployeeRepository employeeRepository)
-        {
-            _employeeRepository = employeeRepository;
-        }
 
-        public UnitOfWork(IAddressRepository addressRepository)
-        {
-            _addressRepository = addressRepository;
-        }
 
-        public UnitOfWork(IApproveGroupRepository approveGroupRepository)
-        {
-            _approveGroupRepository = approveGroupRepository;
-        }
 
-        public UnitOfWork(IApproveGroupUserRepository approveGroupUserRepository)
-        {
-            _approveGroupUserRepository = approveGroupUserRepository;
-        }
-        
-        public UnitOfWork(IContractorEmployeeRepository contractorEmployeeRepository)
-        {
-            _contractorEmployeeRepository = contractorEmployeeRepository;
-        }
 
-        public UnitOfWork(IContractorRepository contractorRepository)
-        {
-            _contractorRepository = contractorRepository;
-        }
+       
 
-        public UnitOfWork(IEquipmentCategoryRepository equipmentCategoryRepository)
-        {
-            _equipmentCategoryRepository = equipmentCategoryRepository;
-        }
+        #region Private Fields
 
-        public UnitOfWork(IJobRepository jobRepository)
-        {
-            _jobRepository = jobRepository;
-        }
+        private readonly CDbContext _context = new CDbContext();
+        private bool _disposed = true;
+        private Hashtable _repositories;
 
-        public UnitOfWork(IJobEquipmentRepository jobEquipmentRepository)
-        {
-            _jobEquipmentRepository = jobEquipmentRepository;
-        }
+        #endregion             
 
-        public UnitOfWork(IRequestHeaderRepository requestHeaderRepository)
-        {
-            _requestHeaderRepository = requestHeaderRepository;
-        }
+        #region Constuctor
 
-        public UnitOfWork(ISiteRepository siteRepository)
+        public UnitOfWork()
         {
-            _siteRepository = siteRepository;
-        }
-
-        public UnitOfWork(ISiteSubContractorRepository siteSubContractorRepository)
-        {
-            _siteSubContractorRepository = siteSubContractorRepository;
-        }
-
-        public UnitOfWork(ISubContractorRepository subContractorRepository)
-        {
-            _subContractorRepository = subContractorRepository;
-        }
-
-        public UnitOfWork(IUserLoginRepository userLoginRepository)
-        {
-            _userLoginRepository = userLoginRepository;
-        }
-
-        public UnitOfWork(IWorkTypeRepository workTypeRepository)
-        {
-            _workTypeRepository = workTypeRepository;
-        }
-
-        public UnitOfWork(IEquipmentRepository equipmentRepository)
-        {
-            _equipmentRepository = equipmentRepository;
-        }
-        
-        #endregion
-
-        #region Getter
-        
-        public IEmployeeRepository EmployeeRepository
-        {
-            get
+            if (_repositories == null)
             {
-                return _employeeRepository;
+                _repositories = new Hashtable();
             }
         }
 
-        public IEquipmentRepository EquipmentRepository
+        public IAddressRepository<TEntity> AddressRepository<TEntity>() where TEntity : class
         {
-            get
-            {
-                return _equipmentRepository;
-            }
+            return CreateRepositoryInstance<AddressRepository<TEntity>, IAddressRepository<TEntity>>();
         }
 
-        public IAddressRepository AddressRepository
+        public IEmployeeRepository<TEntity> EmployeeRepository<TEntity>() where TEntity : class
         {
-            get
-            {
-                return _addressRepository;
-            }
+            return CreateRepositoryInstance<EmployeeRepository<TEntity>, IEmployeeRepository<TEntity>>();
+        }
+        public IApproveGroupUserRepository<TEntity> ApproveGroupUserRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<ApproveGroupUserRepository<TEntity>, IApproveGroupUserRepository<TEntity>>();
+        }
+        //public IContractorEmployeeRepository<TEntity> ContractorEmployeeRepository<TEntity>() where TEntity : class
+        //{
+        //    return CreateRepositoryInstance<ContractorEmployeeRepository<TEntity>, IContractorEmployeeRepository<TEntity>>();
+        //}
+        public IContractorRepository<TEntity> ContractorRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<ContractorRepository<TEntity>, IContractorRepository<TEntity>>();
+        }
+        public IEquipmentCategoryRepository<TEntity> EquipmentCategoryRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<EquipmentCategoryRepository<TEntity>, IEquipmentCategoryRepository<TEntity>>();
+        }
+        public IJobRepository<TEntity> JobRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<JobRepository<TEntity>, IJobRepository<TEntity>>();
+        }
+        public IJobEquipmentRepository<TEntity> JobEquipmentRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<JobEquipmentRepository<TEntity>, IJobEquipmentRepository<TEntity>>();
+        }
+        public IRequestHeaderRepository<TEntity> RequestHeaderRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<RequestHeaderRepository<TEntity>, IRequestHeaderRepository<TEntity>>();
+        }
+        public ISiteRepository<TEntity> SiteRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<AddressRepository<TEntity>, ISiteRepository<TEntity>>();
+        }
+        //public ISiteSubContractorRepository<TEntity> SiteSubContractorRepository<TEntity>() where TEntity : class
+        //{
+        //    return CreateRepositoryInstance<SiteSubContractorRepository<TEntity>, ISiteSubContractorRepository<TEntity>>();
+        //}
+        //public ISubContractorRepository<TEntity> SubContractorRepository<TEntity>() where TEntity : class
+        //{
+        //    return CreateRepositoryInstance<SubContractorRepository<TEntity>, ISubContractorRepository<TEntity>>();
+        //}
+        public IUserLoginRepository<TEntity> UserLoginRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<UserLoginRepository<TEntity>, IUserLoginRepository<TEntity>>();
+        }
+        //public IWorkTypeRepository<TEntity> WorkTypeRepository<TEntity>() where TEntity : class
+        //{
+        //    return CreateRepositoryInstance<WorkTypeRepository<TEntity>, IWorkTypeRepository<TEntity>>();
+        //}
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
         }
 
-        public IApproveGroupRepository ApproveGroupRepository
+        public void Dispose()
         {
-            get
-            {
-                return _approveGroupRepository;
-            }
-        }
-
-        public IApproveGroupUserRepository ApproveGroupUserRepository
-        {
-            get
-            {
-                return _approveGroupUserRepository;
-            }
-        }
-        
-        public IContractorEmployeeRepository ContractorEmployeeRepository
-        {
-            get
-            {
-                return _contractorEmployeeRepository;
-            }
-        }
-
-        public IContractorRepository ContractorRepository
-        {
-            get
-            {
-                return _contractorRepository;
-            }
-        }
-
-        public IEquipmentCategoryRepository EquipmentCategoryRepository
-        {
-            get
-            {
-                return _equipmentCategoryRepository;
-            }
-        }
-
-        public IJobRepository JobRepository
-        {
-            get
-            {
-                return _jobRepository;
-            }
-        }
-
-        public IJobEquipmentRepository JobEquipmentRepository
-        {
-            get
-            {
-                return _jobEquipmentRepository;
-            }
-        }
-
-        public IRequestHeaderRepository RequestHeaderRepository
-        {
-            get
-            {
-                return _requestHeaderRepository;
-            }
-        }
-
-        public ISiteRepository SiteRepository
-        {
-            get
-            {
-                return _siteRepository;
-            }
-        }
-
-        public ISiteSubContractorRepository SiteSubContractorRepository
-        {
-            get
-            {
-                return _siteSubContractorRepository;
-            }
-        }
-
-        public ISubContractorRepository SubContractorRepository
-        {
-            get
-            {
-                return _subContractorRepository;
-            }
-        }
-
-        public IUserLoginRepository UserLoginRepository
-        {
-            get
-            {
-                return _userLoginRepository;
-            }
-        }
-
-        public IWorkTypeRepository WorkTypeRepository
-        {
-            get
-            {
-                return _workTypeRepository;
-            }
-        }
-
-
-
-        #endregion
-
-        void IUnitOfWork.Complete()
-        {
-            throw new NotImplementedException();
-        }
-
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
-                disposedValue = true;
-            }
-        }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~UnitOfWork() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
-        void IDisposable.Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
-        #endregion
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                _context.Dispose();
+            }
+            _disposed = true;
+        }
+
+        private U CreateRepositoryInstance<T, U>()
+        {
+            var model = typeof(T).GenericTypeArguments.FirstOrDefault();
+            if (_repositories.ContainsKey(model.Name))
+            {
+                return (U)_repositories[model.Name];
+            }
+            var repositoryType = typeof(T).GetGenericTypeDefinition();
+            _repositories.Add(model.Name, Activator.CreateInstance(repositoryType.MakeGenericType(model), _context));
+            return (U)_repositories[model.Name];
+        }
+
+
     }
 }

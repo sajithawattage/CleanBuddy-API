@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public interface IContractorEmployeeRepository : IGenericRepository<ContractorEmployee>
+    public interface IContractorEmployeeRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         Task<IEnumerable<ContractorEmployee>> GetAllActiveContractorEmployeeList();
     }

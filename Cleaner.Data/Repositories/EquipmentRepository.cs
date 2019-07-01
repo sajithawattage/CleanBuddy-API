@@ -5,69 +5,22 @@ using Cleaner.DataAccess.Infrastructure;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class EquipmentRepository : IEquipmentRepository
+    public class EquipmentRepository<TEntity> : Repository<TEntity>, IEquipmentRepository<TEntity> where TEntity : class
     {
-        IConnectionFactory _connectionFactory;
+        private readonly CDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public EquipmentRepository(IConnectionFactory connectionFactory)
+        public EquipmentRepository(CDbContext context) : base(context)
         {
-            _connectionFactory = connectionFactory;
-        }
-        
-        public Task<IEnumerable<Equipment>> GetAll()
-        {
-            return SqlMapper.QueryAsync<Equipment>(_connectionFactory.GetConnection, EquipmentSql.GetAll, 
-                commandType: CommandType.Text);
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
-        public Equipment Get(int id)
-        {
-            var list = SqlMapper.QueryFirst<Equipment>(_connectionFactory.GetConnection, EquipmentSql.GetById,
-                new { id = id }, commandType: CommandType.Text);
-            return list;
-        }
-
-        public int Delete(int id)
-        {
-            return SqlMapper.Execute(_connectionFactory.GetConnection, EquipmentSql.Delete,
-                 new { id = id }, commandType: CommandType.Text);
-        }
-
-        public int Add(Equipment entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@Code", entity.Code, DbType.String, ParameterDirection.Input);
-            param.Add("@Brand", entity.Brand, DbType.String, ParameterDirection.Input);
-            param.Add("@Model", entity.Model, DbType.String, ParameterDirection.Input);
-            param.Add("@CategoryID", entity.CategoryID, DbType.Int16, ParameterDirection.Input);
-            param.Add("@PurchasedFrom", entity.PurchasedFrom, DbType.String, ParameterDirection.Input);
-            param.Add("@PurchaseDate", entity.PurchaseDate, DbType.Date, ParameterDirection.Input);
-            param.Add("@WarrantyExpire", entity.WarrantyExpire, DbType.Date, ParameterDirection.Input);
-
-            return SqlMapper.Execute(_connectionFactory.GetConnection, EquipmentSql.Insert, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
-        
-        public int Update(Equipment entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@ID", entity.ID, DbType.Int16, ParameterDirection.Input);
-            param.Add("@Code", entity.Code, DbType.String, ParameterDirection.Input);
-            param.Add("@Brand", entity.Brand, DbType.String, ParameterDirection.Input);
-            param.Add("@Model", entity.Model, DbType.String, ParameterDirection.Input);
-            param.Add("@CategoryID", entity.CategoryID, DbType.Int16, ParameterDirection.Input);
-            param.Add("@PurchasedFrom", entity.PurchasedFrom, DbType.String, ParameterDirection.Input);
-            param.Add("@PurchaseDate", entity.PurchaseDate, DbType.Date, ParameterDirection.Input);
-            param.Add("@WarrantyExpire", entity.WarrantyExpire, DbType.Date, ParameterDirection.Input);
-
-            return SqlMapper.Execute(_connectionFactory.GetConnection, EquipmentSql.Update, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
+       
         
     }
 }

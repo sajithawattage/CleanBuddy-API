@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class SiteSubContractor
+    public class SiteSubContractor: BaseModel
     {
         public int SubContractorID { get; set; }
         public string ReportingOfficer { get; set; }
         public int SiteID { get; set; }
-        public int ID { get; set; }
     }
+    public class SiteSubContractorList : List<SiteSubContractor> { }
 }

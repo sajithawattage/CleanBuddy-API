@@ -9,7 +9,7 @@ namespace Cleaner.Business
 {
     public interface IApproveGroupService
     {
-        Task<IEnumerable<ApproveGroup>> GetApproveGroupList();
+        IEnumerable<ApproveGroup> GetApproveGroupList();
         ApproveGroup GetApproveGroupById(int id);
         bool SaveApproveGroup(ApproveGroup approveGroup);
         bool UpdateApproveGroup(ApproveGroup approveGroup);

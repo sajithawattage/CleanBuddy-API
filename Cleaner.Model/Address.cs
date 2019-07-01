@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class Address
-    {
-        public int AddressID { get; set; }
+    public class Address: BaseModel
+    {        
         public string Name { get; set; }
         public string StreetAddress { get; set; }
         public string State { get; set; }
@@ -16,4 +15,6 @@ namespace Cleaner.Model
         public int PostalCode { get; set; }
         public string Country { get; set; }
     }
+
+    public class addressList : List<Address> { }
 }

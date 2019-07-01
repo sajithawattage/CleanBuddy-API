@@ -3,41 +3,45 @@ using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
 using System.Threading.Tasks;
+using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business
 {
     public class ContractorService : IContractorService
     {
-        IContractorRepository _contractorRepository;
+        private IUnitOfWork _unitOfWork = null;
 
-        public ContractorService(IContractorRepository contractorRepository)
+        public ContractorService(IUnitOfWork unitOfWork)
         {
-            _contractorRepository = contractorRepository;
+            this._unitOfWork = unitOfWork;
         }
 
         public bool DeleteContractor(int id)
         {
-            return (_contractorRepository.Delete(id) > 0) ? true : false;
+            this._unitOfWork.ContractorRepository<Contractor>().Delete(id);
+            return false;
         }
 
         public Contractor GetContractorById(int id)
         {
-            return _contractorRepository.Get(id);
+            return this._unitOfWork.ContractorRepository<Contractor>().GetByID(id);
         }
 
-        public Task<IEnumerable<Contractor>> GetContractorList()
+        public IEnumerable<Contractor> GetContractorList()
         {
-            return _contractorRepository.GetAll();
+            return this._unitOfWork.ContractorRepository<Contractor>().GetAll();
         }
 
         public bool SaveContractor(Contractor contractor)
         {
-            return (_contractorRepository.Add(contractor) > 0) ? true : false;
+            this._unitOfWork.ContractorRepository<Contractor>().Insert(contractor);
+            return false;
         }
 
         public bool UpdateContractor(Contractor contractor)
         {
-            return (_contractorRepository.Update(contractor) > 0) ? true : false;
+            this._unitOfWork.ContractorRepository<Contractor>().Update(contractor);
+            return false;
         }
     }
 }
