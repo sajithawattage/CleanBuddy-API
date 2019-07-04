@@ -1,5 +1,6 @@
 ﻿using Cleaner.API.Handlers;
 using Microsoft.Owin.Security.OAuth;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace Cleaner.API
@@ -11,7 +12,7 @@ namespace Cleaner.API
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             config.MessageHandlers.Add(new GenericResponseHandler());
-            
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             // Web API routes
             config.MapHttpAttributeRoutes();
             

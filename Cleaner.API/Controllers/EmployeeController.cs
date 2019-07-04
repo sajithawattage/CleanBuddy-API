@@ -24,8 +24,8 @@ namespace Cleaner.API.Controllers
         [Route("items")]
         public async Task<IHttpActionResult> GetEmployeeList()
         {
-            var list = await _employeeService.GetEmployeeList();
-            return Ok(list);
+            //var list = await _employeeService.GetEmployeeList();
+            return null;//Ok(list);
         }
         
         [HttpGet]

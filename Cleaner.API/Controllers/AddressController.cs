@@ -11,10 +11,11 @@ using System.Web.Http;
 namespace Cleaner.API.Controllers
 {
     [RoutePrefix("v1/address")]
+    [AllowAnonymous]
     public class AddressController : ApiController
     {
         IAddressService _addressService;
-        
+
         public AddressController(IAddressService addressService)
         {
             _addressService = addressService;
@@ -22,10 +23,10 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public async Task<IHttpActionResult> GetAddressList()
+        public async Task<IEnumerable<Address>> GetAddressList()
         {
-            var list = await _addressService.GetAddressList();
-            return Ok(list);
+            var list = _addressService.GetAddressList();
+            return list;
         }
 
 
