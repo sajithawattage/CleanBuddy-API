@@ -64,6 +64,35 @@
   <ItemGroup>
     <Compile Include="Infrastructure\ConnectionFactory.cs" />
     <Compile Include="Infrastructure\IConnectionFactory.cs" />
+    <Compile Include="Migrations\201907040409090_tables.cs" />
+    <Compile Include="Migrations\201907040409090_tables.Designer.cs">
+      <DependentUpon>201907040409090_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040548455_tables1.cs" />
+    <Compile Include="Migrations\201907040548455_tables1.Designer.cs">
+      <DependentUpon>201907040548455_tables1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040555431_tables2.cs" />
+    <Compile Include="Migrations\201907040555431_tables2.Designer.cs">
+      <DependentUpon>201907040555431_tables2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040557426_tables3.cs" />
+    <Compile Include="Migrations\201907040557426_tables3.Designer.cs">
+      <DependentUpon>201907040557426_tables3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040558478_tables4.cs" />
+    <Compile Include="Migrations\201907040558478_tables4.Designer.cs">
+      <DependentUpon>201907040558478_tables4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040601211_tables5.cs" />
+    <Compile Include="Migrations\201907040601211_tables5.Designer.cs">
+      <DependentUpon>201907040601211_tables5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040609548_tables6.cs" />
+    <Compile Include="Migrations\201907040609548_tables6.Designer.cs">
+      <DependentUpon>201907040609548_tables6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\ApproveGroupRepository.cs" />
@@ -120,6 +149,29 @@
       <Project>{C0181246-AA70-4F49-BD51-34FCC652E875}</Project>
       <Name>Cleaner.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907040409090_tables.resx">
+      <DependentUpon>201907040409090_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040548455_tables1.resx">
+      <DependentUpon>201907040548455_tables1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040555431_tables2.resx">
+      <DependentUpon>201907040555431_tables2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040557426_tables3.resx">
+      <DependentUpon>201907040557426_tables3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040558478_tables4.resx">
+      <DependentUpon>201907040558478_tables4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040601211_tables5.resx">
+      <DependentUpon>201907040601211_tables5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040609548_tables6.resx">
+      <DependentUpon>201907040609548_tables6.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

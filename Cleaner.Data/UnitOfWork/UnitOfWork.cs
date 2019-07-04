@@ -14,7 +14,7 @@ namespace Cleaner.DataAccess.UnitOfWork
 
 
 
-       
+
 
         #region Private Fields
 
@@ -24,7 +24,6 @@ namespace Cleaner.DataAccess.UnitOfWork
 
         #endregion             
 
-        #region Constuctor
 
         public UnitOfWork()
         {
