@@ -21,27 +21,32 @@ namespace Cleaner.Business
             
         }
 
-        public async IEnumerable<Equipment> GetEquipmentList()
+        public  IEnumerable<Equipment> GetEquipmentList()
         {
-            return await this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().Delete(id);
+            return null;//await this._unitOfWork.EquipmentCategoryRepository<Equipment>().GetAll();
         }
 
         public bool DeleteEquipment(int id)
         {
-            this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().Delete(id);
+            this._unitOfWork.EquipmentCategoryRepository<Equipment>().Delete(id);
             return false;
         }
 
         public bool SaveEquipment(Equipment equipment)
         {
-            this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().Delete(id);
+            this._unitOfWork.EquipmentCategoryRepository<Equipment>().Insert(equipment);
             return false;
         }
 
         public bool UpdateEquipment(Equipment equipment)
         {
-            this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().Delete(id);
+            this._unitOfWork.EquipmentCategoryRepository<Equipment>().Update(equipment);
             return false;
+        }
+
+        Task<IEnumerable<Equipment>> IEquipmentService.GetEquipmentList()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

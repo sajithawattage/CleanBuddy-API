@@ -27,10 +27,9 @@ namespace Cleaner.Business
             return _unitOfWork.AddressRepository<Address>().GetByID(id);
         }
 
-        public Task<IEnumerable<Address>> GetAddressList()
+        public IEnumerable<Address> GetAddressList()
         {
-            _unitOfWork.AddressRepository<Address>().GetAll();
-            return null;
+            return _unitOfWork.AddressRepository<Address>().GetAll();
         }
 
         public bool SaveAddress(Address address)
