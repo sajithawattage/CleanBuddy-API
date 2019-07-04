@@ -9,7 +9,7 @@ namespace Cleaner.Model
     public class JobEquipment : BaseModel
     {
        
-        public int JobID { get; set; }
+        public int? JobID { get; set; }
         public int EquipmentID { get; set; }
     }
     public class JobEquipmentList : List<JobEquipment> { }
