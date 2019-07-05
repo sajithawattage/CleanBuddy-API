@@ -48,17 +48,17 @@ namespace Cleaner.API.Dependency
             container.Register<IUserLoginService, UserLoginService>(Lifestyle.Scoped);
             
 
-            container.Register<IAddressRepository, AddressRepository>(Lifestyle.Scoped);
-            container.Register<IApproveGroupRepository, ApproveGroupRepository>(Lifestyle.Scoped);
-            container.Register<IApproveGroupUserRepository, ApproveGroupUserRepository>(Lifestyle.Scoped);
-            container.Register<IContractorRepository, ContractorRepository>(Lifestyle.Scoped);
-            container.Register<IEmployeeRepository, EmployeeRepository>(Lifestyle.Scoped);
-            container.Register<IEquipmentCategoryRepository, EquipmentCategoryRepository>(Lifestyle.Scoped);
-            container.Register<IJobEquipmentRepository, JobEquipmentRepository>(Lifestyle.Scoped);
-            container.Register<IJobRepository, JobRepository>(Lifestyle.Scoped);
-            container.Register<IRequestHeaderRepository, RequestHeaderRepository>(Lifestyle.Scoped);
-            container.Register<IEquipmentRepository, EquipmentRepository>(Lifestyle.Scoped);
-            container.Register<IUserLoginRepository, UserLoginRepository>(Lifestyle.Scoped);
+            //container.Register<IAddressRepository, AddressRepository>(Lifestyle.Scoped);
+            //container.Register<IApproveGroupRepository, ApproveGroupRepository>(Lifestyle.Scoped);
+            //container.Register<IApproveGroupUserRepository, ApproveGroupUserRepository>(Lifestyle.Scoped);
+            //container.Register<IContractorRepository, ContractorRepository>(Lifestyle.Scoped);
+            //container.Register<IEmployeeRepository, EmployeeRepository>(Lifestyle.Scoped);
+            //container.Register<IEquipmentCategoryRepository, EquipmentCategoryRepository>(Lifestyle.Scoped);
+            //container.Register<IJobEquipmentRepository, JobEquipmentRepository>(Lifestyle.Scoped);
+            //container.Register<IJobRepository, JobRepository>(Lifestyle.Scoped);
+            //container.Register<IRequestHeaderRepository, RequestHeaderRepository>(Lifestyle.Scoped);
+            //container.Register<IEquipmentRepository, EquipmentRepository>(Lifestyle.Scoped);
+            //container.Register<IUserLoginRepository, UserLoginRepository>(Lifestyle.Scoped);
 
         }
 

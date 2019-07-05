@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class Contractor
+    public class Contractor : BaseModel
     {
-        public int ContractorID { get; set; }
+
         public int AddressID { get; set; }
         public string Name { get; set; }
         public string EmailID { get; set; }
@@ -20,4 +20,5 @@ namespace Cleaner.Model
         public string Note { get; set; }
 
     }
+    public class ContractorList : List<BaseModel> { }
 }

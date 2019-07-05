@@ -3,41 +3,45 @@ using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
 using System.Threading.Tasks;
+using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business
 {
     public class EmployeeService : IEmployeeService
     {
-        IEmployeeRepository _employeeRepo;
+        private IUnitOfWork _unitOfWork = null;
 
-        public EmployeeService(IEmployeeRepository employeeRepo)
+        public EmployeeService(IUnitOfWork unitOfWork)
         {
-            _employeeRepo = employeeRepo;
+            this._unitOfWork = unitOfWork;
         }
 
         public bool DeleteEmployee(int id)
         {
-            return (_employeeRepo.Delete(id) > 0) ? true : false;
+            this._unitOfWork.EmployeeRepository<Employee>().Delete(id);
+            return false;
         }
 
         public Employee GetEmployeeById(int id)
         {
-            return _employeeRepo.Get(id);
+            return this._unitOfWork.EmployeeRepository<Employee>().GetByID(id);
         }
 
-        public Task<IEnumerable<Employee>> GetEmployeeList()
+        public IEnumerable<Employee> GetEmployeeList()
         {
-            return _employeeRepo.GetAll();
+            return this._unitOfWork.EmployeeRepository<Employee>().GetAll();
         }
 
         public bool SaveEmployee(Employee employee)
         {
-            return (_employeeRepo.Add(employee) > 0) ? true : false;
+            this._unitOfWork.EmployeeRepository<Employee>().Insert(employee);
+            return false;
         }
 
         public bool UpdateEmployee(Employee employee)
         {
-            return (_employeeRepo.Update(employee) > 0) ? true : false;
+            this._unitOfWork.EmployeeRepository<Employee>().Update(employee);
+            return false;
         }
     }
 }

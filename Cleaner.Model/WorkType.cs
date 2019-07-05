@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class WorkType
+    public class WorkType : BaseModel
     {
-        public int WorkTypeID { get; set; }
+      
         public string WorkTypeName { get; set; }
     }
+    public class WorkTypeList : List<WorkType> { }
 }

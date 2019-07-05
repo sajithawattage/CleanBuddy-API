@@ -11,6 +11,7 @@ using System.Web.Http;
 namespace Cleaner.API.Controllers
 {
     [RoutePrefix("v1/approvegroup")]
+    [AllowAnonymous]
     public class ApproveGroupController : BaseController
     {
         IApproveGroupService _approveGroupService;
@@ -22,10 +23,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public async Task<IHttpActionResult> GetApproveGroupList()
-        {
-            var list = await _approveGroupService.GetApproveGroupList();
-            return Ok(list);
+        public async Task<IEnumerable<ApproveGroup>> GetApproveGroupList()
+        {           
+            return _approveGroupService.GetApproveGroupList();
         }
 
 

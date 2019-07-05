@@ -2,41 +2,51 @@
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
 using System.Threading.Tasks;
+using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business
 {
     public class EquipmentService : IEquipmentService
     {
-        IEquipmentRepository _equipmentRepositary;
+        private IUnitOfWork _unitOfWork = null;
 
-        public EquipmentService(IEquipmentRepository equipmentRepository)
+        public EquipmentService(IUnitOfWork unitOfWork)
         {
-            _equipmentRepositary = equipmentRepository;
+            this._unitOfWork = unitOfWork;
         }
 
         public Equipment GetEquipmentById(int id)
         {
-            return _equipmentRepositary.Get(id);
+            return this._unitOfWork.EquipmentCategoryRepository<Equipment>().GetByID(id);
+            
         }
 
-        public async Task<IEnumerable<Equipment>> GetEquipmentList()
+        public  IEnumerable<Equipment> GetEquipmentList()
         {
-            return await _equipmentRepositary.GetAll();
+            return null;//await this._unitOfWork.EquipmentCategoryRepository<Equipment>().GetAll();
         }
 
         public bool DeleteEquipment(int id)
         {
-            return (_equipmentRepositary.Delete(id) > 0) ? true : false;
+            this._unitOfWork.EquipmentCategoryRepository<Equipment>().Delete(id);
+            return false;
         }
 
         public bool SaveEquipment(Equipment equipment)
         {
-            return (_equipmentRepositary.Add(equipment) > 0) ? true : false;
+            this._unitOfWork.EquipmentCategoryRepository<Equipment>().Insert(equipment);
+            return false;
         }
 
         public bool UpdateEquipment(Equipment equipment)
         {
-            return (_equipmentRepositary.Update(equipment) > 0) ? true : false;
+            this._unitOfWork.EquipmentCategoryRepository<Equipment>().Update(equipment);
+            return false;
+        }
+
+        Task<IEnumerable<Equipment>> IEquipmentService.GetEquipmentList()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

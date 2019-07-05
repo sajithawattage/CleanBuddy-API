@@ -6,7 +6,7 @@ namespace Cleaner.Business
 {
     public interface IEmployeeService
     {
-        Task<IEnumerable<Employee>> GetEmployeeList();
+        IEnumerable<Employee> GetEmployeeList();
         Employee GetEmployeeById(int id);
         bool SaveEmployee(Employee employee);
         bool UpdateEmployee(Employee employee);

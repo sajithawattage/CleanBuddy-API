@@ -6,7 +6,7 @@ namespace Cleaner.Business
 {
     public interface IAddressService
     {
-        Task<IEnumerable<Address>> GetAddressList();
+        IEnumerable<Address> GetAddressList();
         Address GetAddressById(int id);
         bool SaveAddress(Address address);
         bool UpdateAddress(Address address);

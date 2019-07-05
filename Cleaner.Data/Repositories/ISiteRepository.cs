@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public interface ISiteRepository : IGenericRepository<Site>
+    public interface ISiteRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         Task<IEnumerable<Site>> GetAllActiveSiteList();
         Task<IEnumerable<Site>> GetAllSiteList();

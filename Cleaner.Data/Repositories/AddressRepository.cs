@@ -6,66 +6,19 @@ using Cleaner.DataAccess.Infrastructure;
 using Cleaner.Model;
 using Dapper;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class AddressRepository : IAddressRepository
+    public class AddressRepository<TEntity> : Repository<TEntity>, IAddressRepository<TEntity> where TEntity : class
     {
-        IConnectionFactory _connectionFactory;
+        private readonly CDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public AddressRepository(IConnectionFactory connectionFactory)
+        public AddressRepository(CDbContext context) : base(context)
         {
-            _connectionFactory = connectionFactory;
-        }
-
-        public int Add(Address entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-            
-            param.Add("@Name", entity.Name, DbType.String, ParameterDirection.Input);
-            param.Add("@StreetAddress", entity.StreetAddress, DbType.String, ParameterDirection.Input);
-            param.Add("@City", entity.City, DbType.String, ParameterDirection.Input);
-            param.Add("@PostalCode", entity.PostalCode, DbType.Int32, ParameterDirection.Input);
-            param.Add("@State", entity.State, DbType.String, ParameterDirection.Input);
-            param.Add("@Country", entity.Country, DbType.Single, ParameterDirection.Input);
-
-            return SqlMapper.Execute(_connectionFactory.GetConnection, AddressSql.Insert, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
-
-        public int Delete(int id)
-        {
-            return SqlMapper.Execute(_connectionFactory.GetConnection, AddressSql.Delete,
-                 new { id = id }, commandType: CommandType.Text);
-        }
-
-        public Address Get(int id)
-        {
-            var address = SqlMapper.QueryFirst<Address>(_connectionFactory.GetConnection, AddressSql.GetById,
-                new { AddressID = id }, commandType: CommandType.Text);
-            return address;
-        }
-
-        public Task<IEnumerable<Address>> GetAll()
-        {
-            return SqlMapper.QueryAsync<Address>(_connectionFactory.GetConnection, AddressSql.GetAll,
-                commandType: CommandType.Text);
-        }
-
-        public int Update(Address entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@AddressID", entity.AddressID, DbType.String, ParameterDirection.Input);
-            param.Add("@Name", entity.Name, DbType.String, ParameterDirection.Input);
-            param.Add("@StreetAddress", entity.StreetAddress, DbType.String, ParameterDirection.Input);
-            param.Add("@City", entity.City, DbType.String, ParameterDirection.Input);
-            param.Add("@PostalCode", entity.PostalCode, DbType.Int32, ParameterDirection.Input);
-            param.Add("@State", entity.State, DbType.String, ParameterDirection.Input);
-            param.Add("@Country", entity.Country, DbType.Single, ParameterDirection.Input);
-            
-            return SqlMapper.Execute(_connectionFactory.GetConnection, AddressSql.Update, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
+            _context = context;
+            _dbSet = context.Set<TEntity>();
+        }       
     }
 }

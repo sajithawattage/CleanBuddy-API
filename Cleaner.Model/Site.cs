@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class Site
+    public class Site : BaseModel
     {
-        public int ID { get; set; }
+       
         public int WorkTypeID { get; set; }
         public int AddressID { get; set; }
         public int ContractorID { get; set; }
@@ -19,4 +19,6 @@ namespace Cleaner.Model
         public int Allocation { get; set; }
         public int WorkDays { get; set; }
     }
+
+    public class SiteList : List<Site> { }
 }

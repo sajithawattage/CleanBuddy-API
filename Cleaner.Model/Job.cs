@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class Job
+    public class Job : BaseModel
     {
-        public int ID { get; set; }
+
         public int SiteID { get; set; }
         public DateTime JobStartDate { get; set; }
+        public JobEquipmentList JobEquipmentList { get; set; }
     }
+
+    public class JobList : List<Job> { }
 }

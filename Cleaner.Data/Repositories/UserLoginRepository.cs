@@ -8,59 +8,22 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public class UserLoginRepository : IUserLoginRepository
+    public class UserLoginRepository<TEntity> : Repository<TEntity>, IUserLoginRepository<TEntity> where TEntity : class
     {
-        IConnectionFactory _connectionFactory;
+        private readonly CDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public UserLoginRepository(IConnectionFactory connectionFactory)
+        public UserLoginRepository(CDbContext context) : base(context)
         {
-            _connectionFactory = connectionFactory;
-        }
-
-        public int Add(UserAccount entity)
-        {
-            DynamicParameters param = new DynamicParameters();
-            
-            param.Add("@UserName", entity.UserID, DbType.String, ParameterDirection.Input);
-            param.Add("@PasswordHash", entity.PasswordHash, DbType.String, ParameterDirection.Input);
-            param.Add("@UserRoleID", entity.UserRoleID, DbType.Int16, ParameterDirection.Input);
-            param.Add("@EmployeeID", entity.EmployeeID, DbType.Int16, ParameterDirection.Input);
-            
-            return SqlMapper.Execute(_connectionFactory.GetConnection, UserSql.Insert, param: param,
-                commandType: CommandType.StoredProcedure);
-        }
-
-        public int Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public UserAccount Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<UserAccount>> GetAll()
-        {
-            throw new NotImplementedException();
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
         public Task<UserAccount> GetUser(string userName)
-        {
-            DynamicParameters param = new DynamicParameters();
-
-            param.Add("@UserName", userName, DbType.String, ParameterDirection.Input);
-
-            var user = SqlMapper.QueryFirst<UserAccount>(_connectionFactory.GetConnection, UserSql.GetByUserName,
-               param, commandType: CommandType.StoredProcedure);
-
-            return Task.FromResult(user);
-        }
-
-        public int Update(UserAccount entity)
         {
             throw new NotImplementedException();
         }

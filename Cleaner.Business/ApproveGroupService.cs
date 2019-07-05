@@ -1,4 +1,5 @@
 ﻿using Cleaner.DataAccess.Repositories;
+using Cleaner.DataAccess.UnitOfWork;
 using Cleaner.Model;
 using System;
 using System.Collections.Generic;
@@ -10,36 +11,41 @@ namespace Cleaner.Business
 {
     public class ApproveGroupService : IApproveGroupService
     {
-        IApproveGroupRepository _approveGroupRepo;
+        private IUnitOfWork _unitOfWork = null;
 
-        public ApproveGroupService(IApproveGroupRepository approveGroupRepo)
+        public ApproveGroupService(IUnitOfWork unitOfWork)
         {
-            _approveGroupRepo = approveGroupRepo;
+            this._unitOfWork = unitOfWork;
         }
 
         public bool DeleteApproveGroup(int id)
         {
-            return (_approveGroupRepo.Delete(id) > 0) ? true : false;
+            this._unitOfWork.ApproveGroupUserRepository<ApproveGroup>().Delete(id);
+            return false;
         }
 
         public ApproveGroup GetApproveGroupById(int id)
         {
-            return _approveGroupRepo.Get(id);
+            return this._unitOfWork.ApproveGroupUserRepository<ApproveGroup>().GetByID(id); 
         }
 
-        public Task<IEnumerable<ApproveGroup>> GetApproveGroupList()
+        public IEnumerable<ApproveGroup> GetApproveGroupList()
         {
-            return _approveGroupRepo.GetAll();
+            return this._unitOfWork.ApproveGroupUserRepository<ApproveGroup>().GetAll();
         }
 
         public bool SaveApproveGroup(ApproveGroup approveGroup)
         {
-            return (_approveGroupRepo.Add(approveGroup) > 0) ? true : false;
+            this._unitOfWork.ApproveGroupUserRepository<ApproveGroup>().Insert(approveGroup);
+            return false;
         }
 
         public bool UpdateApproveGroup(ApproveGroup approveGroup)
         {
-            return (_approveGroupRepo.Update(approveGroup) > 0) ? true : false;
+            this._unitOfWork.ApproveGroupUserRepository<ApproveGroup>().Update(approveGroup);
+            return false;
         }
+
+        
     }
 }

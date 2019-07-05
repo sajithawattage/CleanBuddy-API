@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
-    public interface IApproveGroupUserRepository : IGenericRepository<ApproveGroupUser>
+    public interface IApproveGroupUserRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
        
     }

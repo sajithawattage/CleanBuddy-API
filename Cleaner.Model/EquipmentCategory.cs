@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
-    public class EquipmentCategory
+    public class EquipmentCategory : BaseModel
     {
-        public int ID { get; set; }
+       
         public string Name { get; set; }
     }
+    public class EquipmentCategoryList : List<EquipmentCategory> { }
 }

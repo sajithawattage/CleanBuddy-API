@@ -3,41 +3,45 @@ using System.Collections.Generic;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
 using System.Threading.Tasks;
+using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business
 {
     public class JobEquipmentService : IJobEquipmentService
     {
-        IJobEquipmentRepository _jobEquipmentRepo;
+        private IUnitOfWork _unitOfWork = null;
 
-        public JobEquipmentService(IJobEquipmentRepository jobEquipmentRepo)
+        public JobEquipmentService(IUnitOfWork unitOfWork)
         {
-            _jobEquipmentRepo  = jobEquipmentRepo;
+            this._unitOfWork = unitOfWork;
         }
 
         public bool DeleteJobEquipment(int id)
         {
-            return (_jobEquipmentRepo.Delete(id) > 0) ? true : false;
+            this._unitOfWork.JobRepository<JobEquipment>().Delete(id);
+            return false;
         }
 
         public JobEquipment GetJobEquipmentById(int id)
         {
-            return _jobEquipmentRepo.Get(id);
+            return this._unitOfWork.JobRepository<JobEquipment>().GetByID(id);
         }
 
         public Task<IEnumerable<JobEquipment>> GetJobEquipmentList()
         {
-            return _jobEquipmentRepo.GetAll();
+            return null;
         }
 
         public bool SaveJobEquipment(JobEquipment jobEquipment)
         {
-            return (_jobEquipmentRepo.Add(jobEquipment) > 0) ? true : false;
+            this._unitOfWork.JobRepository<JobEquipment>().Insert(jobEquipment);
+            return  false;
         }
 
         public bool UpdateJobEquipment(JobEquipment jobEquipment)
         {
-            return (_jobEquipmentRepo.Update(jobEquipment) > 0) ? true : false;
+            this._unitOfWork.JobRepository<JobEquipment>().Update(jobEquipment);
+            return false;
         }
     }
 }

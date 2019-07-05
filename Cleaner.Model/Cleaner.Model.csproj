@@ -43,6 +43,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="ApproveGroup.cs" />
     <Compile Include="ApproveGroupUser.cs" />
+    <Compile Include="BaseModel.cs" />
     <Compile Include="Contractor.cs" />
     <Compile Include="ContractorEmployee.cs" />
     <Compile Include="Employee.cs" />

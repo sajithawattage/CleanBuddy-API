@@ -2,41 +2,46 @@
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
 using System.Threading.Tasks;
+using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business
 {
     public class AddressService : IAddressService
     {
-        IAddressRepository _addressRepo;
+        private IUnitOfWork _unitOfWork = null;
 
-        public AddressService(IAddressRepository addressRepo)
+        public AddressService(IUnitOfWork unitOfWork)
         {
-            _addressRepo = addressRepo;
+            this._unitOfWork = unitOfWork;
         }
 
         public bool DeleteAddress(int id)
         {
-            return (_addressRepo.Delete(id) > 0) ? true : false;
+            _unitOfWork.AddressRepository<Address>().Delete(id);
+
+            return true;
         }
 
         public Address GetAddressById(int id)
         {
-            return _addressRepo.Get(id);
+            return _unitOfWork.AddressRepository<Address>().GetByID(id);
         }
 
-        public Task<IEnumerable<Address>> GetAddressList()
+        public IEnumerable<Address> GetAddressList()
         {
-            return _addressRepo.GetAll();
+            return _unitOfWork.AddressRepository<Address>().GetAll();
         }
 
         public bool SaveAddress(Address address)
         {
-            return (_addressRepo.Add(address)> 0) ? true : false;
+            _unitOfWork.AddressRepository<Address>().Insert(address);
+            return true;
         }
 
         public bool UpdateAddress(Address address)
         {
-            return (_addressRepo.Update(address) > 0) ? true : false;
+            _unitOfWork.AddressRepository<Address>().Update(address);
+            return true;
         }
     }
 }

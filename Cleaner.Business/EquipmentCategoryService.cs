@@ -5,41 +5,45 @@ using System.Text;
 using System.Threading.Tasks;
 using Cleaner.Model;
 using Cleaner.DataAccess.Repositories;
+using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business
 {
     public class EquipmentCategoryService : IEquipmentCategoryService
     {
-        IEquipmentCategoryRepository _equipmentCategoryRepositary;
+        private IUnitOfWork _unitOfWork = null;
 
-        public EquipmentCategoryService(IEquipmentCategoryRepository equipmentCategoryRepository)
+        public EquipmentCategoryService(IUnitOfWork unitOfWork)
         {
-            _equipmentCategoryRepositary = equipmentCategoryRepository;
+            this._unitOfWork = unitOfWork;
         }
 
         public bool DeleteEquipmentCategory(int id)
         {
-            return (_equipmentCategoryRepositary.Delete(id) > 0) ? true : false;
+            this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().Delete(id);
+            return  false;
         }
 
         public EquipmentCategory GetEquipmentCategoryById(int id)
         {
-            return _equipmentCategoryRepositary.Get(id);
+            return this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().GetByID(id);
         }
 
-        public Task<IEnumerable<EquipmentCategory>> GetEquipmentCategoryList()
+        public IEnumerable<EquipmentCategory> GetEquipmentCategoryList()
         {
-            return _equipmentCategoryRepositary.GetAll();
+            return this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().GetAll();
         }
 
         public bool SaveEquipmentCategory(EquipmentCategory equipmentCategory)
         {
-            return (_equipmentCategoryRepositary.Add(equipmentCategory) > 0) ? true : false;
+            this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().Insert(equipmentCategory);
+            return false;
         }
 
         public bool UpdateEquipmentCategory(EquipmentCategory equipmentCategory)
         {
-            return (_equipmentCategoryRepositary.Add(equipmentCategory) > 0) ? true : false;
+            this._unitOfWork.EquipmentCategoryRepository<EquipmentCategory>().Update(equipmentCategory);
+            return false;
         }
     }
 }

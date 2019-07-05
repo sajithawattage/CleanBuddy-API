@@ -24,8 +24,8 @@ namespace Cleaner.API.Controllers
         [Route("items")]
         public async Task<IHttpActionResult> GetEquipmentCategoryList()
         {
-            var list = await _equipementCategoryService.GetEquipmentCategoryList();
-            return Ok(list);
+            //var list = await _equipementCategoryService.GetEquipmentCategoryList();
+            return (null);
         }
 
 

@@ -39,11 +39,18 @@
       <HintPath>..\packages\Dapper.Contrib.1.50.7\lib\net451\Dapper.Contrib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -57,6 +64,35 @@
   <ItemGroup>
     <Compile Include="Infrastructure\ConnectionFactory.cs" />
     <Compile Include="Infrastructure\IConnectionFactory.cs" />
+    <Compile Include="Migrations\201907040409090_tables.cs" />
+    <Compile Include="Migrations\201907040409090_tables.Designer.cs">
+      <DependentUpon>201907040409090_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040548455_tables1.cs" />
+    <Compile Include="Migrations\201907040548455_tables1.Designer.cs">
+      <DependentUpon>201907040548455_tables1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040555431_tables2.cs" />
+    <Compile Include="Migrations\201907040555431_tables2.Designer.cs">
+      <DependentUpon>201907040555431_tables2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040557426_tables3.cs" />
+    <Compile Include="Migrations\201907040557426_tables3.Designer.cs">
+      <DependentUpon>201907040557426_tables3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040558478_tables4.cs" />
+    <Compile Include="Migrations\201907040558478_tables4.Designer.cs">
+      <DependentUpon>201907040558478_tables4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040601211_tables5.cs" />
+    <Compile Include="Migrations\201907040601211_tables5.Designer.cs">
+      <DependentUpon>201907040601211_tables5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040609548_tables6.cs" />
+    <Compile Include="Migrations\201907040609548_tables6.Designer.cs">
+      <DependentUpon>201907040609548_tables6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\ApproveGroupRepository.cs" />
@@ -77,6 +113,7 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\IJobEquipmentRepository.cs" />
     <Compile Include="Repositories\IJobRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRequestHeaderRepository.cs" />
     <Compile Include="Repositories\ISiteRepository.cs" />
     <Compile Include="Repositories\ISiteSubContractorRepository.cs" />
@@ -85,6 +122,7 @@
     <Compile Include="Repositories\IWorkTypeRepository.cs" />
     <Compile Include="Repositories\JobEquipmentRepository.cs" />
     <Compile Include="Repositories\JobRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RequestHeaderRepository.cs" />
     <Compile Include="Repositories\UserLoginRepository.cs" />
     <Compile Include="SqlConstant\AddressSql.cs" />
@@ -103,6 +141,7 @@
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +149,29 @@
       <Project>{C0181246-AA70-4F49-BD51-34FCC652E875}</Project>
       <Name>Cleaner.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907040409090_tables.resx">
+      <DependentUpon>201907040409090_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040548455_tables1.resx">
+      <DependentUpon>201907040548455_tables1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040555431_tables2.resx">
+      <DependentUpon>201907040555431_tables2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040557426_tables3.resx">
+      <DependentUpon>201907040557426_tables3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040558478_tables4.resx">
+      <DependentUpon>201907040558478_tables4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040601211_tables5.resx">
+      <DependentUpon>201907040601211_tables5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040609548_tables6.resx">
+      <DependentUpon>201907040609548_tables6.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
