@@ -35,5 +35,8 @@ steps:
 
 - task: ResharperCli@1
   inputs:
-    SolutionOrProjectPath: '**/*.sln'
-    FailBuildLevelSelector: 'Warning'
+    SolutionOrProjectPath: '$(Build.Target)'
+    FailBuildLevelSelector: 'Warning'      
+    AdditionalArguments: '/disable-settings-layers:SolutionPersonal --properties:Configuration=$(Build.Configuration)'
+  env:
+    MSBuildSDKsPath: '$(Agent.ToolsDirectory)/dncs/$(DotNet.Sdk.Version)/x64/sdk/$(DotNet.Sdk.Version)/Sdks'
