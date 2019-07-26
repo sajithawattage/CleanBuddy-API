@@ -32,3 +32,8 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: ResharperCli@1
+  inputs:
+    SolutionOrProjectPath: '**/*.sln'
+    FailBuildLevelSelector: 'Warning'
