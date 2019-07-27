@@ -2,6 +2,8 @@
 {
     public class EquipmentCategorySql
     {
+        protected EquipmentCategorySql() { }
+
         public static string GetAll
         {
             get

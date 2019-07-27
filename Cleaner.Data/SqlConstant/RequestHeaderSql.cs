@@ -2,6 +2,8 @@
 {
     public class RequestHeaderSql
     {
+        protected RequestHeaderSql() { }
+
         public static string GetAll
         {
             get

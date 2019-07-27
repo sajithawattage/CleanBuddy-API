@@ -2,6 +2,8 @@
 {
     public class AddressSql
     {
+        protected AddressSql() { }
+
         public static string GetAll
         { 
             get { return "SELECT * FROM Address"; }

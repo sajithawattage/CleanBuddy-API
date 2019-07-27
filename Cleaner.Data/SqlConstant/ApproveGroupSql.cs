@@ -2,6 +2,8 @@
 {
     public class ApproveGroupSql
     {
+        protected ApproveGroupSql() { }
+
         public static string GetAll
         {
             get { return "SELECT * FROM ApproveGroup"; }

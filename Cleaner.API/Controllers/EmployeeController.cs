@@ -13,7 +13,7 @@ namespace Cleaner.API.Controllers
     [RoutePrefix("v1/employee")]
     public class EmployeeController : BaseController
     {
-        IEmployeeService _employeeService;
+        private readonly IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService employeeService)
         {

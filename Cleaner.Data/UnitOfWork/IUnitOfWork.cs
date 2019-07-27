@@ -6,6 +6,7 @@ namespace Cleaner.DataAccess.UnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         IAddressRepository<TEntity> AddressRepository<TEntity>() where TEntity : class;
+
         IEmployeeRepository<TEntity> EmployeeRepository<TEntity>() where TEntity : class;
 
         IApproveGroupUserRepository<TEntity> ApproveGroupUserRepository<TEntity>() where TEntity : class;
@@ -31,7 +32,6 @@ namespace Cleaner.DataAccess.UnitOfWork
         IUserLoginRepository<TEntity> UserLoginRepository<TEntity>() where TEntity : class;
 
         //IWorkTypeRepository<TEntity> WorkTypeRepository<TEntity>() where TEntity : class;
-
 
         void SaveChanges();
     }
