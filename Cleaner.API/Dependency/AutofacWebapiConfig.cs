@@ -1,14 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using Cleaner.Business;
 using Cleaner.Business.Config;
 using Cleaner.DataAccess.Infrastructure;
 using Cleaner.DataAccess.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 
 namespace Cleaner.API.Dependency
@@ -22,7 +17,6 @@ namespace Cleaner.API.Dependency
             Initialize(config, RegisterServices(new ContainerBuilder()));
         }
 
-
         public static void Initialize(HttpConfiguration config, IContainer container)
         {
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
@@ -31,16 +25,13 @@ namespace Cleaner.API.Dependency
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            //Register your Web API controllers.  
+
             builder.RegisterApiControllers(assembly);
-            builder.RegisterType<CDbContext>()
-                   .As<CDbContext>()
-                   .InstancePerRequest();            
             ServiceConfig.RegisterServices(builder);
-            builder.RegisterType<UnitOfWork>()
-                  .As<IUnitOfWork>()
-                  .InstancePerRequest();
-            //Set the dependency resolver to be Autofac.  
+
+            builder.RegisterType<CDbContext>().As<CDbContext>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+
             Container = builder.Build();
             return Container;
         }

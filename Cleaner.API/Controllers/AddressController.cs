@@ -1,12 +1,8 @@
-﻿using Cleaner.Business;
-using Cleaner.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Cleaner.Business;
+using Cleaner.Model;
 
 namespace Cleaner.API.Controllers
 {
@@ -29,7 +25,6 @@ namespace Cleaner.API.Controllers
             return list;
         }
 
-
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetAddressById(int id)
@@ -37,7 +32,6 @@ namespace Cleaner.API.Controllers
             var equipment = _addressService.GetAddressById(id);
             return Ok();
         }
-
 
         [HttpPost]
         [Route("items")]

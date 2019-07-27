@@ -14,7 +14,7 @@ namespace Cleaner.API.Controllers
     [AllowAnonymous]
     public class ApproveGroupController : BaseController
     {
-        IApproveGroupService _approveGroupService;
+        private readonly IApproveGroupService _approveGroupService;
 
         public ApproveGroupController(IApproveGroupService approveGroupService)
         {

@@ -8,11 +8,11 @@ namespace Cleaner.Business
 {
     public class UserLoginService : IUserLoginService
     {
-        private IUnitOfWork _unitOfWork = null;
+        private readonly IUnitOfWork _unitOfWork;
 
         public UserLoginService(IUnitOfWork unitOfWork)
         {
-            this._unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
         }
         public Task<UserAccount> GetUser(string userName, string password)
         {

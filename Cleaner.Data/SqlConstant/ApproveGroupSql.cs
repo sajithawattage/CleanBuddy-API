@@ -1,17 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cleaner.DataAccess.SqlConstant
+﻿namespace Cleaner.DataAccess.SqlConstant
 {
     public class ApproveGroupSql
     {
-        public const string GetAll = "SELECT * FROM ApproveGroup";
-        public const string GetById = "SELECT * FROM ApproveGroup WHERE AddressID=@id";
-        public const string Insert = "sp_ApproveGroupInsert";
-        public const string Update = "sp_ApproveGroupUpdate";
-        public const string Delete = "DELETE FROM ApproveGroup WHERE Id=@id";
+        public static string GetAll
+        {
+            get { return "SELECT * FROM ApproveGroup"; }
+        }
+        public static string GetById
+        {
+            get { return "SELECT * FROM ApproveGroup WHERE AddressID=@id"; }
+        }
+        public static string Insert
+        {
+            get { return "sp_ApproveGroupInsert"; }
+        }
+        public static string Update
+        {
+            get { return "sp_ApproveGroupUpdate"; }
+        }
+        public static string Delete
+        {
+            get { return "DELETE FROM ApproveGroup WHERE Id=@id"; }
+        }
     }
 }
