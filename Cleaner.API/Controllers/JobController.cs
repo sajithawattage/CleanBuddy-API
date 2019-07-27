@@ -8,7 +8,7 @@ namespace Cleaner.API.Controllers
     [RoutePrefix("v1/job")]
     public class JobController : BaseController
     {
-        IJobService _jobService;
+        private readonly IJobService _jobService;
 
         public JobController(IJobService jobService)
         {

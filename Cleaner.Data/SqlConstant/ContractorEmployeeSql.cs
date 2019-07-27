@@ -2,6 +2,8 @@
 {
     public class JobEmployeeSql
     {
+        protected JobEmployeeSql() { }
+
         public static string GetAll { get { return "SELECT * FROM ContractorEmployee"; } }
         public static string GetById { get { return "SELECT * FROM ContractorEmployee WHERE AddressID=@id"; } }
         public static string Insert { get { return "sp_AddressInsert"; } }

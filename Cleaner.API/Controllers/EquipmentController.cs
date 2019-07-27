@@ -8,7 +8,7 @@ namespace Cleaner.API.Controllers
     [RoutePrefix("v1/equipment")]
     public class EquipmentController : BaseController
     {
-        IEquipmentService _equipementService;
+        private readonly IEquipmentService _equipementService;
             
         public EquipmentController(IEquipmentService equipmentService)
         {

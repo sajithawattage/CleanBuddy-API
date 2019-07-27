@@ -13,7 +13,7 @@ namespace Cleaner.API.Controllers
     [RoutePrefix("v1/equipcategory")]
     public class EquipmentCategoryController : BaseController
     {
-        IEquipmentCategoryService _equipementCategoryService;
+        private readonly IEquipmentCategoryService _equipementCategoryService;
 
         public EquipmentCategoryController(IEquipmentCategoryService equipementCategoryService)
         {

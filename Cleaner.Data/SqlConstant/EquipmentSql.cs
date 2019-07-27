@@ -2,6 +2,8 @@
 {
     public class EquipmentSql
     {
+        protected EquipmentSql() { }
+
         public static string GetAll { get { return "SELECT * FROM Equipment"; } }
         public static string GetById { get { return "SELECT * FROM Equipment WHERE Id=@id"; } }
         public static string Insert { get { return "dbo.sp_EquipmentInsert"; } }

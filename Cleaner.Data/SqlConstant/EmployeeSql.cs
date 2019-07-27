@@ -2,6 +2,8 @@
 {
     public class EmployeeSql
     {
+        protected EmployeeSql() { }
+
         public static string GetAll
         {
             get

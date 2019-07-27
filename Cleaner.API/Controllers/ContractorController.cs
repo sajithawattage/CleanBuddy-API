@@ -1,5 +1,6 @@
 ﻿using Cleaner.Business;
 using Cleaner.Model;
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -8,7 +9,7 @@ namespace Cleaner.API.Controllers
     [RoutePrefix("v1/contractor")]
     public class ContractorController : BaseController
     {
-        IContractorService _contractorService;
+        private readonly IContractorService _contractorService;
 
         public ContractorController(IContractorService contractorService)
         {
@@ -19,10 +20,9 @@ namespace Cleaner.API.Controllers
         [Route("items")]
         public async Task<IHttpActionResult> GetContractorList()
         {
-            //var list = await _contractorService.GetContractorList();
-            return null;
+            throw new NotSupportedException();
         }
-        
+
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetContractorById(int id)
@@ -30,7 +30,7 @@ namespace Cleaner.API.Controllers
             var equipment = _contractorService.GetContractorById(id);
             return Ok(equipment);
         }
-        
+
         [HttpPost]
         [Route("items")]
         public IHttpActionResult SaveContractor([FromBody] Contractor contractor)

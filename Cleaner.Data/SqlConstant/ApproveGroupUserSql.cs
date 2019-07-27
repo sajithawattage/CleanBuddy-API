@@ -2,6 +2,8 @@
 {
     public class ApproveGroupUserSql
     {
+        protected ApproveGroupUserSql() { }
+
         public static string GetAll
         {
             get
