@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cleaner.DataAccess.SqlConstant
+﻿namespace Cleaner.DataAccess.SqlConstant
 {
     public class EmployeeSql
     {
-        public const string GetAll = "SELECT * FROM Employee";
-        public const string GetById = "SELECT * FROM Employee WHERE EmployeeID=@id";
-        public const string Insert = "sp_EmployeeInsert";
-        public const string Update = "sp_EmployeeUpdate";
-        public const string Delete = "DELETE FROM Employee WHERE EmployeeID=@id";
+        public static string GetAll
+        {
+            get
+            {
+                return "SELECT * FROM Employee";
+            }
+        }
+        public static string GetById { get { return "SELECT * FROM Employee WHERE EmployeeID=@id"; } }
+        public static string Insert { get { return "sp_EmployeeInsert"; } }
+        public static string Update { get { return "sp_EmployeeUpdate"; } }
+        public static string Delete { get { return "DELETE FROM Employee WHERE EmployeeID=@id"; } }
     }
 }

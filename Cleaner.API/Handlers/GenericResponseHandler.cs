@@ -67,7 +67,7 @@ namespace Cleaner.API.Handlers
             return result;
         }
 
-        private bool IsResponseValid(HttpResponseMessage response)
+        private static bool IsResponseValid(HttpResponseMessage response)
         {
             if ((response != null) && (response.StatusCode == HttpStatusCode.OK))
             {

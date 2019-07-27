@@ -2,10 +2,16 @@
 {
     public class RequestHeaderSql
     {
-        public const string GetAll = "SELECT * FROM RequestHeader";
-        public const string GetById = "SELECT * FROM RequestHeader WHERE ID=@id";
-        public const string Insert = "sp_RequestHeaderInsert";
-        public const string Update = "sp_RequestHeaderUpdate";
-        public const string Delete = "DELETE FROM RequestHeader WHERE Id=@id";
+        public static string GetAll
+        {
+            get
+            {
+                return "SELECT * FROM RequestHeader";
+            }
+        }
+        public static string GetById { get { return "SELECT * FROM RequestHeader WHERE ID=@id"; } }
+        public static string Insert  { get { return  "sp_RequestHeaderInsert"; } }
+        public static string Update  { get { return  "sp_RequestHeaderUpdate"; } }
+        public static string Delete  { get { return  "DELETE FROM RequestHeader WHERE Id=@id"; } }
     }
 }
