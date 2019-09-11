@@ -23,20 +23,18 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public async Task<IEnumerable<ApproveGroup>> GetApproveGroupList()
+        public IEnumerable<ApproveGroup> GetApproveGroupList()
         {           
             return _approveGroupService.GetApproveGroupList();
         }
-
 
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetApproveGroupById(int id)
         {
-            var equipment = _approveGroupService.GetApproveGroupById(id);
+            _approveGroupService.GetApproveGroupById(id);
             return Ok();
         }
-
 
         [HttpPost]
         [Route("items")]
@@ -51,7 +49,6 @@ namespace Cleaner.API.Controllers
             {
                 return InternalServerError(e);
             }
-
         }
 
         [HttpPut]

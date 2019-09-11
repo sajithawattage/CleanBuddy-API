@@ -1,11 +1,6 @@
 ﻿using Cleaner.Business;
 using Cleaner.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
@@ -22,12 +17,12 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public async Task<IHttpActionResult> GetEmployeeList()
+        public IHttpActionResult GetEmployeeList()
         {
-            //var list = await _employeeService.GetEmployeeList();
-            return null;//Ok(list);
+            var equipmentList = _employeeService.GetEmployeeList();
+            return Ok(equipmentList);
         }
-        
+
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetEmployeeById(int id)
@@ -35,7 +30,7 @@ namespace Cleaner.API.Controllers
             var equipment = _employeeService.GetEmployeeById(id);
             return Ok(equipment);
         }
-        
+
         [HttpPost]
         [Route("items")]
         public IHttpActionResult SaveEmployee([FromBody] Employee employee)
@@ -67,7 +62,7 @@ namespace Cleaner.API.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{int:id}")]
         public IHttpActionResult RemoveEquipments(int id)
         {
             var result = _employeeService.DeleteEmployee(id);

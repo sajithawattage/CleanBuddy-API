@@ -19,17 +19,17 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public async Task<IEnumerable<Address>> GetAddressList()
+        public IHttpActionResult GetAddressList()
         {
-            var list = _addressService.GetAddressList();
-            return list;
+            var list =  _addressService.GetAddressList();
+            return Ok(list);
         }
 
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetAddressById(int id)
         {
-            var equipment = _addressService.GetAddressById(id);
+            _addressService.GetAddressById(id);
             return Ok();
         }
 

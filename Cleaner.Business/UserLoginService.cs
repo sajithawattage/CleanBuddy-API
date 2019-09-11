@@ -14,15 +14,20 @@ namespace Cleaner.Business
         {
             _unitOfWork = unitOfWork;
         }
+
         public Task<UserAccount> GetUser(string userName, string password)
         {
-            //var user = _unitOfWork.GetUser(userName);
-            //if(user != null)
-            //{
-            //    if(ValidatePassword(password, user.Result.PasswordHash)){
-            //        return user;
-            //    }
-            //}
+            var encry = StringCipher.Encrypt(password);
+
+            var user = _unitOfWork.UserLoginRepository<UserAccount>().GetUser(userName);
+            if (user != null)
+            {
+                if (ValidatePassword(password, user.Result.PasswordHash))
+                {
+                    return user;
+                }
+            }
+
             return null;
         }
         

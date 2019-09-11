@@ -1,7 +1,11 @@
-﻿using Cleaner.DataAccess.Infrastructure;
-using Cleaner.DataAccess.Repositories;
+﻿using Cleaner.DataAccess.Repositories;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace Cleaner.DataAccess.UnitOfWork
@@ -10,12 +14,12 @@ namespace Cleaner.DataAccess.UnitOfWork
     {
         #region Private Fields
 
-        private readonly CDbContext _context = new CDbContext();
+        private readonly KiaOraEntities _context = new KiaOraEntities();
+
         private bool _disposed = true;
         private Hashtable _repositories;
 
-        #endregion             
-
+        #endregion
 
         public UnitOfWork()
         {
@@ -23,6 +27,7 @@ namespace Cleaner.DataAccess.UnitOfWork
             {
                 _repositories = new Hashtable();
             }
+            
         }
 
         public IAddressRepository<TEntity> AddressRepository<TEntity>() where TEntity : class
@@ -38,10 +43,6 @@ namespace Cleaner.DataAccess.UnitOfWork
         {
             return CreateRepositoryInstance<ApproveGroupUserRepository<TEntity>, IApproveGroupUserRepository<TEntity>>();
         }
-        //public IContractorEmployeeRepository<TEntity> ContractorEmployeeRepository<TEntity>() where TEntity : class
-        //{
-        //    return CreateRepositoryInstance<ContractorEmployeeRepository<TEntity>, IContractorEmployeeRepository<TEntity>>();
-        //}
         public IContractorRepository<TEntity> ContractorRepository<TEntity>() where TEntity : class
         {
             return CreateRepositoryInstance<ContractorRepository<TEntity>, IContractorRepository<TEntity>>();
@@ -66,6 +67,10 @@ namespace Cleaner.DataAccess.UnitOfWork
         {
             return CreateRepositoryInstance<AddressRepository<TEntity>, ISiteRepository<TEntity>>();
         }
+        public IUserLoginRepository<TEntity> UserLoginRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<UserLoginRepository<TEntity>, IUserLoginRepository<TEntity>>();
+        }
         //public ISiteSubContractorRepository<TEntity> SiteSubContractorRepository<TEntity>() where TEntity : class
         //{
         //    return CreateRepositoryInstance<SiteSubContractorRepository<TEntity>, ISiteSubContractorRepository<TEntity>>();
@@ -74,14 +79,15 @@ namespace Cleaner.DataAccess.UnitOfWork
         //{
         //    return CreateRepositoryInstance<SubContractorRepository<TEntity>, ISubContractorRepository<TEntity>>();
         //}
-        public IUserLoginRepository<TEntity> UserLoginRepository<TEntity>() where TEntity : class
-        {
-            return CreateRepositoryInstance<UserLoginRepository<TEntity>, IUserLoginRepository<TEntity>>();
-        }
+        //public IContractorEmployeeRepository<TEntity> ContractorEmployeeRepository<TEntity>() where TEntity : class
+        //{
+        //    return CreateRepositoryInstance<ContractorEmployeeRepository<TEntity>, IContractorEmployeeRepository<TEntity>>();
+        //}
         //public IWorkTypeRepository<TEntity> WorkTypeRepository<TEntity>() where TEntity : class
         //{
         //    return CreateRepositoryInstance<WorkTypeRepository<TEntity>, IWorkTypeRepository<TEntity>>();
         //}
+
         public void SaveChanges()
         {
             _context.SaveChanges();
@@ -101,10 +107,13 @@ namespace Cleaner.DataAccess.UnitOfWork
             }
             _disposed = true;
         }
-
+        
         private U CreateRepositoryInstance<T, U>()
         {
             var model = typeof(T).GenericTypeArguments.FirstOrDefault();
+
+            EntityNames();
+
             if (_repositories.ContainsKey(model.Name))
             {
                 return (U)_repositories[model.Name];
@@ -113,5 +122,22 @@ namespace Cleaner.DataAccess.UnitOfWork
             _repositories.Add(model.Name, Activator.CreateInstance(repositoryType.MakeGenericType(model), _context));
             return (U)_repositories[model.Name];
         }
+
+        public List<string> EntityNames()
+        {
+            ObjectContext objContext = ((IObjectContextAdapter)_context).ObjectContext;
+            MetadataWorkspace workspace = objContext.MetadataWorkspace;
+            IEnumerable<EntityType> tables = workspace.GetItems<EntityType>(DataSpace.SSpace);
+
+            List<string> lst = new List<string>();
+            foreach (var table in tables)
+            {
+                var entityName = table.FullName.Replace("CodeFirstDatabaseSchema.", "");
+                lst.Add($"{entityName}");
+            }
+
+            return lst;
+        }
+
     }
 }

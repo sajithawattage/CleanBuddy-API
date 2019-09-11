@@ -1,16 +1,11 @@
-﻿using Cleaner.DataAccess.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cleaner.DataAccess.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly CDbContext _context;
+        private readonly KiaOraEntities _context;
         private readonly DbSet<TEntity> _dbSet;
 
         private IQueryable<TEntity> AsQueryable()
@@ -18,7 +13,7 @@ namespace Cleaner.DataAccess.Repositories
             return _dbSet.AsQueryable().AsNoTracking();
         }
 
-        public Repository(CDbContext context)
+        public Repository(KiaOraEntities context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
@@ -35,7 +30,6 @@ namespace Cleaner.DataAccess.Repositories
             {
                 _dbSet.Attach(entity);
             }
-
             _context.Entry(entity).State = EntityState.Modified;
         }
 

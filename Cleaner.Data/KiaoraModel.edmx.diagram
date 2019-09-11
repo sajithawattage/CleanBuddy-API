@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aabe2176e4d04cea9729035d4e133b48" Name="Diagram1">
+        <EntityTypeShape EntityType="KiaOraModel.Address" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.ApproveGroup" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.ApproveGroupUser" Width="1.5" PointX="11.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Contractor" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Equipment" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.EquipmentCategory" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Job" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.JobEmployee" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.JobEquipment" Width="1.5" PointX="12.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.RequestHeader" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Site" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.SiteSubContractor" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.SubContractor" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.UserLogin" Width="1.5" PointX="9" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.WorkType" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="KiaOraModel.FK_Address_Contractor" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Address_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_ApproveGroup_ApproveGroupUser" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_ApproveGroup_RequestHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_UserLogin_ApproveGroupUser" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Contractor_ContractorEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Contractor_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Contractor_SubContractor" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Employee_ContractorEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Equipment_EquipmentCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Equipment_JobEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Job_JobEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_RequestHeader_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Site_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Site_SiteSubContractor" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_WorkType_Site" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

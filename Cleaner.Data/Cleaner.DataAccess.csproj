@@ -54,6 +54,8 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,37 +64,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveGroup.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveGroupUser.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentCategory.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\ConnectionFactory.cs" />
     <Compile Include="Infrastructure\IConnectionFactory.cs" />
-    <Compile Include="Migrations\201907040409090_tables.cs" />
-    <Compile Include="Migrations\201907040409090_tables.Designer.cs">
-      <DependentUpon>201907040409090_tables.cs</DependentUpon>
+    <Compile Include="Job.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907040548455_tables1.cs" />
-    <Compile Include="Migrations\201907040548455_tables1.Designer.cs">
-      <DependentUpon>201907040548455_tables1.cs</DependentUpon>
+    <Compile Include="JobEmployee.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907040555431_tables2.cs" />
-    <Compile Include="Migrations\201907040555431_tables2.Designer.cs">
-      <DependentUpon>201907040555431_tables2.cs</DependentUpon>
+    <Compile Include="JobEquipment.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907040557426_tables3.cs" />
-    <Compile Include="Migrations\201907040557426_tables3.Designer.cs">
-      <DependentUpon>201907040557426_tables3.cs</DependentUpon>
+    <Compile Include="KiaoraModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KiaoraModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907040558478_tables4.cs" />
-    <Compile Include="Migrations\201907040558478_tables4.Designer.cs">
-      <DependentUpon>201907040558478_tables4.cs</DependentUpon>
+    <Compile Include="KiaoraModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907040601211_tables5.cs" />
-    <Compile Include="Migrations\201907040601211_tables5.Designer.cs">
-      <DependentUpon>201907040601211_tables5.cs</DependentUpon>
+    <Compile Include="KiaoraModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KiaoraModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907040609548_tables6.cs" />
-    <Compile Include="Migrations\201907040609548_tables6.Designer.cs">
-      <DependentUpon>201907040609548_tables6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\ApproveGroupRepository.cs" />
@@ -125,6 +143,15 @@
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RequestHeaderRepository.cs" />
     <Compile Include="Repositories\UserLoginRepository.cs" />
+    <Compile Include="RequestHeader.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Site.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteSubContractor.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SqlConstant\AddressSql.cs" />
     <Compile Include="SqlConstant\ApproveGroupSql.cs" />
     <Compile Include="SqlConstant\ApproveGroupUserSql.cs" />
@@ -137,11 +164,27 @@
     <Compile Include="SqlConstant\JobSql.cs" />
     <Compile Include="SqlConstant\RequestHeaderSql.cs" />
     <Compile Include="SqlConstant\UserSql.cs" />
+    <Compile Include="SubContractor.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UserLogin.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkType.cs">
+      <DependentUpon>KiaoraModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="KiaoraModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KiaoraModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="KiaoraModel.edmx.diagram">
+      <DependentUpon>KiaoraModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -151,27 +194,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907040409090_tables.resx">
-      <DependentUpon>201907040409090_tables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907040548455_tables1.resx">
-      <DependentUpon>201907040548455_tables1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907040555431_tables2.resx">
-      <DependentUpon>201907040555431_tables2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907040557426_tables3.resx">
-      <DependentUpon>201907040557426_tables3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907040558478_tables4.resx">
-      <DependentUpon>201907040558478_tables4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907040601211_tables5.resx">
-      <DependentUpon>201907040601211_tables5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907040609548_tables6.resx">
-      <DependentUpon>201907040609548_tables6.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="KiaoraModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KiaoraModel.edmx</DependentUpon>
+      <LastGenOutput>KiaoraModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="KiaoraModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KiaoraModel.edmx</DependentUpon>
+      <LastGenOutput>KiaoraModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
