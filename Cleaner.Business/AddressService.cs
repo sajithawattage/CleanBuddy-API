@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Cleaner.DataAccess.UnitOfWork;
 using Cleaner.Model;
-using Cleaner.DataAccess.Repositories;
-using System.Threading.Tasks;
-using Cleaner.DataAccess.UnitOfWork;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Cleaner.Business
 {
@@ -18,7 +17,6 @@ namespace Cleaner.Business
         public bool DeleteAddress(int id)
         {
             _unitOfWork.AddressRepository<Address>().Delete(id);
-
             return true;
         }
 
@@ -29,7 +27,16 @@ namespace Cleaner.Business
 
         public IEnumerable<Address> GetAddressList()
         {
-            return _unitOfWork.AddressRepository<Address>().GetAll();
+            return _unitOfWork.AddressRepository<DataAccess.Address>().GetAll().Select(x => new Address
+            {
+                City = x.City,
+                Name = x.Name,
+                StreetAddress = x.StreetAddress,
+                Country = x.Country,
+                Id = x.AddressID,
+                PostalCode = x.PostalCode,
+                State = x.State
+            });
         }
 
         public bool SaveAddress(Address address)

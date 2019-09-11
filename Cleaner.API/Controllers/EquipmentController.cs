@@ -17,9 +17,9 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public async Task<IHttpActionResult> GetEquipmentList()
+        public IHttpActionResult GetEquipmentList()
         {
-            var list = await _equipementService.GetEquipmentList();
+            var list = _equipementService.GetEquipmentList();
             return Ok(list);
         }
         

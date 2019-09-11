@@ -15,6 +15,4 @@ namespace Cleaner.Model
         public int PostalCode { get; set; }
         public string Country { get; set; }
     }
-
-    public class addressList : List<Address> { }
 }

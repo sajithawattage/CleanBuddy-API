@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using Cleaner.Business;
 using Cleaner.Business.Config;
 using Cleaner.DataAccess.Infrastructure;
 using Cleaner.DataAccess.UnitOfWork;
@@ -19,7 +20,7 @@ namespace Cleaner.API.Dependency
 
         public static void Initialize(HttpConfiguration config, IContainer container)
         {
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
 
         private static IContainer RegisterServices(ContainerBuilder builder)
@@ -29,8 +30,7 @@ namespace Cleaner.API.Dependency
             builder.RegisterApiControllers(assembly);
             ServiceConfig.RegisterServices(builder);
 
-            builder.RegisterType<CDbContext>().As<CDbContext>().InstancePerRequest();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
 
             Container = builder.Build();
             return Container;

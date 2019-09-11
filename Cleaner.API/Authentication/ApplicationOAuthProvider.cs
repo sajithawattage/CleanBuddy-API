@@ -16,17 +16,14 @@ namespace Cleaner.API.Authentication
 
         public AuthenticationProvider(string publicClientId)
         {
-            if (publicClientId == null)
-            {
-                throw new ArgumentNullException("publicClientId");
-            }
-            _publicClientId = publicClientId;
+            _publicClientId = publicClientId ?? throw new ArgumentNullException("publicClientId");
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var userService = GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IUserLoginService)) as IUserLoginService;
-            var x = await userService.GetUser(context.UserName, context.Password);
+
+            await userService.GetUser(context.UserName, context.Password);
 
             //Create ClaimsIdentity
             ClaimsIdentity oAuthIdentity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);

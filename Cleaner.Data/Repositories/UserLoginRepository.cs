@@ -14,10 +14,10 @@ namespace Cleaner.DataAccess.Repositories
 {
     public class UserLoginRepository<TEntity> : Repository<TEntity>, IUserLoginRepository<TEntity> where TEntity : class
     {
-        private readonly CDbContext _context;
+        private readonly KiaOraEntities _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public UserLoginRepository(CDbContext context) : base(context)
+        public UserLoginRepository(KiaOraEntities context) : base(context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
@@ -25,7 +25,17 @@ namespace Cleaner.DataAccess.Repositories
 
         public Task<UserAccount> GetUser(string userName)
         {
-            throw new NotImplementedException();
+            IQueryable<UserAccount> x = from user in _context.UserLogins
+                    where user.UserName == userName
+                    select new UserAccount
+                    {
+                        PasswordHash = user.PasswordHash,
+                        UserName = user.UserName,
+                        EmployeeID = user.EmployeeID.Value,
+                        UserRoleID = user.UserRoleID.Value
+                    };
+
+            return x.FirstOrDefaultAsync();
         }
     }
 }
