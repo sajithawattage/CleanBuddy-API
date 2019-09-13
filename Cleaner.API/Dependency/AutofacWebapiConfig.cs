@@ -32,6 +32,7 @@ namespace Cleaner.API.Dependency
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
 
+
             Container = builder.Build();
             return Container;
         }

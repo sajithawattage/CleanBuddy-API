@@ -17,7 +17,6 @@ namespace Cleaner.API
         public void ConfigureAuth(IAppBuilder app)
         {
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
-
             app.UseCors(CorsOptions.AllowAll);
             
             // Configure the application for OAuth based flow

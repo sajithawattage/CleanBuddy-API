@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cleaner.Model
 {
     public class RequestHeader : BaseModel
     {
-       
         public int RequestID { get; set; }
         public int GroupID { get; set; }
         public int EmployeeID { get; set; }
@@ -17,7 +13,6 @@ namespace Cleaner.Model
         public int ApproveGroupID { get; set; }
         public string ApproveStatus { get; set; }
         public DateTime ApprovedDateTime { get; set; }
-        public DateTime CreatedDate { get; set; }
     }
     public class RequestHeaderList : List<RequestHeader> { }
 }
