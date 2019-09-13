@@ -12,15 +12,9 @@ namespace Cleaner.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipment
+    public partial class Equipment1
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Equipment()
-        {
-            this.JobEquipments = new HashSet<JobEquipment>();
-        }
-    
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
@@ -28,9 +22,7 @@ namespace Cleaner.DataAccess
         public string PurchasedFrom { get; set; }
         public System.DateTime PurchaseDate { get; set; }
         public System.DateTime WarrantyExpire { get; set; }
-    
-        public virtual EquipmentCategory1 EquipmentCategory { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JobEquipment> JobEquipments { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
     }
 }

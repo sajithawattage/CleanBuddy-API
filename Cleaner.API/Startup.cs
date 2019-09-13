@@ -3,6 +3,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using System;
 
 [assembly: OwinStartup(typeof(Cleaner.API.Startup))]
 

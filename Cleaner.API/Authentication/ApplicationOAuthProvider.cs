@@ -22,8 +22,7 @@ namespace Cleaner.API.Authentication
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var userService = GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IUserLoginService)) as IUserLoginService;
-
-            await userService.GetUser(context.UserName, context.Password);
+            var x = userService.GetUser(context.UserName, context.Password);
 
             //Create ClaimsIdentity
             ClaimsIdentity oAuthIdentity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);

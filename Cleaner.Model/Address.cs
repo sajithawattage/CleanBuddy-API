@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Cleaner.Model
 {
-    public class Address: BaseModel
-    {        
+    public class Address : BaseModel
+    {
         public string Name { get; set; }
         public string StreetAddress { get; set; }
         public string State { get; set; }
@@ -15,4 +11,6 @@ namespace Cleaner.Model
         public int PostalCode { get; set; }
         public string Country { get; set; }
     }
+
+    public class AddressList : List<Address> { }
 }

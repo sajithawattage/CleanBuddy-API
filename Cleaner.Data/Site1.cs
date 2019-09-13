@@ -12,10 +12,18 @@ namespace Cleaner.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class EquipmentCategory
+    public partial class Site1
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public int WorkTypeID { get; set; }
+        public int AddressID { get; set; }
+        public int ContractorID { get; set; }
+        public string SiteName { get; set; }
+        public int WorkType { get; set; }
+        public string Notes { get; set; }
+        public int Budget { get; set; }
+        public int Allocation { get; set; }
+        public int WorkDays { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
     }

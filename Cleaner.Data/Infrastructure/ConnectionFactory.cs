@@ -7,7 +7,7 @@ namespace Cleaner.DataAccess.Infrastructure
 {
     public class ConnectionFactory : IConnectionFactory
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["AppConnection"].ConnectionString;
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["CConnection"].ConnectionString;
 
         public IDbConnection GetConnection
         {
