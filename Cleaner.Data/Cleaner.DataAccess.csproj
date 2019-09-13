@@ -31,14 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.7\lib\net451\Dapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.Contrib.1.50.7\lib\net451\Dapper.Contrib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -65,51 +57,78 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Address1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ApproveGroup.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveGroup1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ApproveGroupUser.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Contractor.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractorEmployee.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Equipment.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Equipment1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EquipmentCategory.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EquipmentCategory1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ConnectionFactory.cs" />
     <Compile Include="Infrastructure\IConnectionFactory.cs" />
     <Compile Include="Job.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Job1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="JobEmployee.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="JobEquipment.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="KiaoraModel.Context.cs">
+    <Compile Include="JobEquipment1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KiaOraModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KiaoraModel.Context.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="KiaoraModel.cs">
+    <Compile Include="KiaOraModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="KiaoraModel.Designer.cs">
+    <Compile Include="KiaOraModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KiaoraModel.edmx</DependentUpon>
+      <DependentUpon>KiaOraModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
@@ -144,13 +163,22 @@
     <Compile Include="Repositories\RequestHeaderRepository.cs" />
     <Compile Include="Repositories\UserLoginRepository.cs" />
     <Compile Include="RequestHeader.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestHeader1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Site.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SiteSubContractor.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteSubContractor1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SqlConstant\AddressSql.cs" />
     <Compile Include="SqlConstant\ApproveGroupSql.cs" />
@@ -165,25 +193,34 @@
     <Compile Include="SqlConstant\RequestHeaderSql.cs" />
     <Compile Include="SqlConstant\UserSql.cs" />
     <Compile Include="SubContractor.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubContractor1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserLogin.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WorkType.cs">
-      <DependentUpon>KiaoraModel.tt</DependentUpon>
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkType1.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="KiaoraModel.edmx">
+    <EntityDeploy Include="KiaOraModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KiaoraModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>KiaOraModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="KiaoraModel.edmx.diagram">
-      <DependentUpon>KiaoraModel.edmx</DependentUpon>
+    <None Include="KiaOraModel.edmx.diagram">
+      <DependentUpon>KiaOraModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -194,15 +231,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="KiaoraModel.Context.tt">
+    <Content Include="KiaOraModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KiaoraModel.edmx</DependentUpon>
-      <LastGenOutput>KiaoraModel.Context.cs</LastGenOutput>
+      <DependentUpon>KiaOraModel.edmx</DependentUpon>
+      <LastGenOutput>KiaOraModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="KiaoraModel.tt">
+    <Content Include="KiaOraModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KiaoraModel.edmx</DependentUpon>
-      <LastGenOutput>KiaoraModel.cs</LastGenOutput>
+      <DependentUpon>KiaOraModel.edmx</DependentUpon>
+      <LastGenOutput>KiaOraModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

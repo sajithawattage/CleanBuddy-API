@@ -12,11 +12,14 @@ namespace Cleaner.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class EquipmentCategory
+    public partial class JobEquipment1
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public Nullable<int> JobID { get; set; }
+        public int EquipmentID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+    
+        public virtual Job1 Job { get; set; }
     }
 }

@@ -12,10 +12,13 @@ namespace Cleaner.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class EquipmentCategory
+    public partial class UserAccount
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string UserName { get; set; }
+        public string PasswordHash { get; set; }
+        public int UserRoleID { get; set; }
+        public int EmployeeID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
     }

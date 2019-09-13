@@ -12,10 +12,11 @@ namespace Cleaner.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class EquipmentCategory
+    public partial class ApproveGroup1
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string GroupName { get; set; }
+        public string Description { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
     }

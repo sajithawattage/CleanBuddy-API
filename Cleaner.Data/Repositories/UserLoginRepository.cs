@@ -1,41 +1,41 @@
-﻿using Cleaner.DataAccess.SqlConstant;
-using Cleaner.Model;
-using Dapper;
-using Cleaner.DataAccess.Infrastructure;
-using System;
-using System.Collections.Generic;
+﻿using Cleaner.DataAccess.Infrastructure;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Cleaner.DataAccess.Repositories
 {
     public class UserLoginRepository<TEntity> : Repository<TEntity>, IUserLoginRepository<TEntity> where TEntity : class
     {
-        private readonly KiaOraEntities _context;
+        private readonly CDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public UserLoginRepository(KiaOraEntities context) : base(context)
+        public UserLoginRepository(CDbContext context) : base(context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
 
-        public Task<UserAccount> GetUser(string userName)
+        public Model.UserAccount GetUser(string userName)
         {
-            IQueryable<UserAccount> x = from user in _context.UserLogins
-                    where user.UserName == userName
-                    select new UserAccount
-                    {
-                        PasswordHash = user.PasswordHash,
-                        UserName = user.UserName,
-                        EmployeeID = user.EmployeeID.Value,
-                        UserRoleID = user.UserRoleID.Value
-                    };
+            var query = from x in _context.UserAccount
+                        where x.UserName == userName
+                        select new Model.UserAccount
+                        {
+                            Id = x.Id,
+                            UserName = x.UserName,
+                            UserRoleID = x.UserRoleID,
+                            EmployeeID = x.EmployeeID,
+                            PasswordHash = x.PasswordHash,
+                            CreatedDate = x.CreatedDate,
+                            UpdateDate = x.UpdateDate
+                        };
 
-            return x.FirstOrDefaultAsync();
+            if (query.Any())
+            {
+                return query.FirstOrDefault();
+            }
+            return null;
         }
     }
 }
