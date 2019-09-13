@@ -1,21 +1,13 @@
-﻿using System;
+﻿using Cleaner.DataAccess.Infrastructure;
+using Cleaner.DataAccess.Repositories;
+using System;
 using System.Collections;
 using System.Linq;
-using Cleaner.DataAccess.Infrastructure;
-using Cleaner.DataAccess.Repositories;
 
 namespace Cleaner.DataAccess.UnitOfWork
 {
-
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-
-
-
-
-
-
-
         #region Private Fields
 
         private readonly CDbContext _context = new CDbContext();
@@ -23,7 +15,6 @@ namespace Cleaner.DataAccess.UnitOfWork
         private Hashtable _repositories;
 
         #endregion             
-
 
         public UnitOfWork()
         {
@@ -121,7 +112,5 @@ namespace Cleaner.DataAccess.UnitOfWork
             _repositories.Add(model.Name, Activator.CreateInstance(repositoryType.MakeGenericType(model), _context));
             return (U)_repositories[model.Name];
         }
-
-
     }
 }

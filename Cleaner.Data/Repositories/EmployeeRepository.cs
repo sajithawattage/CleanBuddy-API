@@ -2,7 +2,7 @@
 using System.Linq;
 using Cleaner.Model;
 using Cleaner.DataAccess.Infrastructure;
-using Dapper;
+
 using System.Data;
 using Cleaner.DataAccess.SqlConstant;
 using System.Threading.Tasks;

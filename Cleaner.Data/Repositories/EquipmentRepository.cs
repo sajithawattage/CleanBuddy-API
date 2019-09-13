@@ -1,6 +1,6 @@
 ﻿using Cleaner.DataAccess.SqlConstant;
 using Cleaner.Model;
-using Dapper;
+
 using Cleaner.DataAccess.Infrastructure;
 using System.Collections.Generic;
 using System.Data;

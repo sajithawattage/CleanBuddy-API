@@ -1,14 +1,7 @@
-﻿using Cleaner.DataAccess.SqlConstant;
-using Cleaner.Model;
-using Dapper;
-using Cleaner.DataAccess.Infrastructure;
-using System;
-using System.Collections.Generic;
+﻿using Cleaner.DataAccess.Infrastructure;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Cleaner.DataAccess.Repositories
 {
@@ -23,9 +16,26 @@ namespace Cleaner.DataAccess.Repositories
             _dbSet = context.Set<TEntity>();
         }
 
-        public Task<UserAccount> GetUser(string userName)
+        public Model.UserAccount GetUser(string userName)
         {
-            throw new NotImplementedException();
+            var query = from x in _context.UserAccount
+                        where x.UserName == userName
+                        select new Model.UserAccount
+                        {
+                            Id = x.Id,
+                            UserName = x.UserName,
+                            UserRoleID = x.UserRoleID,
+                            EmployeeID = x.EmployeeID,
+                            PasswordHash = x.PasswordHash,
+                            CreatedDate = x.CreatedDate,
+                            UpdateDate = x.UpdateDate
+                        };
+
+            if (query.Any())
+            {
+                return query.FirstOrDefault();
+            }
+            return null;
         }
     }
 }

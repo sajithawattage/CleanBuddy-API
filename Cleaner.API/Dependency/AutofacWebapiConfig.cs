@@ -22,7 +22,6 @@ namespace Cleaner.API.Dependency
             Initialize(config, RegisterServices(new ContainerBuilder()));
         }
 
-
         public static void Initialize(HttpConfiguration config, IContainer container)
         {
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
@@ -31,16 +30,12 @@ namespace Cleaner.API.Dependency
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            //Register your Web API controllers.  
+
             builder.RegisterApiControllers(assembly);
-            builder.RegisterType<CDbContext>()
-                   .As<CDbContext>()
-                   .InstancePerRequest();            
+            builder.RegisterType<CDbContext>().As<CDbContext>().InstancePerLifetimeScope();
             ServiceConfig.RegisterServices(builder);
-            builder.RegisterType<UnitOfWork>()
-                  .As<IUnitOfWork>()
-                  .InstancePerRequest();
-            //Set the dependency resolver to be Autofac.  
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+
             Container = builder.Build();
             return Container;
         }

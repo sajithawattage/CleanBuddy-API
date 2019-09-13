@@ -1,11 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using Cleaner.DataAccess.SqlConstant;
-using Cleaner.DataAccess.Infrastructure;
-using Cleaner.Model;
-using Dapper;
-using System.Threading.Tasks;
+﻿using Cleaner.DataAccess.Infrastructure;
 using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Repositories
@@ -19,6 +12,6 @@ namespace Cleaner.DataAccess.Repositories
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
-        }       
+        }
     }
 }

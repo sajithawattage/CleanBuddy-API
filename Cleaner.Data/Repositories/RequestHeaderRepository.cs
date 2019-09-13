@@ -4,7 +4,7 @@ using System.Data;
 using System.Threading.Tasks;
 using Cleaner.Model;
 using Cleaner.DataAccess.Infrastructure;
-using Dapper;
+
 using Cleaner.DataAccess.SqlConstant;
 using System.Data.Entity;
 

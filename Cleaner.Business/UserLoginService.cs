@@ -1,8 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using Cleaner.DataAccess.UnitOfWork;
 using Cleaner.Model;
-using Cleaner.DataAccess.Repositories;
 using EncryptStringSample;
-using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business
 {
@@ -14,22 +12,23 @@ namespace Cleaner.Business
         {
             this._unitOfWork = unitOfWork;
         }
-        public Task<UserAccount> GetUser(string userName, string password)
+        public UserAccount GetUser(string userName, string password)
         {
-            //var user = _unitOfWork.GetUser(userName);
-            //if(user != null)
-            //{
-            //    if(ValidatePassword(password, user.Result.PasswordHash)){
-            //        return user;
-            //    }
-            //}
+            var user = _unitOfWork.UserLoginRepository<UserAccount>().GetUser(userName);
+            if (user != null)
+            {
+                if (ValidatePassword(password, user.PasswordHash))
+                {
+                    return user;
+                }
+            }
             return null;
         }
-        
+
         private bool ValidatePassword(string password, string passwordHash)
         {
             var result = false;
-            if(string.Equals(password, StringCipher.Decrypt(passwordHash)))
+            if (string.Equals(password, StringCipher.Decrypt(passwordHash)))
             {
                 result = true;
             }
