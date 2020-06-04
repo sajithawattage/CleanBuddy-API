@@ -10,14 +10,13 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Employee1
+    public partial class sp_UserLoginGetByUserName_Result
     {
-        public int Id { get; set; }
-        public string EmployeeName { get; set; }
-        public int EmployeeContactNo { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public int UserID { get; set; }
+        public string UserName { get; set; }
+        public string PasswordHash { get; set; }
+        public Nullable<int> UserRoleID { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
     }
 }

@@ -10,13 +10,11 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class WorkType1
+    public partial class sp_JobEquipmentInsert_Result
     {
-        public int Id { get; set; }
-        public string WorkTypeName { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public int ID { get; set; }
+        public int JobID { get; set; }
+        public int EquipmentID { get; set; }
     }
 }

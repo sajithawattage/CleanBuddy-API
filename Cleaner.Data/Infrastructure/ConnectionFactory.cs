@@ -1,18 +1,12 @@
-﻿
-using Cleaner.Model;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.Data.Common;
-using System.Data.Entity;
-using System.Reflection;
 
 namespace Cleaner.DataAccess.Infrastructure
 {
     public class ConnectionFactory : IConnectionFactory
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["CConnection"].ConnectionString;
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["KiaOraEntities"].ConnectionString;
 
         public IDbConnection GetConnection
         {
@@ -61,27 +55,4 @@ namespace Cleaner.DataAccess.Infrastructure
         }
         #endregion
     }
-
-    public class CDbContext : DbContext, IDisposable
-    {
-        public CDbContext() : base("name=CConnection") { }
-
-        public virtual DbSet<Address> Address { get; set; }
-        public virtual DbSet<ApproveGroup> ApproveGroup { get; set; }
-        public virtual DbSet<Contractor> Contractor { get; set; }
-        public virtual DbSet<ContractorEmployee> ContractorEmployee { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Equipment> Equipment { get; set; }
-        public virtual DbSet<EquipmentCategory> EquipmentCategory { get; set; }
-        public virtual DbSet<Job> Job { get; set; }
-        public virtual DbSet<JobEquipment> JobEquipment { get; set; }
-        public virtual DbSet<RequestHeader> RequestHeader { get; set; }
-        public virtual DbSet<Site> Site { get; set; }
-        public virtual DbSet<SiteSubContractor> SiteSubContractor { get; set; }
-        public virtual DbSet<SubContractor> SubContractor { get; set; }
-        public virtual DbSet<UserAccount> UserAccount { get; set; }
-        public virtual DbSet<WorkType> WorkType { get; set; }
-    }
-
-    
 }

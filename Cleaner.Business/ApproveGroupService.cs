@@ -1,6 +1,6 @@
-﻿using Cleaner.DataAccess.Repositories;
+﻿using Cleaner.DataAccess;
+using Cleaner.DataAccess.Repositories;
 using Cleaner.DataAccess.UnitOfWork;
-using Cleaner.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

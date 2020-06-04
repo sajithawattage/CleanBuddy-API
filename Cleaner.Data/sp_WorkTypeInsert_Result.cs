@@ -10,17 +10,10 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class SubContractor1
+    public partial class sp_WorkTypeInsert_Result
     {
-        public int Id { get; set; }
-        public int ContractorID { get; set; }
-        public string Name { get; set; }
-        public int AddressID { get; set; }
-        public string ABN { get; set; }
-        public string EmailAddress { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public int WorkTypeID { get; set; }
+        public string WorkTypeName { get; set; }
     }
 }

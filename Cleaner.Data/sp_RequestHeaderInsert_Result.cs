@@ -10,20 +10,18 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class RequestHeader1
+    public partial class sp_RequestHeaderInsert_Result
     {
-        public int Id { get; set; }
-        public int RequestID { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> RequestID { get; set; }
         public int GroupID { get; set; }
-        public int EmployeeID { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
         public int JobID { get; set; }
-        public System.DateTime RequestDateTime { get; set; }
-        public int ApproveGroupID { get; set; }
+        public Nullable<System.DateTime> RequestDateTime { get; set; }
+        public Nullable<int> ApproveGroupID { get; set; }
         public string ApproveStatus { get; set; }
-        public System.DateTime ApprovedDateTime { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<System.DateTime> ApprovedDateTime { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     }
 }

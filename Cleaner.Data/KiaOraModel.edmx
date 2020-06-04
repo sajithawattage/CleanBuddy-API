@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="KiaOraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
@@ -17,20 +17,6 @@
           <Property Name="State" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Country" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <EntityType Name="Addresses">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="StreetAddress" Type="nvarchar(max)" />
-          <Property Name="State" Type="nvarchar(max)" />
-          <Property Name="City" Type="nvarchar(max)" />
-          <Property Name="PostalCode" Type="int" Nullable="false" />
-          <Property Name="Country" Type="nvarchar(max)" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="ApproveGroup">
           <Key>
             <PropertyRef Name="GroupID" />
@@ -38,16 +24,6 @@
           <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GroupName" Type="varchar" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="ApproveGroups">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GroupName" Type="nvarchar(max)" />
-          <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ApproveGroupUser">
           <Key>
@@ -86,23 +62,6 @@
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Contractors">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AddressID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="EmailID" Type="nvarchar(max)" />
-          <Property Name="ContactPerson" Type="nvarchar(max)" />
-          <Property Name="ContactNo" Type="int" Nullable="false" />
-          <Property Name="ABN" Type="nvarchar(max)" />
-          <Property Name="PaymentOption" Type="int" Nullable="false" />
-          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
-          <Property Name="Note" Type="nvarchar(max)" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -126,16 +85,6 @@
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Employees">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmployeeName" Type="nvarchar(max)" />
-          <Property Name="EmployeeContactNo" Type="int" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="Equipment">
           <Key>
             <PropertyRef Name="ID" />
@@ -149,36 +98,12 @@
           <Property Name="PurchaseDate" Type="datetime" Nullable="false" />
           <Property Name="WarrantyExpire" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="EquipmentCategories">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="EquipmentCategory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Equipments">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="nvarchar(max)" />
-          <Property Name="Brand" Type="nvarchar(max)" />
-          <Property Name="Model" Type="nvarchar(max)" />
-          <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="PurchasedFrom" Type="nvarchar(max)" />
-          <Property Name="PurchaseDate" Type="datetime" Nullable="false" />
-          <Property Name="WarrantyExpire" Type="datetime" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
@@ -209,26 +134,6 @@
           <Property Name="JobID" Type="int" Nullable="false" />
           <Property Name="EquipmentID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="JobEquipments">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="JobID" Type="int" />
-          <Property Name="EquipmentID" Type="int" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Jobs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SiteID" Type="int" Nullable="false" />
-          <Property Name="JobStartDate" Type="datetime" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="RequestHeader">
           <Key>
             <PropertyRef Name="ID" />
@@ -243,22 +148,6 @@
           <Property Name="ApproveStatus" Type="varchar" MaxLength="2" />
           <Property Name="ApprovedDateTime" Type="datetime" />
           <Property Name="CreatedDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="RequestHeaders">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RequestID" Type="int" Nullable="false" />
-          <Property Name="GroupID" Type="int" Nullable="false" />
-          <Property Name="EmployeeID" Type="int" Nullable="false" />
-          <Property Name="JobID" Type="int" Nullable="false" />
-          <Property Name="RequestDateTime" Type="datetime" Nullable="false" />
-          <Property Name="ApproveGroupID" Type="int" Nullable="false" />
-          <Property Name="ApproveStatus" Type="nvarchar(max)" />
-          <Property Name="ApprovedDateTime" Type="datetime" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Site">
           <Key>
@@ -275,23 +164,6 @@
           <Property Name="Allocation" Type="int" />
           <Property Name="WorkDays" Type="int" />
         </EntityType>
-        <EntityType Name="Sites">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="WorkTypeID" Type="int" Nullable="false" />
-          <Property Name="AddressID" Type="int" Nullable="false" />
-          <Property Name="ContractorID" Type="int" Nullable="false" />
-          <Property Name="SiteName" Type="nvarchar(max)" />
-          <Property Name="WorkType" Type="int" Nullable="false" />
-          <Property Name="Notes" Type="nvarchar(max)" />
-          <Property Name="Budget" Type="int" Nullable="false" />
-          <Property Name="Allocation" Type="int" Nullable="false" />
-          <Property Name="WorkDays" Type="int" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="SiteSubContractor">
           <Key>
             <PropertyRef Name="ID" />
@@ -303,17 +175,6 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="SiteSubContractors">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SubContractorID" Type="int" Nullable="false" />
-          <Property Name="ReportingOfficer" Type="nvarchar(max)" />
-          <Property Name="SiteID" Type="int" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="SubContractor">
           <Key>
             <PropertyRef Name="ID" />
@@ -324,19 +185,6 @@
           <Property Name="AddressID" Type="int" />
           <Property Name="ABN" Type="varchar" MaxLength="20" />
           <Property Name="EmailAddress" Type="varchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="SubContractors">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractorID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="AddressID" Type="int" Nullable="false" />
-          <Property Name="ABN" Type="nvarchar(max)" />
-          <Property Name="EmailAddress" Type="nvarchar(max)" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="UserAccounts">
           <Key>
@@ -366,15 +214,6 @@
           </Key>
           <Property Name="WorkTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="WorkTypeName" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="WorkTypes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="WorkTypeName" Type="nvarchar(max)" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <Association Name="FK_Address_Contractor">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
@@ -457,18 +296,6 @@
             </Principal>
             <Dependent Role="SubContractor">
               <PropertyRef Name="ContractorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_JobEquipments_dbo_Jobs_JobID">
-          <End Role="Jobs" Type="Self.Jobs" Multiplicity="0..1" />
-          <End Role="JobEquipments" Type="Self.JobEquipments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jobs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobEquipments">
-              <PropertyRef Name="JobID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -580,38 +407,342 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DataModelStoreContainer">
+        <Function Name="sp_AddressDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_AddressInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="StreetAddress" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="int" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_AddressList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_AddressUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="StreetAddress" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="int" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ApproveGroupDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ApproveGroupInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ApproveGroupList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ApproveGroupUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ApproveGroupUserDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ApproveGroupUserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ApproveGroupUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorEmployeeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeJobID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorEmployeeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="JoinDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorEmployeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeJobID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorEmployeeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeJobID" Type="int" Mode="In" />
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="JoinDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="ContactPerson" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNo" Type="int" Mode="In" />
+          <Parameter Name="ABN" Type="varchar" Mode="In" />
+          <Parameter Name="PaymentOption" Type="int" Mode="In" />
+          <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+          <Parameter Name="Note" Type="text" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ContractorUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="EmailID" Type="varchar" Mode="In" />
+          <Parameter Name="ContactPerson" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNo" Type="int" Mode="In" />
+          <Parameter Name="ABN" Type="varchar" Mode="In" />
+          <Parameter Name="PaymentOption" Type="int" Mode="In" />
+          <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+          <Parameter Name="Note" Type="text" Mode="In" />
+        </Function>
+        <Function Name="sp_EmployeeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EmployeeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeName" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeeContactNo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EmployeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EmployeeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeName" Type="varchar" Mode="In" />
+          <Parameter Name="EmployeeContactNo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentCategoryDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentCategoryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentCategoryList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentCategoryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Code" Type="varchar" Mode="In" />
+          <Parameter Name="Brand" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="CategoryID" Type="int" Mode="In" />
+          <Parameter Name="PurchasedFrom" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="datetime" Mode="In" />
+          <Parameter Name="WarrantyExpire" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EquipmentUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Code" Type="varchar" Mode="In" />
+          <Parameter Name="Brand" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="CategoryID" Type="int" Mode="In" />
+          <Parameter Name="PurchasedFrom" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="datetime" Mode="In" />
+          <Parameter Name="WarrantyExpire" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_GetAllEquipments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_JobDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_JobEquipmentDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_JobEquipmentInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="JobID" Type="int" Mode="In" />
+          <Parameter Name="EquipmentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_JobEquipmentList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_JobEquipmentUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="JobID" Type="int" Mode="In" />
+          <Parameter Name="EquipmentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_JobInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+          <Parameter Name="JobStartDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_JobList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_JobUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+          <Parameter Name="JobStartDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_RequestHeaderDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RequestHeaderInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RequestID" Type="int" Mode="In" />
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="JobID" Type="int" Mode="In" />
+          <Parameter Name="RequestDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ApproveGroupID" Type="int" Mode="In" />
+          <Parameter Name="ApproveStatus" Type="varchar" Mode="In" />
+          <Parameter Name="ApprovedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_RequestHeaderList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RequestHeaderUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="RequestID" Type="int" Mode="In" />
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="JobID" Type="int" Mode="In" />
+          <Parameter Name="RequestDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="ApproveGroupID" Type="int" Mode="In" />
+          <Parameter Name="ApproveStatus" Type="varchar" Mode="In" />
+          <Parameter Name="ApprovedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkTypeID" Type="int" Mode="In" />
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+          <Parameter Name="SiteName" Type="varchar" Mode="In" />
+          <Parameter Name="WorkType" Type="int" Mode="In" />
+          <Parameter Name="Notes" Type="varchar" Mode="In" />
+          <Parameter Name="Budget" Type="int" Mode="In" />
+          <Parameter Name="Allocation" Type="int" Mode="In" />
+          <Parameter Name="WorkDays" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteSubContractorDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteSubContractorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="SubContractorID" Type="int" Mode="In" />
+          <Parameter Name="ReportingOfficer" Type="varchar" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteSubContractorList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteSubContractorUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="SubContractorID" Type="int" Mode="In" />
+          <Parameter Name="ReportingOfficer" Type="varchar" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SiteUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="WorkTypeID" Type="int" Mode="In" />
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+          <Parameter Name="SiteName" Type="varchar" Mode="In" />
+          <Parameter Name="WorkType" Type="int" Mode="In" />
+          <Parameter Name="Notes" Type="varchar" Mode="In" />
+          <Parameter Name="Budget" Type="int" Mode="In" />
+          <Parameter Name="Allocation" Type="int" Mode="In" />
+          <Parameter Name="WorkDays" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SubContractorDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SubContractorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+          <Parameter Name="ABN" Type="varchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SubContractorList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SubContractorUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="ContractorID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="AddressID" Type="int" Mode="In" />
+          <Parameter Name="ABN" Type="varchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UserLoginDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UserLoginGetByUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UserLoginInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="PasswordHash" Type="varchar" Mode="In" />
+          <Parameter Name="UserRoleID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UserLoginList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UserLoginUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="PasswordHash" Type="varchar" Mode="In" />
+          <Parameter Name="UserRoleID" Type="int" Mode="In" />
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_WorkTypeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_WorkTypeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkTypeName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_WorkTypeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_WorkTypeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkTypeID" Type="int" Mode="In" />
+          <Parameter Name="WorkTypeName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="KiaOraModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApproveGroup" EntityType="Self.ApproveGroup" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ApproveGroups" EntityType="Self.ApproveGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApproveGroupUser" EntityType="Self.ApproveGroupUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContractorEmployees" EntityType="Self.ContractorEmployees" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Contractors" EntityType="Self.Contractors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EquipmentCategories" EntityType="Self.EquipmentCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EquipmentCategory" EntityType="Self.EquipmentCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Equipments" EntityType="Self.Equipments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobEmployee" EntityType="Self.JobEmployee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobEquipment" EntityType="Self.JobEquipment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="JobEquipments" EntityType="Self.JobEquipments" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RequestHeader" EntityType="Self.RequestHeader" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RequestHeaders" EntityType="Self.RequestHeaders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sites" EntityType="Self.Sites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SiteSubContractor" EntityType="Self.SiteSubContractor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SiteSubContractors" EntityType="Self.SiteSubContractors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubContractor" EntityType="Self.SubContractor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SubContractors" EntityType="Self.SubContractors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkType" EntityType="Self.WorkType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WorkTypes" EntityType="Self.WorkTypes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Address_Contractor" Association="Self.FK_Address_Contractor">
             <End Role="Address" EntitySet="Address" />
             <End Role="Contractor" EntitySet="Contractor" />
@@ -639,10 +770,6 @@
           <AssociationSet Name="FK_Contractor_SubContractor" Association="Self.FK_Contractor_SubContractor">
             <End Role="Contractor" EntitySet="Contractor" />
             <End Role="SubContractor" EntitySet="SubContractor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_JobEquipments_dbo_Jobs_JobID" Association="Self.FK_dbo_JobEquipments_dbo_Jobs_JobID">
-            <End Role="Jobs" EntitySet="Jobs" />
-            <End Role="JobEquipments" EntitySet="JobEquipments" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_ContractorEmployee" Association="Self.FK_Employee_ContractorEmployee">
             <End Role="Employee" EntitySet="Employee" />
@@ -685,7 +812,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="KiaOraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
@@ -700,20 +827,6 @@
           <NavigationProperty Name="Contractors" Relationship="Self.FK_Address_Contractor" FromRole="Address" ToRole="Contractor" />
           <NavigationProperty Name="Sites" Relationship="Self.FK_Address_Site" FromRole="Address" ToRole="Site" />
         </EntityType>
-        <EntityType Name="Address1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="StreetAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PostalCode" Type="Int32" Nullable="false" />
-          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="ApproveGroup">
           <Key>
             <PropertyRef Name="GroupID" />
@@ -723,16 +836,6 @@
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ApproveGroupUsers" Relationship="Self.FK_ApproveGroup_ApproveGroupUser" FromRole="ApproveGroup" ToRole="ApproveGroupUser" />
           <NavigationProperty Name="RequestHeaders" Relationship="Self.FK_ApproveGroup_RequestHeader" FromRole="ApproveGroup" ToRole="RequestHeader" />
-        </EntityType>
-        <EntityType Name="ApproveGroup1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GroupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ApproveGroupUser">
           <Key>
@@ -777,23 +880,6 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Contractor1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AddressID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmailID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ContactPerson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ContactNo" Type="Int32" Nullable="false" />
-          <Property Name="ABN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentOption" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -818,16 +904,6 @@
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="JobEmployees" Relationship="Self.FK_Employee_ContractorEmployee" FromRole="Employee" ToRole="JobEmployee" />
         </EntityType>
-        <EntityType Name="Employee1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmployeeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeContactNo" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="Equipment">
           <Key>
             <PropertyRef Name="ID" />
@@ -845,35 +921,11 @@
         </EntityType>
         <EntityType Name="EquipmentCategory">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="EquipmentCategory1">
-          <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Equipments" Relationship="Self.FK_Equipment_EquipmentCategory" FromRole="EquipmentCategory" ToRole="Equipment" />
-        </EntityType>
-        <EntityType Name="Equipment1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Brand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="PurchasedFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="WarrantyExpire" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
@@ -911,28 +963,6 @@
           <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_JobEquipment" FromRole="JobEquipment" ToRole="Equipment" />
           <NavigationProperty Name="Job" Relationship="Self.FK_Job_JobEquipment" FromRole="JobEquipment" ToRole="Job" />
         </EntityType>
-        <EntityType Name="JobEquipment1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="JobID" Type="Int32" />
-          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Job" Relationship="Self.FK_dbo_JobEquipments_dbo_Jobs_JobID" FromRole="JobEquipments" ToRole="Jobs" />
-        </EntityType>
-        <EntityType Name="Job1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SiteID" Type="Int32" Nullable="false" />
-          <Property Name="JobStartDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="JobEquipments" Relationship="Self.FK_dbo_JobEquipments_dbo_Jobs_JobID" FromRole="Jobs" ToRole="JobEquipments" />
-        </EntityType>
         <EntityType Name="RequestHeader">
           <Key>
             <PropertyRef Name="ID" />
@@ -949,22 +979,6 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ApproveGroup" Relationship="Self.FK_ApproveGroup_RequestHeader" FromRole="RequestHeader" ToRole="ApproveGroup" />
           <NavigationProperty Name="Job" Relationship="Self.FK_RequestHeader_Job" FromRole="RequestHeader" ToRole="Job" />
-        </EntityType>
-        <EntityType Name="RequestHeader1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequestID" Type="Int32" Nullable="false" />
-          <Property Name="GroupID" Type="Int32" Nullable="false" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="JobID" Type="Int32" Nullable="false" />
-          <Property Name="RequestDateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ApproveGroupID" Type="Int32" Nullable="false" />
-          <Property Name="ApproveStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ApprovedDateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Site">
           <Key>
@@ -986,23 +1000,6 @@
           <NavigationProperty Name="SiteSubContractors" Relationship="Self.FK_Site_SiteSubContractor" FromRole="Site" ToRole="SiteSubContractor" />
           <NavigationProperty Name="WorkType1" Relationship="Self.FK_WorkType_Site" FromRole="Site" ToRole="WorkType" />
         </EntityType>
-        <EntityType Name="Site1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WorkTypeID" Type="Int32" Nullable="false" />
-          <Property Name="AddressID" Type="Int32" Nullable="false" />
-          <Property Name="ContractorID" Type="Int32" Nullable="false" />
-          <Property Name="SiteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="WorkType" Type="Int32" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Budget" Type="Int32" Nullable="false" />
-          <Property Name="Allocation" Type="Int32" Nullable="false" />
-          <Property Name="WorkDays" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="SiteSubContractor">
           <Key>
             <PropertyRef Name="ID" />
@@ -1015,17 +1012,6 @@
           <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Site" Relationship="Self.FK_Site_SiteSubContractor" FromRole="SiteSubContractor" ToRole="Site" />
         </EntityType>
-        <EntityType Name="SiteSubContractor1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubContractorID" Type="Int32" Nullable="false" />
-          <Property Name="ReportingOfficer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteID" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="SubContractor">
           <Key>
             <PropertyRef Name="ID" />
@@ -1037,19 +1023,6 @@
           <Property Name="ABN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Contractor" Relationship="Self.FK_Contractor_SubContractor" FromRole="SubContractor" ToRole="Contractor" />
-        </EntityType>
-        <EntityType Name="SubContractor1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractorID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AddressID" Type="Int32" Nullable="false" />
-          <Property Name="ABN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -1081,15 +1054,6 @@
           <Property Name="WorkTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="WorkTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Sites" Relationship="Self.FK_WorkType_Site" FromRole="WorkType" ToRole="Site" />
-        </EntityType>
-        <EntityType Name="WorkType1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WorkTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Address_Contractor">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
@@ -1200,7 +1164,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Equipment_EquipmentCategory">
-          <End Role="EquipmentCategory" Type="Self.EquipmentCategory1" Multiplicity="1" />
+          <End Role="EquipmentCategory" Type="Self.EquipmentCategory" Multiplicity="1" />
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EquipmentCategory">
@@ -1259,18 +1223,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_JobEquipments_dbo_Jobs_JobID">
-          <End Role="Jobs" Type="Self.Job1" Multiplicity="0..1" />
-          <End Role="JobEquipments" Type="Self.JobEquipment1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jobs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobEquipments">
-              <PropertyRef Name="JobID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Site_SiteSubContractor">
           <End Role="Site" Type="Self.Site" Multiplicity="0..1" />
           <End Role="SiteSubContractor" Type="Self.SiteSubContractor" Multiplicity="*" />
@@ -1297,36 +1249,23 @@
         </Association>
         <EntityContainer Name="KiaOraEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Address" />
-          <EntitySet Name="Addresses1" EntityType="Self.Address1" />
           <EntitySet Name="ApproveGroups" EntityType="Self.ApproveGroup" />
-          <EntitySet Name="ApproveGroups1" EntityType="Self.ApproveGroup1" />
           <EntitySet Name="ApproveGroupUsers" EntityType="Self.ApproveGroupUser" />
           <EntitySet Name="Contractors" EntityType="Self.Contractor" />
           <EntitySet Name="ContractorEmployees" EntityType="Self.ContractorEmployee" />
-          <EntitySet Name="Contractors1" EntityType="Self.Contractor1" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Employees1" EntityType="Self.Employee1" />
           <EntitySet Name="Equipments" EntityType="Self.Equipment" />
           <EntitySet Name="EquipmentCategories" EntityType="Self.EquipmentCategory" />
-          <EntitySet Name="EquipmentCategories1" EntityType="Self.EquipmentCategory1" />
-          <EntitySet Name="Equipments1" EntityType="Self.Equipment1" />
           <EntitySet Name="Jobs" EntityType="Self.Job" />
           <EntitySet Name="JobEmployees" EntityType="Self.JobEmployee" />
           <EntitySet Name="JobEquipments" EntityType="Self.JobEquipment" />
-          <EntitySet Name="JobEquipments1" EntityType="Self.JobEquipment1" />
-          <EntitySet Name="Jobs1" EntityType="Self.Job1" />
           <EntitySet Name="RequestHeaders" EntityType="Self.RequestHeader" />
-          <EntitySet Name="RequestHeaders1" EntityType="Self.RequestHeader1" />
           <EntitySet Name="Sites" EntityType="Self.Site" />
-          <EntitySet Name="Sites1" EntityType="Self.Site1" />
           <EntitySet Name="SiteSubContractors" EntityType="Self.SiteSubContractor" />
-          <EntitySet Name="SiteSubContractors1" EntityType="Self.SiteSubContractor1" />
           <EntitySet Name="SubContractors" EntityType="Self.SubContractor" />
-          <EntitySet Name="SubContractors1" EntityType="Self.SubContractor1" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
           <EntitySet Name="WorkTypes" EntityType="Self.WorkType" />
-          <EntitySet Name="WorkTypes1" EntityType="Self.WorkType1" />
           <AssociationSet Name="FK_Address_Contractor" Association="Self.FK_Address_Contractor">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Contractor" EntitySet="Contractors" />
@@ -1364,7 +1303,7 @@
             <End Role="JobEmployee" EntitySet="JobEmployees" />
           </AssociationSet>
           <AssociationSet Name="FK_Equipment_EquipmentCategory" Association="Self.FK_Equipment_EquipmentCategory">
-            <End Role="EquipmentCategory" EntitySet="EquipmentCategories1" />
+            <End Role="EquipmentCategory" EntitySet="EquipmentCategories" />
             <End Role="Equipment" EntitySet="Equipments" />
           </AssociationSet>
           <AssociationSet Name="FK_Equipment_JobEquipment" Association="Self.FK_Equipment_JobEquipment">
@@ -1383,10 +1322,6 @@
             <End Role="Site" EntitySet="Sites" />
             <End Role="Job" EntitySet="Jobs" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_JobEquipments_dbo_Jobs_JobID" Association="Self.FK_dbo_JobEquipments_dbo_Jobs_JobID">
-            <End Role="Jobs" EntitySet="Jobs1" />
-            <End Role="JobEquipments" EntitySet="JobEquipments1" />
-          </AssociationSet>
           <AssociationSet Name="FK_Site_SiteSubContractor" Association="Self.FK_Site_SiteSubContractor">
             <End Role="Site" EntitySet="Sites" />
             <End Role="SiteSubContractor" EntitySet="SiteSubContractors" />
@@ -1395,15 +1330,656 @@
             <End Role="WorkType" EntitySet="WorkTypes" />
             <End Role="Site" EntitySet="Sites" />
           </AssociationSet>
+          <FunctionImport Name="sp_AddressDelete">
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AddressInsert" ReturnType="Collection(KiaOraModel.sp_AddressInsert_Result)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="StreetAddress" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="PostalCode" Mode="In" Type="Int32" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AddressList" ReturnType="Collection(KiaOraModel.sp_AddressList_Result)">
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AddressUpdate" ReturnType="Collection(KiaOraModel.sp_AddressUpdate_Result)">
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="StreetAddress" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="PostalCode" Mode="In" Type="Int32" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ApproveGroupDelete">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ApproveGroupInsert" ReturnType="Collection(KiaOraModel.sp_ApproveGroupInsert_Result)">
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ApproveGroupList" ReturnType="Collection(KiaOraModel.sp_ApproveGroupList_Result)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ApproveGroupUpdate" ReturnType="Collection(KiaOraModel.sp_ApproveGroupUpdate_Result)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ApproveGroupUserDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ApproveGroupUserInsert" ReturnType="Collection(KiaOraModel.sp_ApproveGroupUserInsert_Result)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ApproveGroupUserList" ReturnType="Collection(KiaOraModel.sp_ApproveGroupUserList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorDelete">
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorEmployeeDelete">
+            <Parameter Name="EmployeeJobID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorEmployeeInsert">
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="JoinDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorEmployeeList">
+            <Parameter Name="EmployeeJobID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorEmployeeUpdate">
+            <Parameter Name="EmployeeJobID" Mode="In" Type="Int32" />
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="JoinDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorInsert" ReturnType="Collection(KiaOraModel.sp_ContractorInsert_Result)">
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="ContactPerson" Mode="In" Type="String" />
+            <Parameter Name="ContactNo" Mode="In" Type="Int32" />
+            <Parameter Name="ABN" Mode="In" Type="String" />
+            <Parameter Name="PaymentOption" Mode="In" Type="Int32" />
+            <Parameter Name="InvoiceDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorList" ReturnType="Collection(KiaOraModel.sp_ContractorList_Result)">
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ContractorUpdate" ReturnType="Collection(KiaOraModel.sp_ContractorUpdate_Result)">
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="ContactPerson" Mode="In" Type="String" />
+            <Parameter Name="ContactNo" Mode="In" Type="Int32" />
+            <Parameter Name="ABN" Mode="In" Type="String" />
+            <Parameter Name="PaymentOption" Mode="In" Type="Int32" />
+            <Parameter Name="InvoiceDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeeDelete">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeeInsert">
+            <Parameter Name="EmployeeName" Mode="In" Type="String" />
+            <Parameter Name="EmployeeContactNo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeeList">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EmployeeUpdate">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeName" Mode="In" Type="String" />
+            <Parameter Name="EmployeeContactNo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentCategoryDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentCategoryInsert" ReturnType="Collection(KiaOraModel.sp_EquipmentCategoryInsert_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentCategoryList" ReturnType="Collection(KiaOraModel.sp_EquipmentCategoryList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentCategoryUpdate" ReturnType="Collection(KiaOraModel.sp_EquipmentCategoryUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentInsert" ReturnType="Collection(KiaOraModel.sp_EquipmentInsert_Result)">
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="Brand" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="PurchasedFrom" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WarrantyExpire" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentList" ReturnType="Collection(KiaOraModel.sp_EquipmentList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EquipmentUpdate" ReturnType="Collection(KiaOraModel.sp_EquipmentUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="Brand" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="PurchasedFrom" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WarrantyExpire" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetAllEquipments" ReturnType="Collection(KiaOraModel.SP_GetAllEquipments_Result)" />
+          <FunctionImport Name="sp_JobDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_JobEquipmentDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_JobEquipmentInsert" ReturnType="Collection(KiaOraModel.sp_JobEquipmentInsert_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+            <Parameter Name="EquipmentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_JobEquipmentList" ReturnType="Collection(KiaOraModel.sp_JobEquipmentList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_JobEquipmentUpdate" ReturnType="Collection(KiaOraModel.sp_JobEquipmentUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+            <Parameter Name="EquipmentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_JobInsert" ReturnType="Collection(KiaOraModel.sp_JobInsert_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+            <Parameter Name="JobStartDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_JobList" ReturnType="Collection(KiaOraModel.sp_JobList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_JobUpdate" ReturnType="Collection(KiaOraModel.sp_JobUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+            <Parameter Name="JobStartDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RequestHeaderDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RequestHeaderInsert" ReturnType="Collection(KiaOraModel.sp_RequestHeaderInsert_Result)">
+            <Parameter Name="RequestID" Mode="In" Type="Int32" />
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+            <Parameter Name="RequestDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ApproveGroupID" Mode="In" Type="Int32" />
+            <Parameter Name="ApproveStatus" Mode="In" Type="String" />
+            <Parameter Name="ApprovedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RequestHeaderList" ReturnType="Collection(KiaOraModel.sp_RequestHeaderList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RequestHeaderUpdate" ReturnType="Collection(KiaOraModel.sp_RequestHeaderUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="RequestID" Mode="In" Type="Int32" />
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+            <Parameter Name="RequestDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="ApproveGroupID" Mode="In" Type="Int32" />
+            <Parameter Name="ApproveStatus" Mode="In" Type="String" />
+            <Parameter Name="ApprovedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteInsert" ReturnType="Collection(KiaOraModel.sp_SiteInsert_Result)">
+            <Parameter Name="WorkTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="SiteName" Mode="In" Type="String" />
+            <Parameter Name="WorkType" Mode="In" Type="Int32" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+            <Parameter Name="Budget" Mode="In" Type="Int32" />
+            <Parameter Name="Allocation" Mode="In" Type="Int32" />
+            <Parameter Name="WorkDays" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteList" ReturnType="Collection(KiaOraModel.sp_SiteList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteSubContractorDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteSubContractorInsert" ReturnType="Collection(KiaOraModel.sp_SiteSubContractorInsert_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="SubContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="ReportingOfficer" Mode="In" Type="String" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteSubContractorList" ReturnType="Collection(KiaOraModel.sp_SiteSubContractorList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteSubContractorUpdate" ReturnType="Collection(KiaOraModel.sp_SiteSubContractorUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="SubContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="ReportingOfficer" Mode="In" Type="String" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SiteUpdate" ReturnType="Collection(KiaOraModel.sp_SiteUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="WorkTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="SiteName" Mode="In" Type="String" />
+            <Parameter Name="WorkType" Mode="In" Type="Int32" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+            <Parameter Name="Budget" Mode="In" Type="Int32" />
+            <Parameter Name="Allocation" Mode="In" Type="Int32" />
+            <Parameter Name="WorkDays" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SubContractorDelete">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SubContractorInsert" ReturnType="Collection(KiaOraModel.sp_SubContractorInsert_Result)">
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+            <Parameter Name="ABN" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SubContractorList" ReturnType="Collection(KiaOraModel.sp_SubContractorList_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SubContractorUpdate" ReturnType="Collection(KiaOraModel.sp_SubContractorUpdate_Result)">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="ContractorID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="AddressID" Mode="In" Type="Int32" />
+            <Parameter Name="ABN" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UserLoginDelete">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UserLoginGetByUserName" ReturnType="Collection(KiaOraModel.sp_UserLoginGetByUserName_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UserLoginInsert" ReturnType="Collection(KiaOraModel.sp_UserLoginInsert_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="PasswordHash" Mode="In" Type="String" />
+            <Parameter Name="UserRoleID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UserLoginList" ReturnType="Collection(KiaOraModel.sp_UserLoginList_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UserLoginUpdate" ReturnType="Collection(KiaOraModel.sp_UserLoginUpdate_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="PasswordHash" Mode="In" Type="String" />
+            <Parameter Name="UserRoleID" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_WorkTypeDelete">
+            <Parameter Name="WorkTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_WorkTypeInsert" ReturnType="Collection(KiaOraModel.sp_WorkTypeInsert_Result)">
+            <Parameter Name="WorkTypeName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_WorkTypeList" ReturnType="Collection(KiaOraModel.sp_WorkTypeList_Result)">
+            <Parameter Name="WorkTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_WorkTypeUpdate" ReturnType="Collection(KiaOraModel.sp_WorkTypeUpdate_Result)">
+            <Parameter Name="WorkTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="WorkTypeName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_AddressInsert_Result">
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="StreetAddress" Nullable="false" MaxLength="2000" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="PostalCode" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_AddressList_Result">
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="StreetAddress" Nullable="false" MaxLength="2000" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="PostalCode" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_AddressUpdate_Result">
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="StreetAddress" Nullable="false" MaxLength="2000" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="PostalCode" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_ApproveGroupInsert_Result">
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_ApproveGroupList_Result">
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_ApproveGroupUpdate_Result">
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_ApproveGroupUserInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ApproveGroupUserList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ContractorInsert_Result">
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ContactNo" Nullable="true" />
+          <Property Type="String" Name="ABN" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PaymentOption" Nullable="true" />
+          <Property Type="DateTime" Name="InvoiceDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="sp_ContractorList_Result">
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ContactNo" Nullable="true" />
+          <Property Type="String" Name="ABN" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PaymentOption" Nullable="true" />
+          <Property Type="DateTime" Name="InvoiceDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="sp_ContractorUpdate_Result">
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ContactPerson" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ContactNo" Nullable="true" />
+          <Property Type="String" Name="ABN" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PaymentOption" Nullable="true" />
+          <Property Type="DateTime" Name="InvoiceDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="sp_EquipmentCategoryInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_EquipmentCategoryList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_EquipmentCategoryUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_EquipmentInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Brand" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="PurchasedFrom" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="WarrantyExpire" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_EquipmentList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Brand" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="PurchasedFrom" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="WarrantyExpire" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_EquipmentUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Brand" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="PurchasedFrom" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="WarrantyExpire" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GetAllEquipments_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Brand" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="PurchasedFrom" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="WarrantyExpire" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_JobEquipmentInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="JobID" Nullable="false" />
+          <Property Type="Int32" Name="EquipmentID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_JobEquipmentList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="JobID" Nullable="false" />
+          <Property Type="Int32" Name="EquipmentID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_JobEquipmentUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="JobID" Nullable="false" />
+          <Property Type="Int32" Name="EquipmentID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_JobInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="DateTime" Name="JobStartDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_JobList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="DateTime" Name="JobStartDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_JobUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="DateTime" Name="JobStartDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_RequestHeaderInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="RequestID" Nullable="true" />
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="true" />
+          <Property Type="Int32" Name="JobID" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ApproveGroupID" Nullable="true" />
+          <Property Type="String" Name="ApproveStatus" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="ApprovedDateTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_RequestHeaderList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="RequestID" Nullable="true" />
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="true" />
+          <Property Type="Int32" Name="JobID" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ApproveGroupID" Nullable="true" />
+          <Property Type="String" Name="ApproveStatus" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="ApprovedDateTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_RequestHeaderUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="RequestID" Nullable="true" />
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="true" />
+          <Property Type="Int32" Name="JobID" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ApproveGroupID" Nullable="true" />
+          <Property Type="String" Name="ApproveStatus" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="ApprovedDateTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_SiteInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="WorkTypeID" Nullable="false" />
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="String" Name="SiteName" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="WorkType" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Budget" Nullable="true" />
+          <Property Type="Int32" Name="Allocation" Nullable="true" />
+          <Property Type="Int32" Name="WorkDays" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SiteList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="WorkTypeID" Nullable="false" />
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="String" Name="SiteName" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="WorkType" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Budget" Nullable="true" />
+          <Property Type="Int32" Name="Allocation" Nullable="true" />
+          <Property Type="Int32" Name="WorkDays" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SiteSubContractorInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="SubContractorID" Nullable="true" />
+          <Property Type="String" Name="ReportingOfficer" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="SiteID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SiteSubContractorList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="SubContractorID" Nullable="true" />
+          <Property Type="String" Name="ReportingOfficer" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="SiteID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SiteSubContractorUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="SubContractorID" Nullable="true" />
+          <Property Type="String" Name="ReportingOfficer" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="SiteID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SiteUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="WorkTypeID" Nullable="false" />
+          <Property Type="Int32" Name="AddressID" Nullable="false" />
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="String" Name="SiteName" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="WorkType" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Budget" Nullable="true" />
+          <Property Type="Int32" Name="Allocation" Nullable="true" />
+          <Property Type="Int32" Name="WorkDays" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_SubContractorInsert_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="AddressID" Nullable="true" />
+          <Property Type="String" Name="ABN" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_SubContractorList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="AddressID" Nullable="true" />
+          <Property Type="String" Name="ABN" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_SubContractorUpdate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ContractorID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="AddressID" Nullable="true" />
+          <Property Type="String" Name="ABN" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_UserLoginGetByUserName_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PasswordHash" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="UserRoleID" Nullable="true" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_UserLoginInsert_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PasswordHash" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="UserRoleID" Nullable="true" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_UserLoginList_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PasswordHash" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="UserRoleID" Nullable="true" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_UserLoginUpdate_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PasswordHash" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="UserRoleID" Nullable="true" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_WorkTypeInsert_Result">
+          <Property Type="Int32" Name="WorkTypeID" Nullable="false" />
+          <Property Type="String" Name="WorkTypeName" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_WorkTypeList_Result">
+          <Property Type="Int32" Name="WorkTypeID" Nullable="false" />
+          <Property Type="String" Name="WorkTypeName" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_WorkTypeUpdate_Result">
+          <Property Type="Int32" Name="WorkTypeID" Nullable="false" />
+          <Property Type="String" Name="WorkTypeName" Nullable="true" MaxLength="200" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="KiaOraEntities">
+        <EntityContainerMapping StorageEntityContainer="KiaOraModelStoreContainer" CdmEntityContainer="KiaOraEntities">
           <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="DataModel.Address">
+            <EntityTypeMapping TypeName="KiaOraModel.Address">
               <MappingFragment StoreEntitySet="Address">
                 <ScalarProperty Name="AddressID" ColumnName="AddressID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1415,23 +1991,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Addresses1">
-            <EntityTypeMapping TypeName="DataModel.Address1">
-              <MappingFragment StoreEntitySet="Addresses">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ApproveGroups">
-            <EntityTypeMapping TypeName="DataModel.ApproveGroup">
+            <EntityTypeMapping TypeName="KiaOraModel.ApproveGroup">
               <MappingFragment StoreEntitySet="ApproveGroup">
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
@@ -1439,19 +2000,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ApproveGroups1">
-            <EntityTypeMapping TypeName="DataModel.ApproveGroup1">
-              <MappingFragment StoreEntitySet="ApproveGroups">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ApproveGroupUsers">
-            <EntityTypeMapping TypeName="DataModel.ApproveGroupUser">
+            <EntityTypeMapping TypeName="KiaOraModel.ApproveGroupUser">
               <MappingFragment StoreEntitySet="ApproveGroupUser">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
@@ -1460,7 +2010,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contractors">
-            <EntityTypeMapping TypeName="DataModel.Contractor">
+            <EntityTypeMapping TypeName="KiaOraModel.Contractor">
               <MappingFragment StoreEntitySet="Contractor">
                 <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
                 <ScalarProperty Name="AddressID" ColumnName="AddressID" />
@@ -1476,7 +2026,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ContractorEmployees">
-            <EntityTypeMapping TypeName="DataModel.ContractorEmployee">
+            <EntityTypeMapping TypeName="KiaOraModel.ContractorEmployee">
               <MappingFragment StoreEntitySet="ContractorEmployees">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EmployeeJobID" ColumnName="EmployeeJobID" />
@@ -1488,26 +2038,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Contractors1">
-            <EntityTypeMapping TypeName="DataModel.Contractor1">
-              <MappingFragment StoreEntitySet="Contractors">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="ABN" ColumnName="ABN" />
-                <ScalarProperty Name="PaymentOption" ColumnName="PaymentOption" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="DataModel.Employee">
+            <EntityTypeMapping TypeName="KiaOraModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1530,19 +2062,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employees1">
-            <EntityTypeMapping TypeName="DataModel.Employee1">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="EmployeeContactNo" ColumnName="EmployeeContactNo" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Equipments">
-            <EntityTypeMapping TypeName="DataModel.Equipment">
+            <EntityTypeMapping TypeName="KiaOraModel.Equipment">
               <MappingFragment StoreEntitySet="Equipment">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
@@ -1556,41 +2077,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EquipmentCategories">
-            <EntityTypeMapping TypeName="DataModel.EquipmentCategory">
-              <MappingFragment StoreEntitySet="EquipmentCategories">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EquipmentCategories1">
-            <EntityTypeMapping TypeName="DataModel.EquipmentCategory1">
+            <EntityTypeMapping TypeName="KiaOraModel.EquipmentCategory">
               <MappingFragment StoreEntitySet="EquipmentCategory">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Equipments1">
-            <EntityTypeMapping TypeName="DataModel.Equipment1">
-              <MappingFragment StoreEntitySet="Equipments">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Brand" ColumnName="Brand" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="PurchasedFrom" ColumnName="PurchasedFrom" />
-                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
-                <ScalarProperty Name="WarrantyExpire" ColumnName="WarrantyExpire" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="DataModel.Job">
+            <EntityTypeMapping TypeName="KiaOraModel.Job">
               <MappingFragment StoreEntitySet="Job">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SiteID" ColumnName="SiteID" />
@@ -1599,7 +2094,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="JobEmployees">
-            <EntityTypeMapping TypeName="DataModel.JobEmployee">
+            <EntityTypeMapping TypeName="KiaOraModel.JobEmployee">
               <MappingFragment StoreEntitySet="JobEmployee">
                 <ScalarProperty Name="EmployeeJobID" ColumnName="EmployeeJobID" />
                 <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
@@ -1613,7 +2108,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="JobEquipments">
-            <EntityTypeMapping TypeName="DataModel.JobEquipment">
+            <EntityTypeMapping TypeName="KiaOraModel.JobEquipment">
               <MappingFragment StoreEntitySet="JobEquipment">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="JobID" ColumnName="JobID" />
@@ -1621,30 +2116,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="JobEquipments1">
-            <EntityTypeMapping TypeName="DataModel.JobEquipment1">
-              <MappingFragment StoreEntitySet="JobEquipments">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="JobID" ColumnName="JobID" />
-                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Jobs1">
-            <EntityTypeMapping TypeName="DataModel.Job1">
-              <MappingFragment StoreEntitySet="Jobs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
-                <ScalarProperty Name="JobStartDate" ColumnName="JobStartDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="RequestHeaders">
-            <EntityTypeMapping TypeName="DataModel.RequestHeader">
+            <EntityTypeMapping TypeName="KiaOraModel.RequestHeader">
               <MappingFragment StoreEntitySet="RequestHeader">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="RequestID" ColumnName="RequestID" />
@@ -1659,25 +2132,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RequestHeaders1">
-            <EntityTypeMapping TypeName="DataModel.RequestHeader1">
-              <MappingFragment StoreEntitySet="RequestHeaders">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
-                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="JobID" ColumnName="JobID" />
-                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
-                <ScalarProperty Name="ApproveGroupID" ColumnName="ApproveGroupID" />
-                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
-                <ScalarProperty Name="ApprovedDateTime" ColumnName="ApprovedDateTime" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sites">
-            <EntityTypeMapping TypeName="DataModel.Site">
+            <EntityTypeMapping TypeName="KiaOraModel.Site">
               <MappingFragment StoreEntitySet="Site">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
@@ -1692,26 +2148,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sites1">
-            <EntityTypeMapping TypeName="DataModel.Site1">
-              <MappingFragment StoreEntitySet="Sites">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
-                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
-                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
-                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
-                <ScalarProperty Name="WorkType" ColumnName="WorkType" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Budget" ColumnName="Budget" />
-                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
-                <ScalarProperty Name="WorkDays" ColumnName="WorkDays" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SiteSubContractors">
-            <EntityTypeMapping TypeName="DataModel.SiteSubContractor">
+            <EntityTypeMapping TypeName="KiaOraModel.SiteSubContractor">
               <MappingFragment StoreEntitySet="SiteSubContractor">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SiteID" ColumnName="SiteID" />
@@ -1722,20 +2160,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SiteSubContractors1">
-            <EntityTypeMapping TypeName="DataModel.SiteSubContractor1">
-              <MappingFragment StoreEntitySet="SiteSubContractors">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SubContractorID" ColumnName="SubContractorID" />
-                <ScalarProperty Name="ReportingOfficer" ColumnName="ReportingOfficer" />
-                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SubContractors">
-            <EntityTypeMapping TypeName="DataModel.SubContractor">
+            <EntityTypeMapping TypeName="KiaOraModel.SubContractor">
               <MappingFragment StoreEntitySet="SubContractor">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
@@ -1746,22 +2172,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SubContractors1">
-            <EntityTypeMapping TypeName="DataModel.SubContractor1">
-              <MappingFragment StoreEntitySet="SubContractors">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
-                <ScalarProperty Name="ABN" ColumnName="ABN" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
-            <EntityTypeMapping TypeName="DataModel.UserAccount">
+            <EntityTypeMapping TypeName="KiaOraModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccounts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -1774,7 +2186,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserLogins">
-            <EntityTypeMapping TypeName="DataModel.UserLogin">
+            <EntityTypeMapping TypeName="KiaOraModel.UserLogin">
               <MappingFragment StoreEntitySet="UserLogin">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -1785,23 +2197,531 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WorkTypes">
-            <EntityTypeMapping TypeName="DataModel.WorkType">
+            <EntityTypeMapping TypeName="KiaOraModel.WorkType">
               <MappingFragment StoreEntitySet="WorkType">
                 <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
                 <ScalarProperty Name="WorkTypeName" ColumnName="WorkTypeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WorkTypes1">
-            <EntityTypeMapping TypeName="DataModel.WorkType1">
-              <MappingFragment StoreEntitySet="WorkTypes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WorkTypeName" ColumnName="WorkTypeName" />
+          <FunctionImportMapping FunctionImportName="sp_AddressDelete" FunctionName="KiaOraModel.Store.sp_AddressDelete" />
+          <FunctionImportMapping FunctionImportName="sp_AddressInsert" FunctionName="KiaOraModel.Store.sp_AddressInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_AddressInsert_Result">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AddressList" FunctionName="KiaOraModel.Store.sp_AddressList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_AddressList_Result">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AddressUpdate" FunctionName="KiaOraModel.Store.sp_AddressUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_AddressUpdate_Result">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ApproveGroupDelete" FunctionName="KiaOraModel.Store.sp_ApproveGroupDelete" />
+          <FunctionImportMapping FunctionImportName="sp_ApproveGroupInsert" FunctionName="KiaOraModel.Store.sp_ApproveGroupInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ApproveGroupInsert_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ApproveGroupList" FunctionName="KiaOraModel.Store.sp_ApproveGroupList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ApproveGroupList_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ApproveGroupUpdate" FunctionName="KiaOraModel.Store.sp_ApproveGroupUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ApproveGroupUpdate_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ApproveGroupUserDelete" FunctionName="KiaOraModel.Store.sp_ApproveGroupUserDelete" />
+          <FunctionImportMapping FunctionImportName="sp_ApproveGroupUserInsert" FunctionName="KiaOraModel.Store.sp_ApproveGroupUserInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ApproveGroupUserInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ApproveGroupUserList" FunctionName="KiaOraModel.Store.sp_ApproveGroupUserList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ApproveGroupUserList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ContractorDelete" FunctionName="KiaOraModel.Store.sp_ContractorDelete" />
+          <FunctionImportMapping FunctionImportName="sp_ContractorEmployeeDelete" FunctionName="KiaOraModel.Store.sp_ContractorEmployeeDelete" />
+          <FunctionImportMapping FunctionImportName="sp_ContractorEmployeeInsert" FunctionName="KiaOraModel.Store.sp_ContractorEmployeeInsert" />
+          <FunctionImportMapping FunctionImportName="sp_ContractorEmployeeList" FunctionName="KiaOraModel.Store.sp_ContractorEmployeeList" />
+          <FunctionImportMapping FunctionImportName="sp_ContractorEmployeeUpdate" FunctionName="KiaOraModel.Store.sp_ContractorEmployeeUpdate" />
+          <FunctionImportMapping FunctionImportName="sp_ContractorInsert" FunctionName="KiaOraModel.Store.sp_ContractorInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ContractorInsert_Result">
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="PaymentOption" ColumnName="PaymentOption" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ContractorList" FunctionName="KiaOraModel.Store.sp_ContractorList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ContractorList_Result">
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="PaymentOption" ColumnName="PaymentOption" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ContractorUpdate" FunctionName="KiaOraModel.Store.sp_ContractorUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_ContractorUpdate_Result">
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="PaymentOption" ColumnName="PaymentOption" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EmployeeDelete" FunctionName="KiaOraModel.Store.sp_EmployeeDelete" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeeInsert" FunctionName="KiaOraModel.Store.sp_EmployeeInsert" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeeList" FunctionName="KiaOraModel.Store.sp_EmployeeList" />
+          <FunctionImportMapping FunctionImportName="sp_EmployeeUpdate" FunctionName="KiaOraModel.Store.sp_EmployeeUpdate" />
+          <FunctionImportMapping FunctionImportName="sp_EquipmentCategoryDelete" FunctionName="KiaOraModel.Store.sp_EquipmentCategoryDelete" />
+          <FunctionImportMapping FunctionImportName="sp_EquipmentCategoryInsert" FunctionName="KiaOraModel.Store.sp_EquipmentCategoryInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_EquipmentCategoryInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EquipmentCategoryList" FunctionName="KiaOraModel.Store.sp_EquipmentCategoryList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_EquipmentCategoryList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EquipmentCategoryUpdate" FunctionName="KiaOraModel.Store.sp_EquipmentCategoryUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_EquipmentCategoryUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EquipmentDelete" FunctionName="KiaOraModel.Store.sp_EquipmentDelete" />
+          <FunctionImportMapping FunctionImportName="sp_EquipmentInsert" FunctionName="KiaOraModel.Store.sp_EquipmentInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_EquipmentInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="PurchasedFrom" ColumnName="PurchasedFrom" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="WarrantyExpire" ColumnName="WarrantyExpire" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EquipmentList" FunctionName="KiaOraModel.Store.sp_EquipmentList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_EquipmentList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="PurchasedFrom" ColumnName="PurchasedFrom" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="WarrantyExpire" ColumnName="WarrantyExpire" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EquipmentUpdate" FunctionName="KiaOraModel.Store.sp_EquipmentUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_EquipmentUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="PurchasedFrom" ColumnName="PurchasedFrom" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="WarrantyExpire" ColumnName="WarrantyExpire" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetAllEquipments" FunctionName="KiaOraModel.Store.SP_GetAllEquipments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.SP_GetAllEquipments_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="PurchasedFrom" ColumnName="PurchasedFrom" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="WarrantyExpire" ColumnName="WarrantyExpire" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_JobDelete" FunctionName="KiaOraModel.Store.sp_JobDelete" />
+          <FunctionImportMapping FunctionImportName="sp_JobEquipmentDelete" FunctionName="KiaOraModel.Store.sp_JobEquipmentDelete" />
+          <FunctionImportMapping FunctionImportName="sp_JobEquipmentInsert" FunctionName="KiaOraModel.Store.sp_JobEquipmentInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_JobEquipmentInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_JobEquipmentList" FunctionName="KiaOraModel.Store.sp_JobEquipmentList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_JobEquipmentList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_JobEquipmentUpdate" FunctionName="KiaOraModel.Store.sp_JobEquipmentUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_JobEquipmentUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_JobInsert" FunctionName="KiaOraModel.Store.sp_JobInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_JobInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="JobStartDate" ColumnName="JobStartDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_JobList" FunctionName="KiaOraModel.Store.sp_JobList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_JobList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="JobStartDate" ColumnName="JobStartDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_JobUpdate" FunctionName="KiaOraModel.Store.sp_JobUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_JobUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="JobStartDate" ColumnName="JobStartDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RequestHeaderDelete" FunctionName="KiaOraModel.Store.sp_RequestHeaderDelete" />
+          <FunctionImportMapping FunctionImportName="sp_RequestHeaderInsert" FunctionName="KiaOraModel.Store.sp_RequestHeaderInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_RequestHeaderInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="ApproveGroupID" ColumnName="ApproveGroupID" />
+                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+                <ScalarProperty Name="ApprovedDateTime" ColumnName="ApprovedDateTime" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RequestHeaderList" FunctionName="KiaOraModel.Store.sp_RequestHeaderList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_RequestHeaderList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="ApproveGroupID" ColumnName="ApproveGroupID" />
+                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+                <ScalarProperty Name="ApprovedDateTime" ColumnName="ApprovedDateTime" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RequestHeaderUpdate" FunctionName="KiaOraModel.Store.sp_RequestHeaderUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_RequestHeaderUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="ApproveGroupID" ColumnName="ApproveGroupID" />
+                <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+                <ScalarProperty Name="ApprovedDateTime" ColumnName="ApprovedDateTime" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SiteDelete" FunctionName="KiaOraModel.Store.sp_SiteDelete" />
+          <FunctionImportMapping FunctionImportName="sp_SiteInsert" FunctionName="KiaOraModel.Store.sp_SiteInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SiteInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="WorkType" ColumnName="WorkType" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="WorkDays" ColumnName="WorkDays" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SiteList" FunctionName="KiaOraModel.Store.sp_SiteList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SiteList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="WorkType" ColumnName="WorkType" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="WorkDays" ColumnName="WorkDays" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SiteSubContractorDelete" FunctionName="KiaOraModel.Store.sp_SiteSubContractorDelete" />
+          <FunctionImportMapping FunctionImportName="sp_SiteSubContractorInsert" FunctionName="KiaOraModel.Store.sp_SiteSubContractorInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SiteSubContractorInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubContractorID" ColumnName="SubContractorID" />
+                <ScalarProperty Name="ReportingOfficer" ColumnName="ReportingOfficer" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SiteSubContractorList" FunctionName="KiaOraModel.Store.sp_SiteSubContractorList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SiteSubContractorList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubContractorID" ColumnName="SubContractorID" />
+                <ScalarProperty Name="ReportingOfficer" ColumnName="ReportingOfficer" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SiteSubContractorUpdate" FunctionName="KiaOraModel.Store.sp_SiteSubContractorUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SiteSubContractorUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubContractorID" ColumnName="SubContractorID" />
+                <ScalarProperty Name="ReportingOfficer" ColumnName="ReportingOfficer" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SiteUpdate" FunctionName="KiaOraModel.Store.sp_SiteUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SiteUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="WorkType" ColumnName="WorkType" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="WorkDays" ColumnName="WorkDays" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SubContractorDelete" FunctionName="KiaOraModel.Store.sp_SubContractorDelete" />
+          <FunctionImportMapping FunctionImportName="sp_SubContractorInsert" FunctionName="KiaOraModel.Store.sp_SubContractorInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SubContractorInsert_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SubContractorList" FunctionName="KiaOraModel.Store.sp_SubContractorList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SubContractorList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SubContractorUpdate" FunctionName="KiaOraModel.Store.sp_SubContractorUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_SubContractorUpdate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UserLoginDelete" FunctionName="KiaOraModel.Store.sp_UserLoginDelete" />
+          <FunctionImportMapping FunctionImportName="sp_UserLoginGetByUserName" FunctionName="KiaOraModel.Store.sp_UserLoginGetByUserName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_UserLoginGetByUserName_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UserLoginInsert" FunctionName="KiaOraModel.Store.sp_UserLoginInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_UserLoginInsert_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UserLoginList" FunctionName="KiaOraModel.Store.sp_UserLoginList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_UserLoginList_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UserLoginUpdate" FunctionName="KiaOraModel.Store.sp_UserLoginUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_UserLoginUpdate_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_WorkTypeDelete" FunctionName="KiaOraModel.Store.sp_WorkTypeDelete" />
+          <FunctionImportMapping FunctionImportName="sp_WorkTypeInsert" FunctionName="KiaOraModel.Store.sp_WorkTypeInsert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_WorkTypeInsert_Result">
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="WorkTypeName" ColumnName="WorkTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_WorkTypeList" FunctionName="KiaOraModel.Store.sp_WorkTypeList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_WorkTypeList_Result">
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="WorkTypeName" ColumnName="WorkTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_WorkTypeUpdate" FunctionName="KiaOraModel.Store.sp_WorkTypeUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KiaOraModel.sp_WorkTypeUpdate_Result">
+                <ScalarProperty Name="WorkTypeID" ColumnName="WorkTypeID" />
+                <ScalarProperty Name="WorkTypeName" ColumnName="WorkTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

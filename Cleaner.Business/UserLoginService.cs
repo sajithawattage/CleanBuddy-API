@@ -1,5 +1,5 @@
-﻿using Cleaner.DataAccess.UnitOfWork;
-using Cleaner.Model;
+﻿using Cleaner.DataAccess;
+using Cleaner.DataAccess.UnitOfWork;
 using EncryptStringSample;
 
 namespace Cleaner.Business

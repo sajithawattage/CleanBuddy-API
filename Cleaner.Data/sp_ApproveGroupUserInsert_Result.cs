@@ -10,15 +10,11 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class SiteSubContractor1
+    public partial class sp_ApproveGroupUserInsert_Result
     {
-        public int Id { get; set; }
-        public int SubContractorID { get; set; }
-        public string ReportingOfficer { get; set; }
-        public int SiteID { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public int ID { get; set; }
+        public int GroupID { get; set; }
+        public int UserID { get; set; }
     }
 }

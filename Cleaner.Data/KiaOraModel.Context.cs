@@ -12,6 +12,8 @@ namespace Cleaner.DataAccess
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class KiaOraEntities : DbContext
     {
@@ -26,35 +28,1099 @@ namespace Cleaner.DataAccess
         }
     
         public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<Address1> Addresses1 { get; set; }
         public virtual DbSet<ApproveGroup> ApproveGroups { get; set; }
-        public virtual DbSet<ApproveGroup1> ApproveGroups1 { get; set; }
         public virtual DbSet<ApproveGroupUser> ApproveGroupUsers { get; set; }
         public virtual DbSet<Contractor> Contractors { get; set; }
         public virtual DbSet<ContractorEmployee> ContractorEmployees { get; set; }
-        public virtual DbSet<Contractor1> Contractors1 { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Employee1> Employees1 { get; set; }
         public virtual DbSet<Equipment> Equipments { get; set; }
         public virtual DbSet<EquipmentCategory> EquipmentCategories { get; set; }
-        public virtual DbSet<EquipmentCategory1> EquipmentCategories1 { get; set; }
-        public virtual DbSet<Equipment1> Equipments1 { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<JobEmployee> JobEmployees { get; set; }
         public virtual DbSet<JobEquipment> JobEquipments { get; set; }
-        public virtual DbSet<JobEquipment1> JobEquipments1 { get; set; }
-        public virtual DbSet<Job1> Jobs1 { get; set; }
         public virtual DbSet<RequestHeader> RequestHeaders { get; set; }
-        public virtual DbSet<RequestHeader1> RequestHeaders1 { get; set; }
         public virtual DbSet<Site> Sites { get; set; }
-        public virtual DbSet<Site1> Sites1 { get; set; }
         public virtual DbSet<SiteSubContractor> SiteSubContractors { get; set; }
-        public virtual DbSet<SiteSubContractor1> SiteSubContractors1 { get; set; }
         public virtual DbSet<SubContractor> SubContractors { get; set; }
-        public virtual DbSet<SubContractor1> SubContractors1 { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<WorkType> WorkTypes { get; set; }
-        public virtual DbSet<WorkType1> WorkTypes1 { get; set; }
+    
+        public virtual int sp_AddressDelete(Nullable<int> addressID)
+        {
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AddressDelete", addressIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_AddressInsert_Result> sp_AddressInsert(string name, string streetAddress, string city, Nullable<int> postalCode, string state, string country)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var streetAddressParameter = streetAddress != null ?
+                new ObjectParameter("StreetAddress", streetAddress) :
+                new ObjectParameter("StreetAddress", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            var postalCodeParameter = postalCode.HasValue ?
+                new ObjectParameter("PostalCode", postalCode) :
+                new ObjectParameter("PostalCode", typeof(int));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var countryParameter = country != null ?
+                new ObjectParameter("Country", country) :
+                new ObjectParameter("Country", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_AddressInsert_Result>("sp_AddressInsert", nameParameter, streetAddressParameter, cityParameter, postalCodeParameter, stateParameter, countryParameter);
+        }
+    
+        public virtual ObjectResult<sp_AddressList_Result> sp_AddressList(Nullable<int> addressID)
+        {
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_AddressList_Result>("sp_AddressList", addressIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_AddressUpdate_Result> sp_AddressUpdate(Nullable<int> addressID, string name, string streetAddress, string city, Nullable<int> postalCode, string state, string country)
+        {
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var streetAddressParameter = streetAddress != null ?
+                new ObjectParameter("StreetAddress", streetAddress) :
+                new ObjectParameter("StreetAddress", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            var postalCodeParameter = postalCode.HasValue ?
+                new ObjectParameter("PostalCode", postalCode) :
+                new ObjectParameter("PostalCode", typeof(int));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var countryParameter = country != null ?
+                new ObjectParameter("Country", country) :
+                new ObjectParameter("Country", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_AddressUpdate_Result>("sp_AddressUpdate", addressIDParameter, nameParameter, streetAddressParameter, cityParameter, postalCodeParameter, stateParameter, countryParameter);
+        }
+    
+        public virtual int sp_ApproveGroupDelete(Nullable<int> groupID)
+        {
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ApproveGroupDelete", groupIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_ApproveGroupInsert_Result> sp_ApproveGroupInsert(string groupName, string description)
+        {
+            var groupNameParameter = groupName != null ?
+                new ObjectParameter("GroupName", groupName) :
+                new ObjectParameter("GroupName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ApproveGroupInsert_Result>("sp_ApproveGroupInsert", groupNameParameter, descriptionParameter);
+        }
+    
+        public virtual ObjectResult<sp_ApproveGroupList_Result> sp_ApproveGroupList(Nullable<int> groupID)
+        {
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ApproveGroupList_Result>("sp_ApproveGroupList", groupIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_ApproveGroupUpdate_Result> sp_ApproveGroupUpdate(Nullable<int> groupID, string groupName, string description)
+        {
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            var groupNameParameter = groupName != null ?
+                new ObjectParameter("GroupName", groupName) :
+                new ObjectParameter("GroupName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ApproveGroupUpdate_Result>("sp_ApproveGroupUpdate", groupIDParameter, groupNameParameter, descriptionParameter);
+        }
+    
+        public virtual int sp_ApproveGroupUserDelete(Nullable<int> iD, Nullable<int> groupID, Nullable<int> userID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ApproveGroupUserDelete", iDParameter, groupIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_ApproveGroupUserInsert_Result> sp_ApproveGroupUserInsert(Nullable<int> groupID, Nullable<int> userID)
+        {
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ApproveGroupUserInsert_Result>("sp_ApproveGroupUserInsert", groupIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_ApproveGroupUserList_Result> sp_ApproveGroupUserList(Nullable<int> iD, Nullable<int> groupID, Nullable<int> userID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ApproveGroupUserList_Result>("sp_ApproveGroupUserList", iDParameter, groupIDParameter, userIDParameter);
+        }
+    
+        public virtual int sp_ContractorDelete(Nullable<int> contractorID)
+        {
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ContractorDelete", contractorIDParameter);
+        }
+    
+        public virtual int sp_ContractorEmployeeDelete(Nullable<int> employeeJobID)
+        {
+            var employeeJobIDParameter = employeeJobID.HasValue ?
+                new ObjectParameter("EmployeeJobID", employeeJobID) :
+                new ObjectParameter("EmployeeJobID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ContractorEmployeeDelete", employeeJobIDParameter);
+        }
+    
+        public virtual int sp_ContractorEmployeeInsert(Nullable<int> contractorID, Nullable<int> employeeID, Nullable<System.DateTime> joinDate)
+        {
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            var joinDateParameter = joinDate.HasValue ?
+                new ObjectParameter("JoinDate", joinDate) :
+                new ObjectParameter("JoinDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ContractorEmployeeInsert", contractorIDParameter, employeeIDParameter, joinDateParameter);
+        }
+    
+        public virtual int sp_ContractorEmployeeList(Nullable<int> employeeJobID)
+        {
+            var employeeJobIDParameter = employeeJobID.HasValue ?
+                new ObjectParameter("EmployeeJobID", employeeJobID) :
+                new ObjectParameter("EmployeeJobID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ContractorEmployeeList", employeeJobIDParameter);
+        }
+    
+        public virtual int sp_ContractorEmployeeUpdate(Nullable<int> employeeJobID, Nullable<int> contractorID, Nullable<int> employeeID, Nullable<System.DateTime> joinDate)
+        {
+            var employeeJobIDParameter = employeeJobID.HasValue ?
+                new ObjectParameter("EmployeeJobID", employeeJobID) :
+                new ObjectParameter("EmployeeJobID", typeof(int));
+    
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            var joinDateParameter = joinDate.HasValue ?
+                new ObjectParameter("JoinDate", joinDate) :
+                new ObjectParameter("JoinDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ContractorEmployeeUpdate", employeeJobIDParameter, contractorIDParameter, employeeIDParameter, joinDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_ContractorInsert_Result> sp_ContractorInsert(Nullable<int> addressID, string name, string emailID, string contactPerson, Nullable<int> contactNo, string aBN, Nullable<int> paymentOption, Nullable<System.DateTime> invoiceDate, string note)
+        {
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var contactPersonParameter = contactPerson != null ?
+                new ObjectParameter("ContactPerson", contactPerson) :
+                new ObjectParameter("ContactPerson", typeof(string));
+    
+            var contactNoParameter = contactNo.HasValue ?
+                new ObjectParameter("ContactNo", contactNo) :
+                new ObjectParameter("ContactNo", typeof(int));
+    
+            var aBNParameter = aBN != null ?
+                new ObjectParameter("ABN", aBN) :
+                new ObjectParameter("ABN", typeof(string));
+    
+            var paymentOptionParameter = paymentOption.HasValue ?
+                new ObjectParameter("PaymentOption", paymentOption) :
+                new ObjectParameter("PaymentOption", typeof(int));
+    
+            var invoiceDateParameter = invoiceDate.HasValue ?
+                new ObjectParameter("InvoiceDate", invoiceDate) :
+                new ObjectParameter("InvoiceDate", typeof(System.DateTime));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ContractorInsert_Result>("sp_ContractorInsert", addressIDParameter, nameParameter, emailIDParameter, contactPersonParameter, contactNoParameter, aBNParameter, paymentOptionParameter, invoiceDateParameter, noteParameter);
+        }
+    
+        public virtual ObjectResult<sp_ContractorList_Result> sp_ContractorList(Nullable<int> contractorID)
+        {
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ContractorList_Result>("sp_ContractorList", contractorIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_ContractorUpdate_Result> sp_ContractorUpdate(Nullable<int> contractorID, Nullable<int> addressID, string name, string emailID, string contactPerson, Nullable<int> contactNo, string aBN, Nullable<int> paymentOption, Nullable<System.DateTime> invoiceDate, string note)
+        {
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var contactPersonParameter = contactPerson != null ?
+                new ObjectParameter("ContactPerson", contactPerson) :
+                new ObjectParameter("ContactPerson", typeof(string));
+    
+            var contactNoParameter = contactNo.HasValue ?
+                new ObjectParameter("ContactNo", contactNo) :
+                new ObjectParameter("ContactNo", typeof(int));
+    
+            var aBNParameter = aBN != null ?
+                new ObjectParameter("ABN", aBN) :
+                new ObjectParameter("ABN", typeof(string));
+    
+            var paymentOptionParameter = paymentOption.HasValue ?
+                new ObjectParameter("PaymentOption", paymentOption) :
+                new ObjectParameter("PaymentOption", typeof(int));
+    
+            var invoiceDateParameter = invoiceDate.HasValue ?
+                new ObjectParameter("InvoiceDate", invoiceDate) :
+                new ObjectParameter("InvoiceDate", typeof(System.DateTime));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("Note", note) :
+                new ObjectParameter("Note", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ContractorUpdate_Result>("sp_ContractorUpdate", contractorIDParameter, addressIDParameter, nameParameter, emailIDParameter, contactPersonParameter, contactNoParameter, aBNParameter, paymentOptionParameter, invoiceDateParameter, noteParameter);
+        }
+    
+        public virtual int sp_EmployeeDelete(Nullable<int> employeeID)
+        {
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeeDelete", employeeIDParameter);
+        }
+    
+        public virtual int sp_EmployeeInsert(string employeeName, Nullable<int> employeeContactNo)
+        {
+            var employeeNameParameter = employeeName != null ?
+                new ObjectParameter("EmployeeName", employeeName) :
+                new ObjectParameter("EmployeeName", typeof(string));
+    
+            var employeeContactNoParameter = employeeContactNo.HasValue ?
+                new ObjectParameter("EmployeeContactNo", employeeContactNo) :
+                new ObjectParameter("EmployeeContactNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeeInsert", employeeNameParameter, employeeContactNoParameter);
+        }
+    
+        public virtual int sp_EmployeeList(Nullable<int> employeeID)
+        {
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeeList", employeeIDParameter);
+        }
+    
+        public virtual int sp_EmployeeUpdate(Nullable<int> employeeID, string employeeName, Nullable<int> employeeContactNo)
+        {
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            var employeeNameParameter = employeeName != null ?
+                new ObjectParameter("EmployeeName", employeeName) :
+                new ObjectParameter("EmployeeName", typeof(string));
+    
+            var employeeContactNoParameter = employeeContactNo.HasValue ?
+                new ObjectParameter("EmployeeContactNo", employeeContactNo) :
+                new ObjectParameter("EmployeeContactNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EmployeeUpdate", employeeIDParameter, employeeNameParameter, employeeContactNoParameter);
+        }
+    
+        public virtual int sp_EquipmentCategoryDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EquipmentCategoryDelete", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_EquipmentCategoryInsert_Result> sp_EquipmentCategoryInsert(Nullable<int> iD, string name)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EquipmentCategoryInsert_Result>("sp_EquipmentCategoryInsert", iDParameter, nameParameter);
+        }
+    
+        public virtual ObjectResult<sp_EquipmentCategoryList_Result> sp_EquipmentCategoryList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EquipmentCategoryList_Result>("sp_EquipmentCategoryList", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_EquipmentCategoryUpdate_Result> sp_EquipmentCategoryUpdate(Nullable<int> iD, string name)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EquipmentCategoryUpdate_Result>("sp_EquipmentCategoryUpdate", iDParameter, nameParameter);
+        }
+    
+        public virtual int sp_EquipmentDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EquipmentDelete", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_EquipmentInsert_Result> sp_EquipmentInsert(string code, string brand, string model, Nullable<int> categoryID, string purchasedFrom, Nullable<System.DateTime> purchaseDate, Nullable<System.DateTime> warrantyExpire)
+        {
+            var codeParameter = code != null ?
+                new ObjectParameter("Code", code) :
+                new ObjectParameter("Code", typeof(string));
+    
+            var brandParameter = brand != null ?
+                new ObjectParameter("Brand", brand) :
+                new ObjectParameter("Brand", typeof(string));
+    
+            var modelParameter = model != null ?
+                new ObjectParameter("Model", model) :
+                new ObjectParameter("Model", typeof(string));
+    
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("CategoryID", categoryID) :
+                new ObjectParameter("CategoryID", typeof(int));
+    
+            var purchasedFromParameter = purchasedFrom != null ?
+                new ObjectParameter("PurchasedFrom", purchasedFrom) :
+                new ObjectParameter("PurchasedFrom", typeof(string));
+    
+            var purchaseDateParameter = purchaseDate.HasValue ?
+                new ObjectParameter("PurchaseDate", purchaseDate) :
+                new ObjectParameter("PurchaseDate", typeof(System.DateTime));
+    
+            var warrantyExpireParameter = warrantyExpire.HasValue ?
+                new ObjectParameter("WarrantyExpire", warrantyExpire) :
+                new ObjectParameter("WarrantyExpire", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EquipmentInsert_Result>("sp_EquipmentInsert", codeParameter, brandParameter, modelParameter, categoryIDParameter, purchasedFromParameter, purchaseDateParameter, warrantyExpireParameter);
+        }
+    
+        public virtual ObjectResult<sp_EquipmentList_Result> sp_EquipmentList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EquipmentList_Result>("sp_EquipmentList", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_EquipmentUpdate_Result> sp_EquipmentUpdate(Nullable<int> iD, string code, string brand, string model, Nullable<int> categoryID, string purchasedFrom, Nullable<System.DateTime> purchaseDate, Nullable<System.DateTime> warrantyExpire)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var codeParameter = code != null ?
+                new ObjectParameter("Code", code) :
+                new ObjectParameter("Code", typeof(string));
+    
+            var brandParameter = brand != null ?
+                new ObjectParameter("Brand", brand) :
+                new ObjectParameter("Brand", typeof(string));
+    
+            var modelParameter = model != null ?
+                new ObjectParameter("Model", model) :
+                new ObjectParameter("Model", typeof(string));
+    
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("CategoryID", categoryID) :
+                new ObjectParameter("CategoryID", typeof(int));
+    
+            var purchasedFromParameter = purchasedFrom != null ?
+                new ObjectParameter("PurchasedFrom", purchasedFrom) :
+                new ObjectParameter("PurchasedFrom", typeof(string));
+    
+            var purchaseDateParameter = purchaseDate.HasValue ?
+                new ObjectParameter("PurchaseDate", purchaseDate) :
+                new ObjectParameter("PurchaseDate", typeof(System.DateTime));
+    
+            var warrantyExpireParameter = warrantyExpire.HasValue ?
+                new ObjectParameter("WarrantyExpire", warrantyExpire) :
+                new ObjectParameter("WarrantyExpire", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EquipmentUpdate_Result>("sp_EquipmentUpdate", iDParameter, codeParameter, brandParameter, modelParameter, categoryIDParameter, purchasedFromParameter, purchaseDateParameter, warrantyExpireParameter);
+        }
+    
+        public virtual ObjectResult<SP_GetAllEquipments_Result> SP_GetAllEquipments()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetAllEquipments_Result>("SP_GetAllEquipments");
+        }
+    
+        public virtual int sp_JobDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_JobDelete", iDParameter);
+        }
+    
+        public virtual int sp_JobEquipmentDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_JobEquipmentDelete", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_JobEquipmentInsert_Result> sp_JobEquipmentInsert(Nullable<int> iD, Nullable<int> jobID, Nullable<int> equipmentID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var jobIDParameter = jobID.HasValue ?
+                new ObjectParameter("JobID", jobID) :
+                new ObjectParameter("JobID", typeof(int));
+    
+            var equipmentIDParameter = equipmentID.HasValue ?
+                new ObjectParameter("EquipmentID", equipmentID) :
+                new ObjectParameter("EquipmentID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_JobEquipmentInsert_Result>("sp_JobEquipmentInsert", iDParameter, jobIDParameter, equipmentIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_JobEquipmentList_Result> sp_JobEquipmentList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_JobEquipmentList_Result>("sp_JobEquipmentList", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_JobEquipmentUpdate_Result> sp_JobEquipmentUpdate(Nullable<int> iD, Nullable<int> jobID, Nullable<int> equipmentID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var jobIDParameter = jobID.HasValue ?
+                new ObjectParameter("JobID", jobID) :
+                new ObjectParameter("JobID", typeof(int));
+    
+            var equipmentIDParameter = equipmentID.HasValue ?
+                new ObjectParameter("EquipmentID", equipmentID) :
+                new ObjectParameter("EquipmentID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_JobEquipmentUpdate_Result>("sp_JobEquipmentUpdate", iDParameter, jobIDParameter, equipmentIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_JobInsert_Result> sp_JobInsert(Nullable<int> iD, Nullable<int> siteID, Nullable<System.DateTime> jobStartDate)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var siteIDParameter = siteID.HasValue ?
+                new ObjectParameter("SiteID", siteID) :
+                new ObjectParameter("SiteID", typeof(int));
+    
+            var jobStartDateParameter = jobStartDate.HasValue ?
+                new ObjectParameter("JobStartDate", jobStartDate) :
+                new ObjectParameter("JobStartDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_JobInsert_Result>("sp_JobInsert", iDParameter, siteIDParameter, jobStartDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_JobList_Result> sp_JobList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_JobList_Result>("sp_JobList", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_JobUpdate_Result> sp_JobUpdate(Nullable<int> iD, Nullable<int> siteID, Nullable<System.DateTime> jobStartDate)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var siteIDParameter = siteID.HasValue ?
+                new ObjectParameter("SiteID", siteID) :
+                new ObjectParameter("SiteID", typeof(int));
+    
+            var jobStartDateParameter = jobStartDate.HasValue ?
+                new ObjectParameter("JobStartDate", jobStartDate) :
+                new ObjectParameter("JobStartDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_JobUpdate_Result>("sp_JobUpdate", iDParameter, siteIDParameter, jobStartDateParameter);
+        }
+    
+        public virtual int sp_RequestHeaderDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RequestHeaderDelete", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_RequestHeaderInsert_Result> sp_RequestHeaderInsert(Nullable<int> requestID, Nullable<int> groupID, Nullable<int> employeeID, Nullable<int> jobID, Nullable<System.DateTime> requestDateTime, Nullable<int> approveGroupID, string approveStatus, Nullable<System.DateTime> approvedDateTime, Nullable<System.DateTime> createdDate)
+        {
+            var requestIDParameter = requestID.HasValue ?
+                new ObjectParameter("RequestID", requestID) :
+                new ObjectParameter("RequestID", typeof(int));
+    
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            var jobIDParameter = jobID.HasValue ?
+                new ObjectParameter("JobID", jobID) :
+                new ObjectParameter("JobID", typeof(int));
+    
+            var requestDateTimeParameter = requestDateTime.HasValue ?
+                new ObjectParameter("RequestDateTime", requestDateTime) :
+                new ObjectParameter("RequestDateTime", typeof(System.DateTime));
+    
+            var approveGroupIDParameter = approveGroupID.HasValue ?
+                new ObjectParameter("ApproveGroupID", approveGroupID) :
+                new ObjectParameter("ApproveGroupID", typeof(int));
+    
+            var approveStatusParameter = approveStatus != null ?
+                new ObjectParameter("ApproveStatus", approveStatus) :
+                new ObjectParameter("ApproveStatus", typeof(string));
+    
+            var approvedDateTimeParameter = approvedDateTime.HasValue ?
+                new ObjectParameter("ApprovedDateTime", approvedDateTime) :
+                new ObjectParameter("ApprovedDateTime", typeof(System.DateTime));
+    
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RequestHeaderInsert_Result>("sp_RequestHeaderInsert", requestIDParameter, groupIDParameter, employeeIDParameter, jobIDParameter, requestDateTimeParameter, approveGroupIDParameter, approveStatusParameter, approvedDateTimeParameter, createdDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_RequestHeaderList_Result> sp_RequestHeaderList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RequestHeaderList_Result>("sp_RequestHeaderList", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_RequestHeaderUpdate_Result> sp_RequestHeaderUpdate(Nullable<int> iD, Nullable<int> requestID, Nullable<int> groupID, Nullable<int> employeeID, Nullable<int> jobID, Nullable<System.DateTime> requestDateTime, Nullable<int> approveGroupID, string approveStatus, Nullable<System.DateTime> approvedDateTime, Nullable<System.DateTime> createdDate)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var requestIDParameter = requestID.HasValue ?
+                new ObjectParameter("RequestID", requestID) :
+                new ObjectParameter("RequestID", typeof(int));
+    
+            var groupIDParameter = groupID.HasValue ?
+                new ObjectParameter("GroupID", groupID) :
+                new ObjectParameter("GroupID", typeof(int));
+    
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            var jobIDParameter = jobID.HasValue ?
+                new ObjectParameter("JobID", jobID) :
+                new ObjectParameter("JobID", typeof(int));
+    
+            var requestDateTimeParameter = requestDateTime.HasValue ?
+                new ObjectParameter("RequestDateTime", requestDateTime) :
+                new ObjectParameter("RequestDateTime", typeof(System.DateTime));
+    
+            var approveGroupIDParameter = approveGroupID.HasValue ?
+                new ObjectParameter("ApproveGroupID", approveGroupID) :
+                new ObjectParameter("ApproveGroupID", typeof(int));
+    
+            var approveStatusParameter = approveStatus != null ?
+                new ObjectParameter("ApproveStatus", approveStatus) :
+                new ObjectParameter("ApproveStatus", typeof(string));
+    
+            var approvedDateTimeParameter = approvedDateTime.HasValue ?
+                new ObjectParameter("ApprovedDateTime", approvedDateTime) :
+                new ObjectParameter("ApprovedDateTime", typeof(System.DateTime));
+    
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RequestHeaderUpdate_Result>("sp_RequestHeaderUpdate", iDParameter, requestIDParameter, groupIDParameter, employeeIDParameter, jobIDParameter, requestDateTimeParameter, approveGroupIDParameter, approveStatusParameter, approvedDateTimeParameter, createdDateParameter);
+        }
+    
+        public virtual int sp_SiteDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SiteDelete", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SiteInsert_Result> sp_SiteInsert(Nullable<int> workTypeID, Nullable<int> addressID, Nullable<int> contractorID, string siteName, Nullable<int> workType, string notes, Nullable<int> budget, Nullable<int> allocation, Nullable<int> workDays)
+        {
+            var workTypeIDParameter = workTypeID.HasValue ?
+                new ObjectParameter("WorkTypeID", workTypeID) :
+                new ObjectParameter("WorkTypeID", typeof(int));
+    
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            var siteNameParameter = siteName != null ?
+                new ObjectParameter("SiteName", siteName) :
+                new ObjectParameter("SiteName", typeof(string));
+    
+            var workTypeParameter = workType.HasValue ?
+                new ObjectParameter("WorkType", workType) :
+                new ObjectParameter("WorkType", typeof(int));
+    
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            var budgetParameter = budget.HasValue ?
+                new ObjectParameter("Budget", budget) :
+                new ObjectParameter("Budget", typeof(int));
+    
+            var allocationParameter = allocation.HasValue ?
+                new ObjectParameter("Allocation", allocation) :
+                new ObjectParameter("Allocation", typeof(int));
+    
+            var workDaysParameter = workDays.HasValue ?
+                new ObjectParameter("WorkDays", workDays) :
+                new ObjectParameter("WorkDays", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SiteInsert_Result>("sp_SiteInsert", workTypeIDParameter, addressIDParameter, contractorIDParameter, siteNameParameter, workTypeParameter, notesParameter, budgetParameter, allocationParameter, workDaysParameter);
+        }
+    
+        public virtual ObjectResult<sp_SiteList_Result> sp_SiteList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SiteList_Result>("sp_SiteList", iDParameter);
+        }
+    
+        public virtual int sp_SiteSubContractorDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SiteSubContractorDelete", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SiteSubContractorInsert_Result> sp_SiteSubContractorInsert(Nullable<int> iD, Nullable<int> subContractorID, string reportingOfficer, Nullable<int> siteID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var subContractorIDParameter = subContractorID.HasValue ?
+                new ObjectParameter("SubContractorID", subContractorID) :
+                new ObjectParameter("SubContractorID", typeof(int));
+    
+            var reportingOfficerParameter = reportingOfficer != null ?
+                new ObjectParameter("ReportingOfficer", reportingOfficer) :
+                new ObjectParameter("ReportingOfficer", typeof(string));
+    
+            var siteIDParameter = siteID.HasValue ?
+                new ObjectParameter("SiteID", siteID) :
+                new ObjectParameter("SiteID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SiteSubContractorInsert_Result>("sp_SiteSubContractorInsert", iDParameter, subContractorIDParameter, reportingOfficerParameter, siteIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SiteSubContractorList_Result> sp_SiteSubContractorList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SiteSubContractorList_Result>("sp_SiteSubContractorList", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SiteSubContractorUpdate_Result> sp_SiteSubContractorUpdate(Nullable<int> iD, Nullable<int> subContractorID, string reportingOfficer, Nullable<int> siteID)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var subContractorIDParameter = subContractorID.HasValue ?
+                new ObjectParameter("SubContractorID", subContractorID) :
+                new ObjectParameter("SubContractorID", typeof(int));
+    
+            var reportingOfficerParameter = reportingOfficer != null ?
+                new ObjectParameter("ReportingOfficer", reportingOfficer) :
+                new ObjectParameter("ReportingOfficer", typeof(string));
+    
+            var siteIDParameter = siteID.HasValue ?
+                new ObjectParameter("SiteID", siteID) :
+                new ObjectParameter("SiteID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SiteSubContractorUpdate_Result>("sp_SiteSubContractorUpdate", iDParameter, subContractorIDParameter, reportingOfficerParameter, siteIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SiteUpdate_Result> sp_SiteUpdate(Nullable<int> iD, Nullable<int> workTypeID, Nullable<int> addressID, Nullable<int> contractorID, string siteName, Nullable<int> workType, string notes, Nullable<int> budget, Nullable<int> allocation, Nullable<int> workDays)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var workTypeIDParameter = workTypeID.HasValue ?
+                new ObjectParameter("WorkTypeID", workTypeID) :
+                new ObjectParameter("WorkTypeID", typeof(int));
+    
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            var siteNameParameter = siteName != null ?
+                new ObjectParameter("SiteName", siteName) :
+                new ObjectParameter("SiteName", typeof(string));
+    
+            var workTypeParameter = workType.HasValue ?
+                new ObjectParameter("WorkType", workType) :
+                new ObjectParameter("WorkType", typeof(int));
+    
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            var budgetParameter = budget.HasValue ?
+                new ObjectParameter("Budget", budget) :
+                new ObjectParameter("Budget", typeof(int));
+    
+            var allocationParameter = allocation.HasValue ?
+                new ObjectParameter("Allocation", allocation) :
+                new ObjectParameter("Allocation", typeof(int));
+    
+            var workDaysParameter = workDays.HasValue ?
+                new ObjectParameter("WorkDays", workDays) :
+                new ObjectParameter("WorkDays", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SiteUpdate_Result>("sp_SiteUpdate", iDParameter, workTypeIDParameter, addressIDParameter, contractorIDParameter, siteNameParameter, workTypeParameter, notesParameter, budgetParameter, allocationParameter, workDaysParameter);
+        }
+    
+        public virtual int sp_SubContractorDelete(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SubContractorDelete", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SubContractorInsert_Result> sp_SubContractorInsert(Nullable<int> contractorID, string name, Nullable<int> addressID, string aBN, string emailAddress)
+        {
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            var aBNParameter = aBN != null ?
+                new ObjectParameter("ABN", aBN) :
+                new ObjectParameter("ABN", typeof(string));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SubContractorInsert_Result>("sp_SubContractorInsert", contractorIDParameter, nameParameter, addressIDParameter, aBNParameter, emailAddressParameter);
+        }
+    
+        public virtual ObjectResult<sp_SubContractorList_Result> sp_SubContractorList(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SubContractorList_Result>("sp_SubContractorList", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SubContractorUpdate_Result> sp_SubContractorUpdate(Nullable<int> iD, Nullable<int> contractorID, string name, Nullable<int> addressID, string aBN, string emailAddress)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var contractorIDParameter = contractorID.HasValue ?
+                new ObjectParameter("ContractorID", contractorID) :
+                new ObjectParameter("ContractorID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var addressIDParameter = addressID.HasValue ?
+                new ObjectParameter("AddressID", addressID) :
+                new ObjectParameter("AddressID", typeof(int));
+    
+            var aBNParameter = aBN != null ?
+                new ObjectParameter("ABN", aBN) :
+                new ObjectParameter("ABN", typeof(string));
+    
+            var emailAddressParameter = emailAddress != null ?
+                new ObjectParameter("EmailAddress", emailAddress) :
+                new ObjectParameter("EmailAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SubContractorUpdate_Result>("sp_SubContractorUpdate", iDParameter, contractorIDParameter, nameParameter, addressIDParameter, aBNParameter, emailAddressParameter);
+        }
+    
+        public virtual int sp_UserLoginDelete(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UserLoginDelete", userIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_UserLoginGetByUserName_Result> sp_UserLoginGetByUserName(string userName)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UserLoginGetByUserName_Result>("sp_UserLoginGetByUserName", userNameParameter);
+        }
+    
+        public virtual ObjectResult<sp_UserLoginInsert_Result> sp_UserLoginInsert(string userName, string passwordHash, Nullable<int> userRoleID, Nullable<int> employeeID)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passwordHashParameter = passwordHash != null ?
+                new ObjectParameter("PasswordHash", passwordHash) :
+                new ObjectParameter("PasswordHash", typeof(string));
+    
+            var userRoleIDParameter = userRoleID.HasValue ?
+                new ObjectParameter("UserRoleID", userRoleID) :
+                new ObjectParameter("UserRoleID", typeof(int));
+    
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UserLoginInsert_Result>("sp_UserLoginInsert", userNameParameter, passwordHashParameter, userRoleIDParameter, employeeIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_UserLoginList_Result> sp_UserLoginList(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UserLoginList_Result>("sp_UserLoginList", userIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_UserLoginUpdate_Result> sp_UserLoginUpdate(Nullable<int> userID, string userName, string passwordHash, Nullable<int> userRoleID, Nullable<int> employeeID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passwordHashParameter = passwordHash != null ?
+                new ObjectParameter("PasswordHash", passwordHash) :
+                new ObjectParameter("PasswordHash", typeof(string));
+    
+            var userRoleIDParameter = userRoleID.HasValue ?
+                new ObjectParameter("UserRoleID", userRoleID) :
+                new ObjectParameter("UserRoleID", typeof(int));
+    
+            var employeeIDParameter = employeeID.HasValue ?
+                new ObjectParameter("EmployeeID", employeeID) :
+                new ObjectParameter("EmployeeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UserLoginUpdate_Result>("sp_UserLoginUpdate", userIDParameter, userNameParameter, passwordHashParameter, userRoleIDParameter, employeeIDParameter);
+        }
+    
+        public virtual int sp_WorkTypeDelete(Nullable<int> workTypeID)
+        {
+            var workTypeIDParameter = workTypeID.HasValue ?
+                new ObjectParameter("WorkTypeID", workTypeID) :
+                new ObjectParameter("WorkTypeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_WorkTypeDelete", workTypeIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_WorkTypeInsert_Result> sp_WorkTypeInsert(string workTypeName)
+        {
+            var workTypeNameParameter = workTypeName != null ?
+                new ObjectParameter("WorkTypeName", workTypeName) :
+                new ObjectParameter("WorkTypeName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_WorkTypeInsert_Result>("sp_WorkTypeInsert", workTypeNameParameter);
+        }
+    
+        public virtual ObjectResult<sp_WorkTypeList_Result> sp_WorkTypeList(Nullable<int> workTypeID)
+        {
+            var workTypeIDParameter = workTypeID.HasValue ?
+                new ObjectParameter("WorkTypeID", workTypeID) :
+                new ObjectParameter("WorkTypeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_WorkTypeList_Result>("sp_WorkTypeList", workTypeIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_WorkTypeUpdate_Result> sp_WorkTypeUpdate(Nullable<int> workTypeID, string workTypeName)
+        {
+            var workTypeIDParameter = workTypeID.HasValue ?
+                new ObjectParameter("WorkTypeID", workTypeID) :
+                new ObjectParameter("WorkTypeID", typeof(int));
+    
+            var workTypeNameParameter = workTypeName != null ?
+                new ObjectParameter("WorkTypeName", workTypeName) :
+                new ObjectParameter("WorkTypeName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_WorkTypeUpdate_Result>("sp_WorkTypeUpdate", workTypeIDParameter, workTypeNameParameter);
+        }
     }
 }

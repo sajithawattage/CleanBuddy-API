@@ -10,21 +10,15 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Contractor1
+    public partial class sp_AddressUpdate_Result
     {
-        public int Id { get; set; }
         public int AddressID { get; set; }
         public string Name { get; set; }
-        public string EmailID { get; set; }
-        public string ContactPerson { get; set; }
-        public int ContactNo { get; set; }
-        public string ABN { get; set; }
-        public int PaymentOption { get; set; }
-        public System.DateTime InvoiceDate { get; set; }
-        public string Note { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public string StreetAddress { get; set; }
+        public string City { get; set; }
+        public int PostalCode { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
     }
 }

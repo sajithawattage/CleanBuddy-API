@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Cleaner.Model;
-using Cleaner.DataAccess.Repositories;
 using System.Threading.Tasks;
 using Cleaner.DataAccess.UnitOfWork;
+using Cleaner.DataAccess;
 
 namespace Cleaner.Business
 {

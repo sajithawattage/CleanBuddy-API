@@ -10,18 +10,10 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Address1
+    public partial class sp_EquipmentCategoryUpdate_Result
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
-        public string StreetAddress { get; set; }
-        public string State { get; set; }
-        public string City { get; set; }
-        public int PostalCode { get; set; }
-        public string Country { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
     }
 }
