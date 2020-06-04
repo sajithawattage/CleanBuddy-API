@@ -42,10 +42,5 @@ namespace Cleaner.Business
             this._unitOfWork.EquipmentCategoryRepository<Equipment>().Update(equipment);
             return false;
         }
-
-        Task<IEnumerable<Equipment>> IEquipmentService.GetEquipmentList()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
