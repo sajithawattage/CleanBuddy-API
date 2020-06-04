@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Cleaner.Business;
+using Cleaner.DataAccess;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
-using Cleaner.Business;
-using Cleaner.Model;
 
 namespace Cleaner.API.Controllers
 {
@@ -10,7 +10,7 @@ namespace Cleaner.API.Controllers
     [AllowAnonymous]
     public class AddressController : ApiController
     {
-        private readonly IAddressService _addressService;
+        IAddressService _addressService;
 
         public AddressController(IAddressService addressService)
         {
@@ -19,19 +19,25 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetAddressList()
+        public IEnumerable<Address> GetAddressList()
         {
-            var list =  _addressService.GetAddressList();
-            return Ok(list);
+            var list = _addressService.GetAddressList();
+            if(list != null)
+            {
+                return list.ToList();
+            }
+            return null;
         }
+
 
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetAddressById(int id)
         {
-            _addressService.GetAddressById(id);
+            var equipment = _addressService.GetAddressById(id);
             return Ok();
         }
+
 
         [HttpPost]
         [Route("items")]

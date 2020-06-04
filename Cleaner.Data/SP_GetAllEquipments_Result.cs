@@ -10,11 +10,10 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Equipment1
+    public partial class SP_GetAllEquipments_Result
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Code { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
@@ -22,7 +21,5 @@ namespace Cleaner.DataAccess
         public string PurchasedFrom { get; set; }
         public System.DateTime PurchaseDate { get; set; }
         public System.DateTime WarrantyExpire { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
     }
 }

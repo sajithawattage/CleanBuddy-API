@@ -59,13 +59,7 @@
     <Compile Include="Address.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Address1.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ApproveGroup.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ApproveGroup1.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ApproveGroupUser.cs">
@@ -74,28 +68,16 @@
     <Compile Include="Contractor.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contractor1.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ContractorEmployee.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Employee1.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Equipment.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Equipment1.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EquipmentCategory.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EquipmentCategory1.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ConnectionFactory.cs" />
@@ -103,16 +85,10 @@
     <Compile Include="Job.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Job1.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="JobEmployee.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="JobEquipment.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="JobEquipment1.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="KiaOraModel.Context.cs">
@@ -165,19 +141,139 @@
     <Compile Include="RequestHeader.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="RequestHeader1.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Site.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Site1.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SiteSubContractor.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SiteSubContractor1.cs">
+    <Compile Include="sp_AddressInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_AddressList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_AddressUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ApproveGroupInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ApproveGroupList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ApproveGroupUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ApproveGroupUserInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ApproveGroupUserList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ContractorInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ContractorList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ContractorUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_EquipmentCategoryInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_EquipmentCategoryList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_EquipmentCategoryUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_EquipmentInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_EquipmentList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_EquipmentUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_GetAllEquipments_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_JobEquipmentInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_JobEquipmentList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_JobEquipmentUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_JobInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_JobList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_JobUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_RequestHeaderInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_RequestHeaderList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_RequestHeaderUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SiteInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SiteList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SiteSubContractorInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SiteSubContractorList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SiteSubContractorUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SiteUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SubContractorInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SubContractorList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_SubContractorUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_UserLoginGetByUserName_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_UserLoginInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_UserLoginList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_UserLoginUpdate_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_WorkTypeInsert_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_WorkTypeList_Result.cs">
+      <DependentUpon>KiaOraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_WorkTypeUpdate_Result.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SqlConstant\AddressSql.cs" />
@@ -195,9 +291,6 @@
     <Compile Include="SubContractor.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SubContractor1.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UserAccount.cs">
@@ -207,9 +300,6 @@
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WorkType.cs">
-      <DependentUpon>KiaOraModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WorkType1.cs">
       <DependentUpon>KiaOraModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -225,10 +315,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cleaner.Model\Cleaner.Model.csproj">
-      <Project>{C0181246-AA70-4F49-BD51-34FCC652E875}</Project>
-      <Name>Cleaner.Model</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="KiaOraModel.Context.tt">
@@ -241,9 +328,6 @@
       <DependentUpon>KiaOraModel.edmx</DependentUpon>
       <LastGenOutput>KiaOraModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,12 +1,6 @@
-﻿using Cleaner.DataAccess.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Cleaner.Model;
-using Cleaner.DataAccess.SqlConstant;
-
-using System.Data;
 using System.Data.Entity;
 
 namespace Cleaner.DataAccess.Repositories

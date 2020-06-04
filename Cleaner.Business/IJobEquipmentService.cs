@@ -1,8 +1,5 @@
-﻿using Cleaner.Model;
-using System;
+﻿using Cleaner.DataAccess;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cleaner.Business

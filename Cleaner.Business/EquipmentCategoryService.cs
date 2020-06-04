@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cleaner.Model;
-using Cleaner.DataAccess.Repositories;
+﻿using System.Collections.Generic;
+using Cleaner.DataAccess;
 using Cleaner.DataAccess.UnitOfWork;
 
 namespace Cleaner.Business

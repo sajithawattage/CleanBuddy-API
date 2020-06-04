@@ -1,5 +1,4 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.Data.Common;
 
@@ -7,7 +6,7 @@ namespace Cleaner.DataAccess.Infrastructure
 {
     public class ConnectionFactory : IConnectionFactory
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["CConnection"].ConnectionString;
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["KiaOraEntities"].ConnectionString;
 
         public IDbConnection GetConnection
         {
@@ -51,12 +50,9 @@ namespace Cleaner.DataAccess.Infrastructure
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            GC.SuppressFinalize(this);
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
         #endregion
-
     }
-
 }

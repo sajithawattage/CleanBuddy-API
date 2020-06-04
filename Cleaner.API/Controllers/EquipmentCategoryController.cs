@@ -1,10 +1,5 @@
 ﻿using Cleaner.Business;
-using Cleaner.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using Cleaner.DataAccess;
 using System.Threading.Tasks;
 using System.Web.Http;
 

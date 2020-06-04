@@ -10,21 +10,18 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Site1
+    public partial class sp_SiteList_Result
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public int WorkTypeID { get; set; }
         public int AddressID { get; set; }
         public int ContractorID { get; set; }
         public string SiteName { get; set; }
-        public int WorkType { get; set; }
+        public Nullable<int> WorkType { get; set; }
         public string Notes { get; set; }
-        public int Budget { get; set; }
-        public int Allocation { get; set; }
-        public int WorkDays { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<int> Budget { get; set; }
+        public Nullable<int> Allocation { get; set; }
+        public Nullable<int> WorkDays { get; set; }
     }
 }

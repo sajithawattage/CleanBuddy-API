@@ -1,6 +1,6 @@
 ﻿using Cleaner.Business;
-using Cleaner.Model;
-using System;
+using Cleaner.DataAccess;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Cleaner.API.Controllers
@@ -8,7 +8,7 @@ namespace Cleaner.API.Controllers
     [RoutePrefix("v1/employee")]
     public class EmployeeController : BaseController
     {
-        private readonly IEmployeeService _employeeService;
+        IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService employeeService)
         {
@@ -17,12 +17,12 @@ namespace Cleaner.API.Controllers
 
         [HttpGet]
         [Route("items")]
-        public IHttpActionResult GetEmployeeList()
+        public async Task<IHttpActionResult> GetEmployeeList()
         {
-            var equipmentList = _employeeService.GetEmployeeList();
-            return Ok(equipmentList);
+            //var list = await _employeeService.GetEmployeeList();
+            return null;//Ok(list);
         }
-
+        
         [HttpGet]
         [Route("items/{id:int}")]
         public IHttpActionResult GetEmployeeById(int id)
@@ -30,7 +30,7 @@ namespace Cleaner.API.Controllers
             var equipment = _employeeService.GetEmployeeById(id);
             return Ok(equipment);
         }
-
+        
         [HttpPost]
         [Route("items")]
         public IHttpActionResult SaveEmployee([FromBody] Employee employee)
@@ -62,7 +62,7 @@ namespace Cleaner.API.Controllers
         }
 
         [HttpDelete]
-        [Route("{int:id}")]
+        [Route("{id}")]
         public IHttpActionResult RemoveEquipments(int id)
         {
             var result = _employeeService.DeleteEmployee(id);

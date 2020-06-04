@@ -2,6 +2,6 @@
 {
     public interface IUserLoginRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        Model.UserAccount GetUser(string userName);
+        DataAccess.UserAccount GetUser(string userName);
     }
 }

@@ -10,14 +10,10 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ApproveGroup1
+    public partial class sp_WorkTypeUpdate_Result
     {
-        public int Id { get; set; }
-        public string GroupName { get; set; }
-        public string Description { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public int WorkTypeID { get; set; }
+        public string WorkTypeName { get; set; }
     }
 }

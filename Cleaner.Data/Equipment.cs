@@ -29,7 +29,7 @@ namespace Cleaner.DataAccess
         public System.DateTime PurchaseDate { get; set; }
         public System.DateTime WarrantyExpire { get; set; }
     
-        public virtual EquipmentCategory1 EquipmentCategory { get; set; }
+        public virtual EquipmentCategory EquipmentCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobEquipment> JobEquipments { get; set; }
     }

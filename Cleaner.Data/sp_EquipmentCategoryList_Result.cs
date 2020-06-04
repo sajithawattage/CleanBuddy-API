@@ -10,16 +10,10 @@
 namespace Cleaner.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class JobEquipment1
+    public partial class sp_EquipmentCategoryList_Result
     {
-        public int Id { get; set; }
-        public Nullable<int> JobID { get; set; }
-        public int EquipmentID { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
-    
-        public virtual Job1 Job { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
 }
