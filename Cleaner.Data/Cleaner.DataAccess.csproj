@@ -110,6 +110,7 @@
     <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\ApproveGroupRepository.cs" />
     <Compile Include="Repositories\ApproveGroupUserRepository.cs" />
+    <Compile Include="Repositories\ContractorEmployeeRepository.cs" />
     <Compile Include="Repositories\ContractorRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\EquipmentCategoryRepository.cs" />

@@ -17,12 +17,11 @@ namespace Cleaner.Business
         public Equipment GetEquipmentById(int id)
         {
             return this._unitOfWork.EquipmentCategoryRepository<Equipment>().GetByID(id);
-            
         }
 
         public  IEnumerable<Equipment> GetEquipmentList()
         {
-            return null;//await this._unitOfWork.EquipmentCategoryRepository<Equipment>().GetAll();
+            return this._unitOfWork.EquipmentCategoryRepository<Equipment>().GetAll();
         }
 
         public bool DeleteEquipment(int id)

@@ -25,9 +25,9 @@ namespace Cleaner.Business
             return this._unitOfWork.JobRepository<JobEquipment>().GetByID(id);
         }
 
-        public Task<IEnumerable<JobEquipment>> GetJobEquipmentList()
+        public IEnumerable<JobEquipment> GetJobEquipmentList()
         {
-            return null;
+            return _unitOfWork.JobRepository<JobEquipment>().GetAll();
         }
 
         public bool SaveJobEquipment(JobEquipment jobEquipment)

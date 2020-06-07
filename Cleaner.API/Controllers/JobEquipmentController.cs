@@ -19,10 +19,9 @@ namespace Cleaner.API.Controllers
         [Route("items")]
         public async Task<IHttpActionResult> GetJobEquipmentList()
         {
-            var list = await _jobEquipmentService.GetJobEquipmentList();
+            var list = _jobEquipmentService.GetJobEquipmentList();
             return Ok(list);
         }
-
 
         [HttpGet]
         [Route("items/{id:int}")]

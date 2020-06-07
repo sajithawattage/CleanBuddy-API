@@ -19,8 +19,7 @@ namespace Cleaner.DataAccess.Repositories
         public UserAccount GetUser(string userName)
         {
             var query = _context.UserAccounts
-                .Where(x => x.UserName == userName)
-                .Select(x => x);
+                .Where(x => x.UserName == userName).ToList();
 
             if (query.Any())
             {

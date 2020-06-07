@@ -23,17 +23,23 @@ namespace Cleaner.API.Authentication
         {
             var userService = GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IUserLoginService)) as IUserLoginService;
             var x = userService.GetUser(context.UserName, context.Password);
+            if (x == null)
+            {
+                context.Rejected();
+            }
+            else
+            {
+                //Create ClaimsIdentity
+                ClaimsIdentity oAuthIdentity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
+                ClaimsIdentity cookiesIdentity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationType);
 
-            //Create ClaimsIdentity
-            ClaimsIdentity oAuthIdentity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
-            ClaimsIdentity cookiesIdentity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationType);
-            
-            //pass user name
-            AuthenticationProperties properties = CreateProperties(context.UserName);
-            AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
+                //pass user name
+                AuthenticationProperties properties = CreateProperties(context.UserName);
+                AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
 
-            context.Validated(ticket);
-            context.Request.Context.Authentication.SignIn(cookiesIdentity);
+                context.Validated(ticket);
+                context.Request.Context.Authentication.SignIn(cookiesIdentity);
+            }           
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
@@ -75,7 +81,8 @@ namespace Cleaner.API.Authentication
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName }
+                { "userName", userName },
+
             };
             return new AuthenticationProperties(data);
         }

@@ -19,7 +19,7 @@ namespace Cleaner.API.Controllers
         [Route("items")]
         public async Task<IHttpActionResult> GetJobList()
         {
-            var list =await _jobService.GetJobList();
+            var list = _jobService.GetJobList();
             return Ok(list);
         }
 

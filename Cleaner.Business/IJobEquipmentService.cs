@@ -6,7 +6,7 @@ namespace Cleaner.Business
 {
     public interface IJobEquipmentService
     {
-        Task<IEnumerable<JobEquipment>> GetJobEquipmentList();
+        IEnumerable<JobEquipment> GetJobEquipmentList();
         JobEquipment GetJobEquipmentById(int id);
         bool SaveJobEquipment(JobEquipment jobEquipment);
         bool UpdateJobEquipment(JobEquipment jobEquipment);

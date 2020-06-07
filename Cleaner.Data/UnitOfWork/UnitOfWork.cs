@@ -1,5 +1,4 @@
-﻿using Cleaner.DataAccess.Infrastructure;
-using Cleaner.DataAccess.Repositories;
+﻿using Cleaner.DataAccess.Repositories;
 using System;
 using System.Collections;
 using System.Linq;
@@ -39,10 +38,10 @@ namespace Cleaner.DataAccess.UnitOfWork
             return CreateRepositoryInstance<ApproveGroupUserRepository<TEntity>, IApproveGroupUserRepository<TEntity>>();
         }
 
-        //public IContractorEmployeeRepository<TEntity> ContractorEmployeeRepository<TEntity>() where TEntity : class
-        //{
-        //    return CreateRepositoryInstance<ContractorEmployeeRepository<TEntity>, IContractorEmployeeRepository<TEntity>>();
-        //}
+        public IContractorEmployeeRepository<TEntity> ContractorEmployeeRepository<TEntity>() where TEntity : class
+        {
+            return CreateRepositoryInstance<ContractorEmployeeRepository<TEntity>, IContractorEmployeeRepository<TEntity>>();
+        }
 
         public IContractorRepository<TEntity> ContractorRepository<TEntity>() where TEntity : class
         {
@@ -78,6 +77,7 @@ namespace Cleaner.DataAccess.UnitOfWork
         //{
         //    return CreateRepositoryInstance<SiteSubContractorRepository<TEntity>, ISiteSubContractorRepository<TEntity>>();
         //}
+
         //public ISubContractorRepository<TEntity> SubContractorRepository<TEntity>() where TEntity : class
         //{
         //    return CreateRepositoryInstance<SubContractorRepository<TEntity>, ISubContractorRepository<TEntity>>();

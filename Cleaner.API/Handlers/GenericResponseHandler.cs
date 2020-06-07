@@ -30,9 +30,10 @@ namespace Cleaner.API.Handlers
         {
             string errorMessage = null;
             HttpStatusCode statusCode = response.StatusCode;
+
             if (!IsResponseValid(response))
             {
-                return request.CreateResponse(HttpStatusCode.BadRequest, "Invalid response.");
+                return request.CreateResponse(statusCode, "Invalid response.");
             }
 
             object responseContent;

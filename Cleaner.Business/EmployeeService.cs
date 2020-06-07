@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cleaner.DataAccess.UnitOfWork;
 using Cleaner.DataAccess;
+using System.Threading.Tasks;
 
 namespace Cleaner.Business
 {
@@ -26,7 +27,7 @@ namespace Cleaner.Business
 
         public IEnumerable<Employee> GetEmployeeList()
         {
-            return this._unitOfWork.EmployeeRepository<Employee>().GetAll();
+            return _unitOfWork.EmployeeRepository<Employee>().GetAll();
         }
 
         public bool SaveEmployee(Employee employee)

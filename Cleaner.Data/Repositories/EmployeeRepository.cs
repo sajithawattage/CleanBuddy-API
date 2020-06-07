@@ -12,6 +12,5 @@ namespace Cleaner.DataAccess.Repositories
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
-        
     }
 }

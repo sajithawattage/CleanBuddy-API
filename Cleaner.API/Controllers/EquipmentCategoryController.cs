@@ -58,7 +58,7 @@ namespace Cleaner.API.Controllers
                 _equipementCategoryService.UpdateEquipmentCategory(eqiupment);
                 return Ok();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return InternalServerError(e);
             }
