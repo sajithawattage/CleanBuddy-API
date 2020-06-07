@@ -1,5 +1,5 @@
 ﻿using Cleaner.Business;
-using Cleaner.Model;
+using Cleaner.DataAccess;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -19,10 +19,9 @@ namespace Cleaner.API.Controllers
         [Route("items")]
         public async Task<IHttpActionResult> GetJobEquipmentList()
         {
-            var list = await _jobEquipmentService.GetJobEquipmentList();
+            var list = _jobEquipmentService.GetJobEquipmentList();
             return Ok(list);
         }
-
 
         [HttpGet]
         [Route("items/{id:int}")]

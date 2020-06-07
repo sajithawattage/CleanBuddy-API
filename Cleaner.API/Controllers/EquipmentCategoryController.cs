@@ -1,10 +1,6 @@
 ﻿using Cleaner.Business;
-using Cleaner.Model;
+using Cleaner.DataAccess;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -62,7 +58,7 @@ namespace Cleaner.API.Controllers
                 _equipementCategoryService.UpdateEquipmentCategory(eqiupment);
                 return Ok();
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return InternalServerError(e);
             }

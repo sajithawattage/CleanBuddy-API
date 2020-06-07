@@ -1,4 +1,4 @@
-﻿using Cleaner.Model;
+﻿using Cleaner.DataAccess;
 using System.Collections.Generic;
 
 namespace Cleaner.Business

@@ -14,3 +14,4 @@ x86/
 [Aa][Rr][Mm]64/
 /packages
 *.suo
+*.vs

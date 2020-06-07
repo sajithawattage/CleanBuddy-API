@@ -1,15 +1,12 @@
-﻿using Cleaner.Model;
-using System;
+﻿using Cleaner.DataAccess;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cleaner.Business
 {
     public interface IJobEquipmentService
     {
-        Task<IEnumerable<JobEquipment>> GetJobEquipmentList();
+        IEnumerable<JobEquipment> GetJobEquipmentList();
         JobEquipment GetJobEquipmentById(int id);
         bool SaveJobEquipment(JobEquipment jobEquipment);
         bool UpdateJobEquipment(JobEquipment jobEquipment);

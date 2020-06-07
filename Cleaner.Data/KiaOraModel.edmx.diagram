@@ -4,55 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b5dbdc4e94ed4c4cac0fe07e44ea47ec" Name="Diagram1">
-        <EntityTypeShape EntityType="DataModel.Address" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Address1" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ApproveGroup" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ApproveGroup1" Width="1.5" PointX="12.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ApproveGroupUser" Width="1.5" PointX="11.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Contractor" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ContractorEmployee" Width="1.5" PointX="12.75" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Contractor1" Width="1.5" PointX="13.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Employee1" Width="1.5" PointX="12.75" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Equipment" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.EquipmentCategory" Width="1.5" PointX="5.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.EquipmentCategory1" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Equipment1" Width="1.5" PointX="14.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Job" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.JobEmployee" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.JobEquipment" Width="1.5" PointX="12.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.JobEquipment1" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Job1" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.RequestHeader" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.RequestHeader1" Width="1.5" PointX="14.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Site" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Site1" Width="1.5" PointX="14.75" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.SiteSubContractor" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.SiteSubContractor1" Width="1.5" PointX="15.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.SubContractor" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.SubContractor1" Width="1.5" PointX="0.75" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.UserAccount" Width="1.5" PointX="2.75" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.UserLogin" Width="1.5" PointX="9" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.WorkType" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.WorkType1" Width="1.5" PointX="7.75" PointY="11.125" IsExpanded="true" />
-        <AssociationConnector Association="DataModel.FK_Address_Contractor" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Address_Site" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_ApproveGroup_ApproveGroupUser" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_ApproveGroup_RequestHeader" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_UserLogin_ApproveGroupUser" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Contractor_ContractorEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Contractor_Site" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Contractor_SubContractor" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Employee_ContractorEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Equipment_EquipmentCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Equipment_JobEquipment" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Job_JobEquipment" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_RequestHeader_Job" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Site_Job" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_dbo_JobEquipments_dbo_Jobs_JobID" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_Site_SiteSubContractor" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.FK_WorkType_Site" ManuallyRouted="false" />
+      <Diagram DiagramId="a8b206cdd4c3476d8f798b76eb7061d5" Name="Diagram1">
+        <EntityTypeShape EntityType="KiaOraModel.Address" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.ApproveGroup" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.ApproveGroupUser" Width="1.5" PointX="11.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Contractor" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.ContractorEmployee" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Equipment" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.EquipmentCategory" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Job" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.JobEmployee" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.JobEquipment" Width="1.5" PointX="12.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.RequestHeader" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.Site" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.SiteSubContractor" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.SubContractor" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.UserAccount" Width="1.5" PointX="2.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.UserLogin" Width="1.5" PointX="9" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KiaOraModel.WorkType" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="KiaOraModel.FK_Address_Contractor" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Address_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_ApproveGroup_ApproveGroupUser" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_ApproveGroup_RequestHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_UserLogin_ApproveGroupUser" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Contractor_ContractorEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Contractor_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Contractor_SubContractor" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Employee_ContractorEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Equipment_EquipmentCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Equipment_JobEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Job_JobEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_RequestHeader_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Site_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_Site_SiteSubContractor" ManuallyRouted="false" />
+        <AssociationConnector Association="KiaOraModel.FK_WorkType_Site" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,34 +7,25 @@ namespace Cleaner.DataAccess.Repositories
 {
     public class UserLoginRepository<TEntity> : Repository<TEntity>, IUserLoginRepository<TEntity> where TEntity : class
     {
-        private readonly CDbContext _context;
+        private readonly KiaOraEntities _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public UserLoginRepository(CDbContext context) : base(context)
+        public UserLoginRepository(KiaOraEntities context) : base(context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
 
-        public Model.UserAccount GetUser(string userName)
+        public UserAccount GetUser(string userName)
         {
-            var query = from x in _context.UserAccount
-                        where x.UserName == userName
-                        select new Model.UserAccount
-                        {
-                            Id = x.Id,
-                            UserName = x.UserName,
-                            UserRoleID = x.UserRoleID,
-                            EmployeeID = x.EmployeeID,
-                            PasswordHash = x.PasswordHash,
-                            CreatedDate = x.CreatedDate,
-                            UpdateDate = x.UpdateDate
-                        };
+            var query = _context.UserAccounts
+                .Where(x => x.UserName == userName).ToList();
 
             if (query.Any())
             {
                 return query.FirstOrDefault();
             }
+
             return null;
         }
     }

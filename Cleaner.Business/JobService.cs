@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Cleaner.Model;
-using Cleaner.DataAccess.Repositories;
 using Cleaner.DataAccess.UnitOfWork;
+using Cleaner.DataAccess;
 
 namespace Cleaner.Business
 {
@@ -26,9 +25,9 @@ namespace Cleaner.Business
             return this._unitOfWork.JobRepository<Job>().GetByID(id);
         }
 
-        public Task<IEnumerable<Job>> GetJobList()
+        public IEnumerable<Job> GetJobList()
         {
-            return null;// this._unitOfWork.JobRepository<Job>().GetAll();
+            return _unitOfWork.JobRepository<Job>().GetAll();
         }
 
         public bool SaveJob(Job job)

@@ -1,14 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using Cleaner.Business;
 using Cleaner.Business.Config;
-using Cleaner.DataAccess.Infrastructure;
+using Cleaner.DataAccess;
 using Cleaner.DataAccess.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 
 namespace Cleaner.API.Dependency
@@ -32,7 +27,7 @@ namespace Cleaner.API.Dependency
             var assembly = Assembly.GetExecutingAssembly();
 
             builder.RegisterApiControllers(assembly);
-            builder.RegisterType<CDbContext>().As<CDbContext>().InstancePerLifetimeScope();
+            builder.RegisterType<KiaOraEntities>().As<KiaOraEntities>().InstancePerLifetimeScope();
             ServiceConfig.RegisterServices(builder);
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
 

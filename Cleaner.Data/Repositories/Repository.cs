@@ -10,7 +10,7 @@ namespace Cleaner.DataAccess.Repositories
 
         private IQueryable<TEntity> AsQueryable()
         {
-            return _dbSet.AsQueryable().AsNoTracking();
+            return _dbSet.AsQueryable();
         }
 
         public Repository(KiaOraEntities context)
